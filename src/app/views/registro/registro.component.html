@@ -7,8 +7,8 @@
 
 <section class="Information">
 
-<div class="image">
-   <img src="src/assets/imagenes.jpg" alt="logo">
+<div class="image" >
+   <img  class="imagen" src="assets/imagenes.jpg" alt="logo">
 </div>
 
 
@@ -17,11 +17,29 @@
   <div><form class="register">
        
        
-       <p class="data ">Datos Personales y de la Empresa</p>
+       <p class="data ">Datos Personales</p>
 
        <div><label class="pure-material-textfield-outlined largo ">
               <input placeholder=" ">
-              <span >Name</span>
+              <span >Nombre Completo</span>
+       </label></div>
+
+       <div><label class="pure-material-textfield-outlined largo ">
+              <input placeholder=" ">
+              <span >Correo Electronico</span>
+       </label></div>
+
+
+       <div><label class="pure-material-textfield-outlined largo ">
+              <input placeholder=" ">
+              <span >Contraseña</span>
+       </label></div>
+
+       <p class="data ">Datos de la Empresa</p>
+
+       <div><label class="pure-material-textfield-outlined largo ">
+              <input placeholder=" ">
+              <span >Nombre de Empresa</span>
        </label></div>
 
        <div><label class="pure-material-textfield-outlined largo ">
@@ -30,13 +48,38 @@
        </label></div>
 
        <select class=" tipo" required>
-              <option selected disabled value="">Tipo de Empresa</option>
-              <option value="jweb">Junior Web Developer</option>
-              <option value="sweb">Senior Web Developer</option>
-              <option value="pmanager">Project Manager</option>
+              <option selected disabled value="">Sector</option>
+              <option value="1">Agroindustria</option>
+              <option value="2">Alimentación y Bebidas</option>
+              <option value="3">Automotriz</option>
+              <option value="4">Construcción</option>
+              <option value="5">Consultoría</option>
+              <option value="6">Educación</option>
+              <option value="7">Energía</option>
+              <option value="8">Entretenimiento y Medios</option>
+              <option value="9">Finanzas y Seguros</option>
+              <option value="10">Manufactura</option>
+              <option value="11">Minería</option>
+              <option value="12">Químicos</option>
+              <option value="13">Retail (Comercio Minorista)</option>
+              <option value="14">Salud y Bienestar</option>
+              <option value="15">Servicios Profesionales</option>
+              <option value="16">Tecnología de la Información (TI)</option>
+              <option value="17">Telecomunicaciones</option>
+              <option value="18">Textil y Moda</option>
+              <option value="19">Transporte y Logística</option>
+              <option value="20">Turismo y Hospitalidad</option>
+              <option value="21">Bienes Raíces</option>
+              <option value="22">Ambiental y Sostenibilidad</option>
+              <option value="23">Farmacéutico y Biotecnología</option>
+              <option value="24">Arte y Cultura</option>
+              <option value="25">Deportes y Recreación</option>
+              <option value="26">Investigación y Desarrollo (I+D)</option>
+              <option value="27">Servicios Públicos</option>
+              <option value="28">Defensa y Aeroespacial</option>
        </select>
 
-           <p class="center">Tipo de persona</p>
+       <p class="center">Tipo de persona</p>
 
        <div class="controlradio">
            <label class="control">Natural
@@ -49,60 +92,29 @@
           </label>
        </div>
 
-       <select class=" tipo" required>
-              <option selected disabled value="">Tipo de Propiedad</option>
-              <option value="jweb">Junior Web Developer</option>
-              <option value="sweb">Senior Web Developer</option>
-              <option value="pmanager">Project Manager</option>
-       </select>
-
-
-
-       <p class="data">Email de acceso</p>
-
        <div><label class="pure-material-textfield-outlined largo ">
               <input placeholder=" ">
-              <span >Correo Electronico</span>
+              <span >Direccion Empresa</span>
        </label></div>
 
        <div><label class="pure-material-textfield-outlined largo ">
               <input placeholder=" ">
-              <span >Contraseña</span>
-       </label></div>
-       
-       <p class="data">Informacion adicional</p>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contraseña</span>
+              <span >Contacto</span>
        </label></div>
 
        <div><label class="pure-material-textfield-outlined largo ">
               <input placeholder=" ">
-              <span >Contraseña</span>
+              <span >Sitio wed (opcional)</span>
        </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contraseña</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contraseña</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contraseña</span>
-       </label></div>
-            
-      
 
 
        <div class="terms">
               <input type="checkbox" id="acceptTerms" name="acceptTerms">
               <label for="acceptTerms">Acepto <a class="color" href="#" target="_blank">Términos y Condiciones</a> y <a class="color" href="#" target="_blank">Politicas de proteccion de Datos </a></label>
+       </div>
+
+       <div class="boton">
+              <button class="pure-material-button-contained">Crear</button>
        </div>
        
     </form></div>
