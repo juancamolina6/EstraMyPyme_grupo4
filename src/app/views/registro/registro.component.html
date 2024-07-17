@@ -1,124 +1,156 @@
-<section class="modificadores">
 
-<div class="lenguaje"></div>
-<div class="modo"></div>
+<!--register-->
 
-</section>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-<section class="Information">
-
-<div class="image" >
-   <img  class="imagen" src="assets/imagenes.jpg" alt="logo">
-</div>
-
-
-<div class="registro">
-
-  <div><form class="register">
+<div class="retroceso">
        
-       
-       <p class="data ">Datos Personales</p>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Nombre Completo</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Correo Electronico</span>
-       </label></div>
-
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contraseña</span>
-       </label></div>
-
-       <p class="data ">Datos de la Empresa</p>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Nombre de Empresa</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Nit</span>
-       </label></div>
-
-       <select class=" tipo" required>
-              <option selected disabled value="">Sector</option>
-              <option value="1">Agroindustria</option>
-              <option value="2">Alimentación y Bebidas</option>
-              <option value="3">Automotriz</option>
-              <option value="4">Construcción</option>
-              <option value="5">Consultoría</option>
-              <option value="6">Educación</option>
-              <option value="7">Energía</option>
-              <option value="8">Entretenimiento y Medios</option>
-              <option value="9">Finanzas y Seguros</option>
-              <option value="10">Manufactura</option>
-              <option value="11">Minería</option>
-              <option value="12">Químicos</option>
-              <option value="13">Retail (Comercio Minorista)</option>
-              <option value="14">Salud y Bienestar</option>
-              <option value="15">Servicios Profesionales</option>
-              <option value="16">Tecnología de la Información (TI)</option>
-              <option value="17">Telecomunicaciones</option>
-              <option value="18">Textil y Moda</option>
-              <option value="19">Transporte y Logística</option>
-              <option value="20">Turismo y Hospitalidad</option>
-              <option value="21">Bienes Raíces</option>
-              <option value="22">Ambiental y Sostenibilidad</option>
-              <option value="23">Farmacéutico y Biotecnología</option>
-              <option value="24">Arte y Cultura</option>
-              <option value="25">Deportes y Recreación</option>
-              <option value="26">Investigación y Desarrollo (I+D)</option>
-              <option value="27">Servicios Públicos</option>
-              <option value="28">Defensa y Aeroespacial</option>
-       </select>
-
-       <p class="center">Tipo de persona</p>
-
-       <div class="controlradio">
-           <label class="control">Natural
-              <input type="radio" name="radio" id="male" />
-              <div class="control__indicator"></div>
-          </label>
-          <label class="control">Juridica
-              <input type="radio" name="radio" id="male" />
-              <div class="control__indicator"></div>
-          </label>
+       <div class="registro-ok">
+             <form id="register" class="register" autocomplete="off">
+              <p class="titulo">Registro</p>
+               <p class="data">Datos Personales</p>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="name">
+                       <input placeholder="" type="text" id="name" name="name" required autocomplete="off">
+                       <span>Nombre Completo</span>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="email">
+                       <input placeholder="" type="text" id="email" name="email" required autocomplete="off">
+                       <span>Correo Electronico</span>
+                   </label>
+               </div>
+   
+               <div class="password-container">
+                   <label class="pure-material-textfield-outlined largo" for="password">
+                       <input placeholder="" type="password" id="password" name="password" autocomplete="off" required>
+                       <span>Contraseña</span>
+                       <i id="togglePassword"></i>
+                   </label>
+               </div>
+   
+               <p class="data">Datos de la Empresa</p>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="namempresa">
+                       <input placeholder="" type="text" id="namempresa" name="namempresa" autocomplete="off" required>
+                       <span>Nombre de la Empresa</span>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="nit">
+                       <input placeholder="" type="input" id="nit" name="nit" autocomplete="off" required>
+                       <span>Nit</span>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="">
+                       <select class="tipo" id="tipo">
+                           <option value="">--Sector--</option>
+                           <option value="1">Agroindustria</option>
+                           <option value="2">Alimentación y Bebidas</option>
+                           <option value="3">Automotriz</option>
+                           <option value="4">Construcción</option>
+                           <option value="5">Consultoría</option>
+                           <option value="6">Educación</option>
+                           <option value="7">Energía</option>
+                           <option value="8">Entretenimiento y Medios</option>
+                           <option value="9">Finanzas y Seguros</option>
+                           <option value="10">Manufactura</option>
+                           <option value="11">Minería</option>
+                           <option value="12">Químicos</option>
+                           <option value="13">Retail (Comercio Minorista)</option>
+                           <option value="14">Salud y Bienestar</option>
+                           <option value="15">Servicios Profesionales</option>
+                           <option value="16">Tecnología de la Información (TI)</option>
+                           <option value="17">Telecomunicaciones</option>
+                           <option value="18">Textil y Moda</option>
+                           <option value="19">Transporte y Logística</option>
+                           <option value="20">Turismo y Hospitalidad</option>
+                           <option value="21">Bienes Raíces</option>
+                           <option value="22">Ambiental y Sostenibilidad</option>
+                           <option value="23">Farmacéutico y Biotecnología</option>
+                           <option value="24">Arte y Cultura</option>
+                           <option value="25">Deportes y Recreación</option>
+                           <option value="26">Investigación y Desarrollo (I+D)</option>
+                           <option value="27">Servicios Públicos</option>
+                           <option value="28">Defensa y Aeroespacial</option>
+                       </select>
+                   </label>
+               </div>
+   
+               <div>
+                   <p class="center">Tipo de persona</p>
+                   <div class="ches" id="che">
+                       <div class="controlradio">
+                           <label class="control">Natural
+                               <input id="che1" type="radio" name="radio" autocomplete="off" />
+                               <div class="control__indicator"></div>
+                           </label>
+                           <label class="control">Juridica
+                               <input id="che2" type="radio" name="radio" autocomplete="off" />
+                               <div class="control__indicator"></div>
+                           </label>
+                       </div>
+                   </div>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="">
+                       <select class="tipo" id="tipo2" required>
+                           <option selected disabled value="">Tipo de Empresa</option>
+                           <option value="1">Pequeña</option>
+                           <option value="2">Mediana</option>
+                           <option value="3">Grande</option>
+                       </select>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="direccion">
+                       <input placeholder="" type="text" id="direccion" name="direccion" autocomplete="off" required>
+                       <span>Direccion de Empresa</span>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo" for="telefono">
+                       <input placeholder="" type="input" id="telefono" name="telefono" autocomplete="off" required>
+                       <span>Telefono</span>
+                   </label>
+               </div>
+   
+               <div>
+                   <label class="pure-material-textfield-outlined largo">
+                       <input placeholder=" " autocomplete="off">
+                       <span>Sitio wed (opcional)</span>
+                   </label>
+               </div>
+   
+               <div class="terms">
+                   <input type="checkbox" id="acceptTerms" name="acceptTerms" autocomplete="off">
+                   <label for="acceptTerms">Acepto <a class="color" href="#" target="_blank">Términos y Condiciones</a> y <a class="color" href="#" target="_blank">Politicas de proteccion de Datos</a></label>
+               </div>
+   
+               <div class="boton">
+                   <button type="submit" class="pure-material-button-contained">Crear</button>
+               </div>
+           </form>
        </div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Direccion Empresa</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Contacto</span>
-       </label></div>
-
-       <div><label class="pure-material-textfield-outlined largo ">
-              <input placeholder=" ">
-              <span >Sitio wed (opcional)</span>
-       </label></div>
-
-
-       <div class="terms">
-              <input type="checkbox" id="acceptTerms" name="acceptTerms">
-              <label for="acceptTerms">Acepto <a class="color" href="#" target="_blank">Términos y Condiciones</a> y <a class="color" href="#" target="_blank">Politicas de proteccion de Datos </a></label>
+   
+       <div class="circle">
+           <button class="button-x">X</button>
        </div>
+   </div>
 
-       <div class="boton">
-              <button class="pure-material-button-contained">Crear</button>
-       </div>
-       
-    </form></div>
-  </div>
-</section>
+   <!--end register-->
 
+ 
+   
 
