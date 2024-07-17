@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import JustValidate from 'just-validate';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core'; 
  
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -24,8 +26,8 @@ export class RegistroComponent implements OnInit {
     errorLabelStyle: {
       color: '#dc3545',
       fontSize: '14px',
-     
-      
+      top: '100%',
+      margin: '5px 0 0 0',
     },
     
   })
@@ -198,6 +200,7 @@ export class RegistroComponent implements OnInit {
       
   
     ])
+
     .addRequiredGroup('#che', '*campo obligatorio', {
       tooltip: {
         position: 'bottom',
@@ -205,9 +208,35 @@ export class RegistroComponent implements OnInit {
       },
       
      
-    });
+    })
     
  
   }
 
-}
+
+    password: string = '';
+    passwordVisible: boolean = false;
+  
+    togglePasswordVisibility(): void {
+      this.passwordVisible = !this.passwordVisible;
+    }
+
+    
+  
+
+
+
+
+
+
+
+
+
+  }
+  
+
+
+
+
+
+

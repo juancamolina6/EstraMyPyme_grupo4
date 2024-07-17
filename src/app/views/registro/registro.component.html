@@ -2,7 +2,7 @@
 <!--register-->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 
 <div class="retroceso">
        
@@ -24,20 +24,29 @@
                        <span>Correo Electronico</span>
                    </label>
                </div>
+
+               <div class="eye">
+                     <label class="pure-material-textfield-outlined largo" for="password">
+                         <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password" name="password" required autocomplete="off">
+                         <span>Contrseña</span>
+                         <button class="button-eye" id="togglePassword" (click)="togglePasswordVisibility()" type="button">
+                            <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                        </button>
+                     </label>
+
+                      
+                 </div>
+
    
-               <div class="password-container">
-                   <label class="pure-material-textfield-outlined largo" for="password">
-                       <input placeholder="" type="password" id="password" name="password" autocomplete="off" required>
-                       <span>Contraseña</span>
-                       <i id="togglePassword"></i>
-                   </label>
-               </div>
-   
+             
+
+       
+             
                <p class="data">Datos de la Empresa</p>
    
                <div>
                    <label class="pure-material-textfield-outlined largo" for="namempresa">
-                       <input placeholder="" type="text" id="namempresa" name="namempresa" autocomplete="off" required>
+                       <input placeholder="" type="text" id="namempresa" name="namempresa"  autocomplete="off" required>
                        <span>Nombre de la Empresa</span>
                    </label>
                </div>
@@ -134,9 +143,16 @@
                </div>
    
                <div class="terms">
-                   <input type="checkbox" id="acceptTerms" name="acceptTerms" autocomplete="off">
-                   <label for="acceptTerms">Acepto <a class="color" href="#" target="_blank">Términos y Condiciones</a> y <a class="color" href="#" target="_blank">Politicas de proteccion de Datos</a></label>
-               </div>
+                   <div class="terms">
+                   <input
+                    type="checkbox"
+                    id="acceptTerms"
+                     name="acceptTerms" 
+                     autocomplete="off"/><label for="acceptTerms">Acepto <span class="color">Términos y Condiciones </span> y <span class="color">Politicas de proteccion de Datos</span></label> 
+                 </div>
+             </div>
+
+            
    
                <div class="boton">
                    <button type="submit" class="pure-material-button-contained">Crear</button>
