@@ -1,0 +1,7 @@
+<main class="flex-1 p-4">
+  <div *ngFor="let user of users" class="p-2 border-b">
+    <img [src]="user.image" alt="{{ user.name }}" class="inline-block h-10 w-10 rounded-full">
+    <span>{{ user.name }}</span>
+    <button (click)="editUser(user)" class="ml-4 text-blue-500">Edit</button>
+  </div>
+</main>
