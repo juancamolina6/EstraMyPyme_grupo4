@@ -2,11 +2,11 @@
 
 
 body {
-  background: transparent;
+ 
   margin: 0;
   padding: 0;
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
-  overflow: hidden; /* Esto asegura que no haya scroll */
-  min-height: 100vh;
+
+
   }
