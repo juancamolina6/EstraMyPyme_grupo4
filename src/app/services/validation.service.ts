@@ -39,14 +39,20 @@ export class ValidationService  {
       
     });
 
-  
-
     validations.forEach(validation => {
-      validator.addField(validation.field, validation.rules);
+      if (validation.field) {
+        validator.addField(validation.field, validation.rules);
+      } else if (validation.requiredGroup) {
+        validator.addRequiredGroup(validation.requiredGroup, validation.errorMessage, validation.options);
+      }
     });
 
     return validator;
   }
+
+
+
+ 
 
   private getEmpresaValidations(): any[] {
     return [
@@ -105,8 +111,17 @@ export class ValidationService  {
           { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
+
+      {
+        requiredGroup: '#che',
+        errorMessage: '*Campo obligatorio',
+        options: {
+          tooltip: {
+            position: 'bottom',
+          },
+        },
+      },
       
-     
     
  
       {
@@ -137,7 +152,8 @@ export class ValidationService  {
       rules: [
         { rule: 'required', errorMessage: "*campo obligatorio" },
       ]
-    }
+    },
+
   
   
     ];
