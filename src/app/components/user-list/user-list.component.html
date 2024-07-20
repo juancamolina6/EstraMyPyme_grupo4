@@ -1,0 +1,16 @@
+<div class="user-list">
+  <div class="tabs">
+    <button (click)="selectedUserType='Profesores'">Profesores</button>
+    <button (click)="selectedUserType='Estudiantes'">Estudiantes</button>
+    <button (click)="selectedUserType='Empresas'">Empresas</button>
+  </div>
+  <ul>
+    <li *ngFor="let user of filteredUsers" (click)="selectUser(user)">
+      <img *ngIf="user.type !== 'Empresas'" [src]="'path/to/images/' + user.id + '.png'" alt="{{ user.name }}">
+      <div class="user-info">
+        <span>{{ user.name }}</span>
+        <p>{{ user.email }}</p>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,24 @@
+<div *ngIf="user" class="user-detail">
+  <h2>{{ user.name }}</h2>
+  <p>Email: {{ user.email }}</p>
+  <ng-container [ngSwitch]="user.type">
+    <div *ngSwitchCase="'Estudiantes'">
+      <p>Empresa Asociada: {{ user.empresa_asociada }}</p>
+      <p>Edad: {{ user.edad }}</p>
+      <p>Carrera: {{ user.carrera }}</p>
+      <p>Semestre: {{ user.semestre }}</p>
+    </div>
+    <div *ngSwitchCase="'Profesores'">
+      <p>Especialidad: {{ user.especialidad }}</p>
+      <p>Años de experiencia: {{ user.anos_experiencia }}</p>
+      <p>Cursos Impartidos: {{ user.cursos_impartidos?.join(', ') }}</p>
+    </div>
+    <div *ngSwitchCase="'Empresas'">
+      <p>Sector: {{ user.sector }}</p>
+      <p>Empleados: {{ user.empleados }}</p>
+      <p>Fundación: {{ user.fundacion }}</p>
+      <p>Productos: {{ user.productos?.join(', ') }}</p>
+      <p>Facturación Anual: {{ user.facturacion_anual | currency }}</p>
+    </div>
+  </ng-container>
+</div>

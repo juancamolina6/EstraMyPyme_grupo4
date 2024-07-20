@@ -1,0 +1,44 @@
+/* panel-administracion.component.css */
+.admin-panel {
+  display: flex;
+}
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+.charts {
+  display: flex;
+  justify-content: space-between;
+}
+.user-section {
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* user-list.component.css */
+.user-list {
+  width: 50%;
+}
+.tabs button {
+  margin-right: 10px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* user-detail.component.css */
+.user-detail {
+  width: 70%;
+  padding-left: 20px;
+}

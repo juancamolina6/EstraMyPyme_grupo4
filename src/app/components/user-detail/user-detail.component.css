@@ -1,0 +1,11 @@
+.user-detail {
+    background-color: #fff;
+    color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px;
+    flex: 2; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
