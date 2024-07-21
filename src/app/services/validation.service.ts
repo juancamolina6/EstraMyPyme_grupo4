@@ -146,7 +146,7 @@ export class ValidationService  {
         ]
       },
 
-    
+
     {
       field: '#acceptTerms',
       rules: [
@@ -218,20 +218,47 @@ export class ValidationService  {
           { rule: 'maxLength', value: 50, errorMessage: "Maximo 50 caracteres" },
         ]
       },
+      
+    
+
       {
         field: '#año',
         rules: [
           { rule: 'required', errorMessage: "*campo obligatorio" },
-          { rule: 'number', errorMessage: "*solo ingresa numeros" },
+          
+          {
+            rule: 'number',
+            errorMessage: '*Solo números',
+          },
+          {
+            rule: 'minNumber',
+            value: 1950,
+            errorMessage: '*El año debe ser mayor o igual a 1950',
+          },
+          {
+            rule: 'maxNumber',
+            value: 2024,
+            errorMessage: '*El año debe ser menor o igual a 2024',
+          },
+        ]
+
+      },
+
+      {
+        field: '#tipo3',
+        rules: [
+          { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
 
-    {
+      {
       field: '#acceptTerms1',
       rules: [
         { rule: 'required', errorMessage: "*campo obligatorio" },
       ]
-    }
+      }
+    
+
     ]
   }
 

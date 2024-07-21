@@ -29,18 +29,12 @@ export class RegistroComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.initializeValidators();
-
-    //modos
-
-    this.checkbox = document.getElementById('input') as HTMLInputElement;
-    this.contenedor = document.querySelector('.register-container') as HTMLElement;
-
-    this.changeTheme();
-
-    // Agrega un event listener al checkbox
-    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
+    this.initializeThemeMode();
+   
+  
   }
-
+    
+  //validaciones
   initializeValidators(): void {
     if (this.isEmpresaActive) {
       this.validationService.initializeEmpresaValidator();
@@ -104,10 +98,26 @@ contenedor!: HTMLElement; // Utilizamos "!" para indicar que será inicializado 
   onCheckboxChange() {
     this.changeTheme();
   }
+
+
+  // Método para inicializar el modo de tema
+  initializeThemeMode() {
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
+    this.contenedor = document.querySelector('.register-container') as HTMLElement;
+
+    this.changeTheme();
+
+    // Agrega un event listener al checkbox para cambiar el tema
+    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
+  }
+
+ 
 }
 
 
  
+  //modos
+
 
 
 
