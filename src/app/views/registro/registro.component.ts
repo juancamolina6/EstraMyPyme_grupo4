@@ -29,6 +29,16 @@ export class RegistroComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.initializeValidators();
+
+    //modos
+
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
+    this.contenedor = document.querySelector('.register-container') as HTMLElement;
+
+    this.changeTheme();
+
+    // Agrega un event listener al checkbox
+    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
   }
 
   initializeValidators(): void {
@@ -70,8 +80,35 @@ export class RegistroComponent implements AfterViewInit{
     }
   }
 
+
+
+//modos
+
+checkbox!: HTMLInputElement; // Utilizamos "!" para indicar que será inicializado más tarde
+contenedor!: HTMLElement; // Utilizamos "!" para indicar que será inicializado más tarde
+
  
+
+  changeTheme() {
+    if (this.checkbox.checked) {
+      // Si el checkbox está marcado, aplica la clase de modo claro
+      this.contenedor.classList.add('dark-mode');
+      this.contenedor.classList.remove('light-mode');
+    } else {
+      // Si el checkbox NO está marcado, aplica la clase de modo oscuro
+      this.contenedor.classList.add('light-mode');
+      this.contenedor.classList.remove('dark-mode');
+    }
+  }
+
+  onCheckboxChange() {
+    this.changeTheme();
+  }
 }
+
+
+ 
+
 
 
 

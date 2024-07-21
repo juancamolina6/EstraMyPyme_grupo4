@@ -2,6 +2,27 @@
 <div class="register-container">
     
 
+     <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+     <div class="modos">
+     <div >
+        <!-- Lista desplegable para seleccionar el idioma -->
+        <select class="language" id="language">
+           <option value="es" selected>idioma</option>
+           <option value="en">ENG</option>
+           <option value="fr">FRA</option>
+           <option value="spa">SPA</option>
+        </select>
+     </div>
+
+     <div class="modo" id="light-mode"> 
+        <label class="switch">
+           <input type="checkbox" id="input" (change)="onCheckboxChange()">
+           <span class="slider round"></span>
+        </label>
+     </div> 
+    </div>
+
+
     <!--logo-->
     <section class="login-now">
         <div class="left-info">
@@ -20,8 +41,10 @@
   
   
   <!--register-->
-  
-  
+    <!--link icono ojo-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
          <div class="registro-ok">
   
           <p class="titulo">Registro</p>
@@ -37,7 +60,7 @@
                  <p class="data">Datos Personales</p>
      
                  <div>
-                     <label class="pure-material-textfield-outlined largo" for="name">
+                     <label class="pure-material-textfield-outlined largo" for="name1">
                          <input placeholder="" type="text" id="name" name="name" required autocomplete="off">
                          <span>Nombre Completo</span>
                      </label>
@@ -49,11 +72,12 @@
                          <span>Correo Electronico</span>
                      </label>
                  </div>
-  
+
+                 
                  <div class="eye">
                        <label class="pure-material-textfield-outlined largo" for="password">
                            <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password" name="password" required autocomplete="off">
-                           <span>Contrseña</span>
+                           <span>Contraseña</span>
                            <button class="button-eye" id="togglePassword" (click)="togglePasswordVisibility()" type="button">
                               <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
                           </button>
@@ -61,20 +85,38 @@
   
                         
                    </div>
+              
   
                  <p class="data">Datos de la Empresa</p>
      
                  <div>
                      <label class="pure-material-textfield-outlined largo" for="namempresa">
                          <input placeholder="" type="text" id="namempresa" name="namempresa"  autocomplete="off" required>
-                         <span>Nombre de la Empresa</span>
+                         <span>Nombre</span>
                      </label>
                  </div>
      
+
+                 <div>
+                    <p class="center">Tipo de persona</p>
+                    <div class="ches" id="che">
+                        <div class="controlradio">
+                            <label class="control">Natural
+                                <input id="che1" type="radio" name="radio" autocomplete="off" />
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control">Juridica
+                                <input id="che2" type="radio" name="radio" autocomplete="off" />
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                  <div>
                      <label class="pure-material-textfield-outlined largo" for="nit">
                          <input placeholder="" type="input" id="nit" name="nit" autocomplete="off" required>
-                         <span>Nit</span>
+                         <span>NIT/Cedula</span>
                      </label>
                  </div>
      
@@ -110,25 +152,12 @@
                              <option value="26">Investigación y Desarrollo (I+D)</option>
                              <option value="27">Servicios Públicos</option>
                              <option value="28">Defensa y Aeroespacial</option>
+                             <option value="28">otros</option>
                          </select>
                      </label>
                  </div>
      
-                 <div>
-                     <p class="center">Tipo de persona</p>
-                     <div class="ches" id="che">
-                         <div class="controlradio">
-                             <label class="control">Natural
-                                 <input id="che1" type="radio" name="radio" autocomplete="off" />
-                                 <div class="control__indicator"></div>
-                             </label>
-                             <label class="control">Juridica
-                                 <input id="che2" type="radio" name="radio" autocomplete="off" />
-                                 <div class="control__indicator"></div>
-                             </label>
-                         </div>
-                     </div>
-                 </div>
+               
      
                  <div>
                      <label class="pure-material-textfield-outlined largo" for="">
@@ -182,6 +211,7 @@
   
              <!--restro consultores-->
       <div  *ngIf="isConsultorActive">
+
              <form id="register2" class="register" autocomplete="off">
   
               
@@ -195,7 +225,7 @@
               </div>
   
               <div>
-                  <label class="pure-material-textfield-outlined largo" for="email">
+                  <label class="pure-material-textfield-outlined largo" for="email1">
                       <input placeholder="" type="text" id="email1" name="email" required autocomplete="off">
                       <span>Correo Electronico</span>
                   </label>
@@ -209,9 +239,9 @@
               </div>
   
   
-  
+            
               <div class="eye">
-                    <label class="pure-material-textfield-outlined largo" for="password">
+                    <label class="pure-material-textfield-outlined largo" for="password1">
                         <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password1" name="password" required autocomplete="off">
                         <span>Contraseña</span>
                         <button class="button-eye" id="togglePassword1" (click)="togglePasswordVisibility()" type="button">
@@ -219,7 +249,7 @@
                        </button>
                     </label>   
                 </div>
-  
+        
   
                 <p class="data">Información Académica/Profesional</p>
              
@@ -236,7 +266,7 @@
   
   
               <div>
-                  <label class="pure-material-textfield-outlined largo" for="Departamento">
+                  <label class="pure-material-textfield-outlined largo" for="Departamento1">
                       <input placeholder="" type="input" id="Departamento1" name="Departamento" autocomplete="off" required>
                       <span>Departamento/Facultad</span>
                   </label>
@@ -255,6 +285,17 @@
                       <span>Año de Ingreso (para estudiantes)</span>
                   </label>
               </div>
+
+              <div>
+                <label class="pure-material-textfield-outlined largo" for="">
+                    <select class="tipo" id="tipo3" required>
+                        <option selected disabled value="">periodo</option>
+                        <option value="1">primer semestre</option>
+                        <option value="2">segundo semestre</option>
+                        
+                    </select>
+                </label>
+            </div>
   
   
   

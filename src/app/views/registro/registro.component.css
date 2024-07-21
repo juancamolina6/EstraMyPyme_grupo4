@@ -1,5 +1,5 @@
 
-/**/
+
 
 *{
   font-family: "Inter", sans-serif;
@@ -10,21 +10,300 @@
   width: 100vw;
   background-color: black;
   color: white; 
+  display: flex; 
+  margin: 0;
+  padding: 0;
+  left: 0px;
+
+
+  
+}
+/*modos*/
+.modos {
+  width: 100%;
+  height: 100px;
+  position: absolute;
   display: flex;
-  justify-content: flex-start;
-  align-items: center; 
+  align-items: flex-start;
+  justify-content: flex-end;
+ 
+
 }
 
+.language {
+  border: white solid 0.125rem;
+  border-radius: 1.875rem;
+  color: white;
+  background-color: black;
+  width: 6.25rem;
+  height: 1.875rem;
+  padding: 0rem 0.625rem 0rem;
+  font-size: 1.125rem;
+  margin-right: -50px;
+  margin-top: 50px;
+}
+
+
+.modo {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 200px;
+  margin-top: 23px;
+}
+
+/*light mode */
+
+.light-mode {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+ 
+
+}
+
+.light-mode .imagen-logo {
+  content: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721519077/73cfbdea51a1a101764ae95123ae9372_mpxbnb.png');
+  width: 6.8rem;
+  height: 2.5rem;
+}
+
+.light-mode .slider {
+  border: black solid 0.125rem; 
+}
+
+.light-mode .language {
+ background-color: white;
+ color: black;
+ border: black solid 0.125rem;
+}
+
+
+.light-mode .registro-ok {
+  background-color: white;
+  border: #0000ff solid 4px; 
+}
+
+.light-mode .titulo {
+
+  color: black;
+
+}
+.light-mode #btn-empresa {
+
+  color: white;
+  background-color: black;
+}
+
+.light-mode #btn-consultor{
+
+  color: white;
+  background-color: black;
+}
+
+/*register*/
+
+.light-mode .data {
+  color: black;
+}
+
+.light-mode .pure-material-textfield-outlined > input
+ {
+  color: black;
+  border-color: black;
+}
+
+.light-mode .pure-material-textfield-outlined > textarea{
+  color: black;
+  border-color: black;
+}
+
+.light-mode .pure-material-textfield-outlined > input + span {
+  color:  black;
+  border-color: black;
+
+}
+
+.light-mode .pure-material-textfield-outlined > textarea + span {
+  color:  black;
+  border-color: black;
+
+}
+
+.light-mode .pure-material-textfield-outlined > input + span::before,
+.light-mode .pure-material-textfield-outlined > input + span::after,
+.light-mode .pure-material-textfield-outlined > textarea + span::before,
+.light-mode .pure-material-textfield-outlined > textarea + span::after {
+
+  border-top-color: black;
+}
+
+
+/* Hover */
+.light-mode .pure-material-textfield-outlined:hover > input,
+.light-mode .pure-material-textfield-outlined:hover > textarea {
+  border-color: balck;
+ 
+}
+
+.light-mode .pure-material-textfield-outlined:hover > input + span::before,
+.light-mode .pure-material-textfield-outlined:hover > textarea + span::before,
+.light-mode .pure-material-textfield-outlined:hover > input + span::after,
+.light-mode .pure-material-textfield-outlined:hover > textarea + span::after {
+  border-top-color:  black;
+}
+
+.light-mode .pure-material-textfield-outlined:hover > input:not(:focus):placeholder-shown,
+.light-mode .pure-material-textfield-outlined:hover > textarea:not(:focus):placeholder-shown {
+  border-color:  black;
+}
+
+/* Placeholder-shown */
+.light-mode .pure-material-textfield-outlined > input:not(:focus):placeholder-shown,
+.light-mode .pure-material-textfield-outlined > textarea:not(:focus):placeholder-shown {
+  border-top-color: black;
+}
+
+/* Focus */
+.light-mode .pure-material-textfield-outlined > input:focus,
+.light-mode .pure-material-textfield-outlined > textarea:focus {
+  border-color: #0000ff;
+ 
+}
+
+.light-mode .pure-material-textfield-outlined > input:focus + span,
+.light-mode .pure-material-textfield-outlined > textarea:focus + span {
+  color: #0000ff;
+}
+
+.light-mode .pure-material-textfield-outlined > input:focus + span::before,
+.light-mode .pure-material-textfield-outlined > input:focus + span::after,
+.light-mode .pure-material-textfield-outlined > textarea:focus + span::before,
+.light-mode .pure-material-textfield-outlined > textarea:focus + span::after {
+  border-top-color: #0000ff !important;
+
+}
+
+.light-mode .center {
+  color: black;
+}
+
+.light-mode .control {
+  color: black;
+}
+
+
+.light-mode .tipo {
+  border-color: black;
+  color: black;
+}
+
+.light-mode .terms label{
+
+  color: black;
+}
+
+.light-mode .button-eye {
+  color: black;
+}
+
+
+.switch {
+  position: relative;
+  margin-left: 100%;
+  top: 40%;
+  transform: translateX(-50%) translateY(25rem);
+  width: 8.75rem;
+  height: 4.375rem;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  width: 4.25rem;
+  height: 1.800rem;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: white solid 0.125rem;
+  border-radius: 1.875rem;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.5rem;
+  width: 2.5rem;
+  left: 3.125rem;
+  bottom: 0.25rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721485960/icons8-luna-creciente-20_t9pa5h.png') no-repeat center center;
+  -webkit-transition: .4s;
+  transition: .4s;
+  margin-left: -20px;
+  top: -7px;
+}
+
+.slider:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: 0;
+  bottom: 0.5625rem;
+  width: 2.5rem;
+  opacity: 0;
+  height: 2.5rem;
+  -webkit-transition:.2s;
+  transition: .2s;
+  margin-left: -2px;
+  top: -10px;
+  transform: rotate(180deg);
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721486195/icons8-sun-20_1_l1bwx3.png') no-repeat center center;
+}
+
+input:checked + .slider:after {
+  left: auto;
+  opacity: 1;
+  -webkit-transform: translateX(6.25rem);
+  -ms-transform: translateX(6.25rem);
+  transform: translateX(6.25rem);
+  transform: translateY(0.3125rem);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+
+
+
+/*logo*/
 .login-now {
       height: 50%;
       width: 30%;
       display: flex;
       margin-right: 100px;
       margin-left: 50px;
+      position: relative;
+      top: 150px;
+      right: 0px;
+      left: 20px;
   }
 
   .stilo {
-    font-weight: bold;
+    font-weight: thin;
+    
   }
 .left-info, .right-info {
       flex: 1;
@@ -112,11 +391,12 @@ p {
 
 
 
+/*Register*/
 
 :root {
   --font-family: sans-serif,arial;
 }
-/*Register*/
+
 .retroceso {
   width: 600px; 
   height: auto;
@@ -127,17 +407,14 @@ p {
   margin: -30px;
 }
 
-.registro-ok {
-  width: 100%; 
-  height: auto;
-}
+
 
 
 .registro-ok {
   width: 600px; 
   height: 600px;
-  background: #191919;
-  border: 3px solid blue;
+  background: black;
+  border: #0000ff solid 2px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -148,29 +425,33 @@ p {
   overflow-y: auto;
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #555 #191919; /* Firefox */
-  left: 550px;
-  top: 110px;
+  position:relative;
+  top: 120px;
+  right: 0px;
+  left: 20px;
+
 
 }
 
 .titulo{
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
   margin-left: 30px;
   margin-bottom: 10px;
   color: white;
-  font-size: 35px;
-  font-family: arial;
+  font-size: 18px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .data {
 
   color: #fff;
     text-align: left;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-family:  arial;
     margin-left: 40px;
    
@@ -180,8 +461,8 @@ p {
 .largo{
   width: 75%; 
   height: auto;
-  margin-top: 5px;
-  margin-bottom: 0px;
+  margin-top: -10px;
+  margin-bottom: 20px;
   color: white;
 }
 
@@ -332,7 +613,7 @@ p {
 .pure-material-textfield-outlined > input:focus + span::after,
 .pure-material-textfield-outlined > textarea:focus + span::before,
 .pure-material-textfield-outlined > textarea:focus + span::after {
-  border-top-color: var(--pure-material-safari-helper1) !important;
+  border-top-color: var(--pure-material-safari-helper1) !important;/**/
   box-shadow: inset 0 1px var(--pure-material-safari-helper1);
 }
 
@@ -387,6 +668,14 @@ p {
 
 
 /*contraseña ojo styel*/
+
+
+.eye {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .password-container {
   position: relative;
   display: flex;
@@ -408,8 +697,11 @@ p {
   
 }
 
-
-
+.eye {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
 .button-eye  {
   position: relative;
@@ -428,7 +720,7 @@ p {
 }
 
 .button-eye i:hover {
-  color: blue;
+  color: #0000ff;
 }
 
 
@@ -485,7 +777,7 @@ p {
   justify-content: center;
   align-items: center;
   margin-left: 100px;
-  
+  margin-bottom: 30px;
 }
 
 .controlradio {
@@ -523,7 +815,7 @@ p {
 
 
 .color{
-  color: blue;
+  color: #0000ff;
   }
 
 
@@ -545,30 +837,47 @@ p {
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 20px;
   margin-bottom: 30px;
+  margin-left: -10rem;
+  gap: 1rem;
+ 
 
 }
 
+
+
 #btn-empresa {
+  background-color:white;
   font-size: 15px;
   width: 100px;
   height: 40px;
-  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   margin-left: 10px;
   font-weight: bold;
- 
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: box-shadow 0.3s ease;
+  color: black;
+  margin-right: 0px;
+  border:black solid 2px;
 }
 
 #btn-consultor {
+  background-color: white;
   font-size: 14px;
-  width: 100px;
+  width: 110px;
   height: 40px;
-  border-radius: 5px;
-  margin-left: 5px;
   font-weight: bold;
-
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-left: 0px;
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: box-shadow 0.3s ease;
+  color: black;
+  border: black solid 2px;
+  translate: -17px 0px;
 }
 
 
@@ -585,7 +894,7 @@ p {
   text-align: center;
   text-overflow: ellipsis;
   color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
-  background-color: #224afb;
+  background-color: #0000ff;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
   font-size: 18px;
