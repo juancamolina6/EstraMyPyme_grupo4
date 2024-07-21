@@ -95,7 +95,10 @@ export class UserListComponent {
   ];
 
   selectedUserType: string = 'Estudiantes';
-  selectedUserId: number | null = null;
+  selectedUser: User | null = null;
+  ngOnInit() {
+    this.selectDefaultUser();
+  }
 
   get filteredUsers() {
     return this.users.filter(user => user.type === this.selectedUserType);
@@ -104,7 +107,12 @@ export class UserListComponent {
 
   selectUser(user: User) {
     this.userSelected.emit(user);
-    this.selectedUserId = user.id;
-
+    this.selectedUser  = user;
+  }
+  selectDefaultUser() {
+    const usersOfSelectedType = this.filteredUsers;
+    if (usersOfSelectedType.length > 0) {
+      this.selectUser(usersOfSelectedType[0]);
+    }
   }
 }

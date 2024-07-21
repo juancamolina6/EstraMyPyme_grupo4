@@ -6,6 +6,7 @@ import { UserListComponent } from '../../components/user-list/user-list.componen
 import { UserDetailComponent, User } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 
+
 @Component({
   selector: 'app-panel-administracion',
   standalone: true,
@@ -21,5 +22,5 @@ import { ChartComponent } from '../../components/chart/chart.component';
   styleUrls: ['./panel-administracion.component.css']
 })
 export class PanelAdministracionComponent {
-  selectedUser!: User; // Asegúrate de que selectedUser esté declarado correctamente
+  selectedUser!: User; 
 }

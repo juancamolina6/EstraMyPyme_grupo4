@@ -1,17 +1,20 @@
 <!-- user-list.component.html -->
 <div class="user-list">
   <div class="tabs">
-    <button [class.selected]="selectedUserType === 'Profesores'" (click)="selectedUserType='Profesores'">Profesores</button>
-    <button [class.selected]="selectedUserType === 'Estudiantes'" (click)="selectedUserType='Estudiantes'">Estudiantes</button>
-    <button [class.selected]="selectedUserType === 'Empresas'" (click)="selectedUserType='Empresas'">Empresas</button>
+    <button *ngFor="let type of ['Profesores', 'Estudiantes', 'Empresas']"
+            [class.selected]="type === selectedUserType"
+            (click)="selectedUserType = type; selectDefaultUser()">
+      {{ type }}
+    </button>
   </div>
   <ul>
-    <li *ngFor="let user of filteredUsers" (click)="selectUser(user)"[class.selected]="user.id === selectedUserId">
-      
-      <img *ngIf="user.image" [src]="user.image" alt="{{ user.name }}">
+    <li *ngFor="let user of filteredUsers"
+        [class.selected]="user === selectedUser"
+        (click)="selectUser(user)">
+      <img [src]="user.image || 'default-avatar.png'" alt="{{user.name}}">
       <div>
         <strong>{{ user.name }}</strong>
-        <p>{{ user.email }}</p>
+        <span>{{ user.email }}</span>
       </div>
     </li>
   </ul>

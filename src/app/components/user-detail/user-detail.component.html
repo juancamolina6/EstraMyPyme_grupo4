@@ -1,24 +1,71 @@
-<div *ngIf="user" class="user-detail">
-  <h2>{{ user.name }}</h2>
-  <p>Email: {{ user.email }}</p>
-  <ng-container [ngSwitch]="user.type">
-    <div *ngSwitchCase="'Estudiantes'">
-      <p>Empresa Asociada: {{ user.empresa_asociada }}</p>
-      <p>Edad: {{ user.edad }}</p>
-      <p>Carrera: {{ user.carrera }}</p>
-      <p>Semestre: {{ user.semestre }}</p>
-    </div>
-    <div *ngSwitchCase="'Profesores'">
-      <p>Especialidad: {{ user.especialidad }}</p>
-      <p>Años de experiencia: {{ user.anos_experiencia }}</p>
-      <p>Cursos Impartidos: {{ user.cursos_impartidos?.join(', ') }}</p>
-    </div>
-    <div *ngSwitchCase="'Empresas'">
-      <p>Sector: {{ user.sector }}</p>
-      <p>Empleados: {{ user.empleados }}</p>
-      <p>Fundación: {{ user.fundacion }}</p>
-      <p>Productos: {{ user.productos?.join(', ') }}</p>
-      <p>Facturación Anual: {{ user.facturacion_anual | currency }}</p>
-    </div>
-  </ng-container>
+<div class="user-detail" *ngIf="user">
+  <div class="field-group" *ngIf="fieldsVisibility['name']">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" [(ngModel)]="user.name">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['email']">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="user.email">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['empresa_asociada']">
+    <label for="empresa_asociada">Empresa Asociada:</label>
+    <input type="text" id="empresa_asociada" [(ngModel)]="user.empresa_asociada">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['edad']">
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" [(ngModel)]="user.edad">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['carrera']">
+    <label for="carrera">Carrera:</label>
+    <input type="text" id="carrera" [(ngModel)]="user.carrera">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['semestre']">
+    <label for="semestre">Semestre:</label>
+    <input type="number" id="semestre" [(ngModel)]="user.semestre">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['especialidad']">
+    <label for="especialidad">Especialidad:</label>
+    <input type="text" id="especialidad" [(ngModel)]="user.especialidad">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['anos_experiencia']">
+    <label for="anos_experiencia">Años de Experiencia:</label>
+    <input type="number" id="anos_experiencia" [(ngModel)]="user.anos_experiencia">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['cursos_impartidos']">
+    <label for="cursos_impartidos">Cursos Impartidos:</label>
+    <input type="text" id="cursos_impartidos" [(ngModel)]="user.cursos_impartidos">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['sector']">
+    <label for="sector">Sector:</label>
+    <input type="text" id="sector" [(ngModel)]="user.sector">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['empleados']">
+    <label for="empleados">Empleados:</label>
+    <input type="number" id="empleados" [(ngModel)]="user.empleados">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['fundacion']">
+    <label for="fundacion">Fundación:</label>
+    <input type="number" id="fundacion" [(ngModel)]="user.fundacion">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['productos']">
+    <label for="productos">Productos:</label>
+    <input type="text" id="productos" [(ngModel)]="user.productos">
+  </div>
+
+  <div class="field-group" *ngIf="fieldsVisibility['facturacion_anual']">
+    <label for="facturacion_anual">Facturación Anual:</label>
+    <input type="number" id="facturacion_anual" [(ngModel)]="user.facturacion_anual">
+  </div>
 </div>
