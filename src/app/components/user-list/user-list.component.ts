@@ -21,7 +21,8 @@ export class UserListComponent {
       type: "Estudiantes",
       edad: 22,
       carrera: "Ingeniería Agrónoma",
-      semestre: 7
+      semestre: 7,
+      image: "path/to/image1.png"
     },
     {
       id: 2,
@@ -31,7 +32,8 @@ export class UserListComponent {
       type: "Estudiantes",
       edad: 20,
       carrera: "Administración de Empresas",
-      semestre: 5
+      semestre: 5,
+      image: "path/to/image1.png"
     },
     {
       id: 3,
@@ -41,7 +43,8 @@ export class UserListComponent {
       type: "Estudiantes",
       edad: 23,
       carrera: "Agronomía",
-      semestre: 8
+      semestre: 8,
+      image: "path/to/image1.png"
     },
     {
       id: 4,
@@ -51,7 +54,8 @@ export class UserListComponent {
       especialidad: "Agricultura Sostenible",
       anos_experiencia: 15,
       cursos_impartidos: ["Agroecología", "Sistemas de Riego"],
-      estudantes_profesor: [1, 3]
+      estudantes_profesor: [1, 3],
+      image: "path/to/image1.png"
     },
     {
       id: 5,
@@ -61,7 +65,8 @@ export class UserListComponent {
       especialidad: "Gestión Empresarial",
       anos_experiencia: 10,
       cursos_impartidos: ["Marketing Digital", "Finanzas para Emprendedores"],
-      estudantes_profesor: [2]
+      estudantes_profesor: [2],
+      image: "path/to/image1.png"
     },
     {
       id: 6,
@@ -72,7 +77,8 @@ export class UserListComponent {
       empleados: 50,
       fundacion: 2005,
       productos: ["Fertilizantes orgánicos", "Semillas certificadas"],
-      facturacion_anual: 5000000
+      facturacion_anual: 5000000,
+      image: "path/to/image1.png"
     },
     {
       id: 7,
@@ -83,17 +89,22 @@ export class UserListComponent {
       empleados: 75,
       fundacion: 1998,
       productos: ["Equipos de oficina", "Suministros de papelería"],
-      facturacion_anual: 8000000
+      facturacion_anual: 8000000,
+      image: "path/to/image1.png"
     }
   ];
 
   selectedUserType: string = 'Estudiantes';
+  selectedUserId: number | null = null;
 
   get filteredUsers() {
     return this.users.filter(user => user.type === this.selectedUserType);
   }
+  
 
   selectUser(user: User) {
     this.userSelected.emit(user);
+    this.selectedUserId = user.id;
+
   }
 }

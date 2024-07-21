@@ -19,6 +19,7 @@ export interface User {  // Exporta la interfaz User
   productos?: string[];
   facturacion_anual?: number;
   estudantes_profesor?: number[];
+  image?: string
 }
 
 @Component({

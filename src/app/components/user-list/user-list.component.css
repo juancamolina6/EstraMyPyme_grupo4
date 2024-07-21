@@ -1,3 +1,73 @@
-.user-list{
-    background-color: #ffffff;
-}
+/* Estilo del contenedor principal */
+.user-list {
+    background-color: #6d6d6d;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  /* Estilo de los botones de las tabs */
+  .user-list .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .user-list .tabs button {
+    background-color: #6d6d6d;
+    color: white;
+    border: 2px solid #6d6d6d;
+    border-radius: 30px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .user-list .tabs button:hover {
+    background-color: #555;
+  }
+  
+  .user-list .tabs button.selected {
+    background-color: #d9d9d9;
+    color: #0000ff;
+    border-color: #0000ff;
+  }
+  
+  /* Estilo de la lista de usuarios */
+  .user-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .user-list li:hover {
+    background-color: #555;
+  }
+  
+  .user-list li.selected {
+    background-color: #7a7a7a;
+  }
+  
+  /* Estilo de las imágenes */
+  .user-list li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Estilo del texto del usuario */
+  .user-list li div {
+    display: flex;
+    flex-direction: column;
+  }
+  
