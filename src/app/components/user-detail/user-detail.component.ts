@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UsersService } from '../../services/user.service';
 
 export interface User {
   id: number;
@@ -33,12 +34,18 @@ export interface User {
 export class UserDetailComponent implements OnChanges {
   @Input() user!: User;
   fieldsVisibility: { [key: string]: boolean } = {};
+  isEditing: boolean = false;
+  originalUser!: User;
+
+  constructor(private usersService: UsersService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['user'] && this.user) {
+      this.originalUser = { ...this.user }; 
       this.updateFieldVisibility();
     }
   }
+
 
   private updateFieldVisibility() {
     this.fieldsVisibility = {
@@ -57,5 +64,26 @@ export class UserDetailComponent implements OnChanges {
       productos: 'productos' in this.user,
       facturacion_anual: 'facturacion_anual' in this.user,
     };
+  }
+  get visibleFields() {
+    return Object.keys(this.fieldsVisibility).filter(key => this.fieldsVisibility[key]).slice(0, 3);
+  }
+
+  saveChanges() {
+    if (this.isEditing) {
+      this.usersService.updateUser(this.user).subscribe(response => {
+        console.log('User updated successfully:', response);
+        alert('Los datos se han guardado correctamente.');
+        this.isEditing = false;
+      }, error => {
+        console.error('Error updating user:', error);
+      });
+    } else {
+      this.isEditing = true;
+    }
+  }
+  cancelEdit() {
+    this.user = { ...this.originalUser }; // Restaurar los datos originales
+    this.isEditing = false;
   }
 }

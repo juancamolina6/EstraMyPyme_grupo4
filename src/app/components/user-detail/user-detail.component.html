@@ -1,71 +1,77 @@
+<div class="user-detail-container">
 <div class="user-detail" *ngIf="user">
   <div class="field-group" *ngIf="fieldsVisibility['name']">
     <label for="name">Nombre:</label>
-    <input type="text" id="name" [(ngModel)]="user['name']">
+    <input type="text" id="name" [(ngModel)]="user.name" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['email']">
     <label for="email">Email:</label>
-    <input type="email" id="email" [(ngModel)]="user['email']">
+    <input type="email" id="email" [(ngModel)]="user.email" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['empresa_asociada']">
     <label for="empresa_asociada">Empresa Asociada:</label>
-    <input type="text" id="empresa_asociada" [(ngModel)]="user['empresa_asociada']">
+    <input type="text" id="empresa_asociada" [(ngModel)]="user.empresa_asociada" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['edad']">
     <label for="edad">Edad:</label>
-    <input type="number" id="edad" [(ngModel)]="user['edad']">
+    <input type="number" id="edad" [(ngModel)]="user.edad" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['carrera']">
     <label for="carrera">Carrera:</label>
-    <input type="text" id="carrera" [(ngModel)]="user['carrera']">
+    <input type="text" id="carrera" [(ngModel)]="user.carrera" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['semestre']">
     <label for="semestre">Semestre:</label>
-    <input type="number" id="semestre" [(ngModel)]="user['semestre']">
+    <input type="number" id="semestre" [(ngModel)]="user.semestre" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['especialidad']">
     <label for="especialidad">Especialidad:</label>
-    <input type="text" id="especialidad" [(ngModel)]="user['especialidad']">
+    <input type="text" id="especialidad" [(ngModel)]="user.especialidad" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['anos_experiencia']">
     <label for="anos_experiencia">Años de Experiencia:</label>
-    <input type="number" id="anos_experiencia" [(ngModel)]="user['anos_experiencia']">
+    <input type="number" id="anos_experiencia" [(ngModel)]="user.anos_experiencia" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['cursos_impartidos']">
     <label for="cursos_impartidos">Cursos Impartidos:</label>
-    <input type="text" id="cursos_impartidos" [(ngModel)]="user['cursos_impartidos']">
+    <input type="text" id="cursos_impartidos" [(ngModel)]="user.cursos_impartidos" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['sector']">
     <label for="sector">Sector:</label>
-    <input type="text" id="sector" [(ngModel)]="user['sector']">
+    <input type="text" id="sector" [(ngModel)]="user.sector" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['empleados']">
     <label for="empleados">Empleados:</label>
-    <input type="number" id="empleados" [(ngModel)]="user['empleados']">
+    <input type="number" id="empleados" [(ngModel)]="user.empleados" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['fundacion']">
     <label for="fundacion">Fundación:</label>
-    <input type="number" id="fundacion" [(ngModel)]="user['fundacion']">
+    <input type="number" id="fundacion" [(ngModel)]="user.fundacion" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['productos']">
     <label for="productos">Productos:</label>
-    <input type="text" id="productos" [(ngModel)]="user['productos']">
+    <input type="text" id="productos" [(ngModel)]="user.productos" [disabled]="!isEditing">
   </div>
 
   <div class="field-group" *ngIf="fieldsVisibility['facturacion_anual']">
     <label for="facturacion_anual">Facturación Anual:</label>
-    <input type="number" id="facturacion_anual" [(ngModel)]="user['facturacion_anual']">
+    <input type="number" id="facturacion_anual" [(ngModel)]="user.facturacion_anual" [disabled]="!isEditing">
   </div>
+</div>
+</div>
+<div class="button-container">
+  <button class="edit-button" (click)="saveChanges()">{{ isEditing ? 'Guardar' : 'Editar' }}</button>
+  <button class="cancel-button" *ngIf="isEditing" (click)="cancelEdit()">Cancelar</button>
 </div>
