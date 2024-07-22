@@ -1,19 +1,22 @@
 {
-   "users":[
+  "users": [
     {
-      "id": 1,
-      "name": "Helena Hills",
-      "email": "email@fakedomain.net",
-      "empresa_asociada": "Empresa 1",
+      "id": "1",
+      "sector": "agrario",
+      "name": "Mery",
+      "email": "djpark@gmail.com",
       "type": "Estudiantes",
-      "edad": 22,
-      "carrera": "Ingeniería Agrónoma",
-      "semestre": 7,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616396/samples/upscale-face-1.jpg"
-      
+      "empleados": 50,
+      "fundacion": 2005,
+      "productos": [
+        "Fertilizantes orgánicos",
+        "Semillas certificadas"
+      ],
+      "facturacion_anual": 5000000,
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Carlo Emilion",
       "empresa_asociada": "Empresa 2",
       "email": "email@fakedomain.net",
@@ -21,22 +24,21 @@
       "edad": 20,
       "carrera": "Administración de Empresas",
       "semestre": 5,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 3,
-      "name": "Juan",
+      "id": "3",
+      "name": "Juan camilo",
       "empresa_asociada": "Empresa 3",
       "email": "email@fakedomain.net",
       "type": "Estudiantes",
       "edad": 23,
       "carrera": "Agronomía",
       "semestre": 8,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Adri",
       "empresa_asociada": "Empresa 4",
       "email": "email@fakedomain.net",
@@ -44,23 +46,25 @@
       "edad": 23,
       "carrera": "Ingeniería Agrónoma",
       "semestre": 1,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 5,
-      "name": "Maria Fernanda",
-      "empresa_asociada": "Empresa 5",
-      "email": "email@fakedomain.net",
+      "id": "5",
+      "sector": "turismo",
+      "name": "Viajes y Aventuras",
+      "email": "viajesyaventuras@hotmail.com",
       "type": "Estudiantes",
-      "edad": 23,
-      "carrera": "Ingeniería Agrónoma",
-      "semestre": 2,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "empleados": 30,
+      "fundacion": 2005,
+      "productos": [
+        "Paquetes turísticos",
+        "Boletos aéreos"
+      ],
+      "facturacion_anual": 3500000,
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/beach.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Maria Fernanda",
       "empresa_asociada": "Empresa 6",
       "email": "email@fakedomain.net",
@@ -68,155 +72,200 @@
       "edad": 23,
       "carrera": "Ingeniería Agrónoma",
       "semestre": 2,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 1,
-      "estudantes_profesor": [1, 3],
+      "id": "1",
+      "estudantes_profesor": [
+        1,
+        3
+      ],
       "name": "Oscar Dum",
       "email": "email@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Agricultura Sostenible",
       "anos_experiencia": 15,
-      "cursos_impartidos": ["Agroecología", "Sistemas de Riego"],
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "cursos_impartidos": [
+        "Agroecología",
+        "Sistemas de Riego"
+      ],
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 2,
-      "estudantes_profesor": [2,4],
+      "id": "2",
+      "estudantes_profesor": [
+        2,
+        4
+      ],
       "name": "Daniel Herrera",
       "email": "email@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Gestión Empresarial",
       "anos_experiencia": 10,
-      "cursos_impartidos": ["Marketing Digital", "Finanzas para Emprendedores"],
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+      "cursos_impartidos": [
+        "Marketing Digital",
+        "Finanzas para Emprendedores"
+      ],
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 3,
-      "estudantes_profesor": [1, 3],
+      "id": "3",
+      "estudantes_profesor": [
+        1,
+        3
+      ],
       "name": "Ana López",
       "email": "ana.lopez@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Matemáticas",
       "anos_experiencia": 15,
-      "cursos_impartidos": ["Cálculo Diferencial", "Álgebra Lineal"],
+      "cursos_impartidos": [
+        "Cálculo Diferencial",
+        "Álgebra Lineal"
+      ],
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/woman-portrait.jpg"
     },
-  
     {
-      "id": 4,
-      "estudantes_profesor": [5, 6],
+      "id": "4",
+      "estudantes_profesor": [
+        5,
+        6
+      ],
       "name": "Pedro García",
       "email": "pedro.garcia@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Física",
       "anos_experiencia": 8,
-      "cursos_impartidos": ["Mecánica Clásica", "Electromagnetismo"],
+      "cursos_impartidos": [
+        "Mecánica Clásica",
+        "Electromagnetismo"
+      ],
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/teacher-portrait.jpg"
     },
-  
     {
-      "id": 5,
-      "estudantes_profesor": [7, 8],
+      "id": "5",
+      "estudantes_profesor": [
+        7,
+        8
+      ],
       "name": "María Pérez",
       "email": "maria.perez@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Química",
       "anos_experiencia": 12,
-      "cursos_impartidos": ["Química Inorgánica", "Química Orgánica"],
+      "cursos_impartidos": [
+        "Química Inorgánica",
+        "Química Orgánica"
+      ],
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/scientist-portrait.jpg"
     },
-  
     {
-      "id": 6,
-      "estudantes_profesor": [9, 10],
+      "id": "6",
+      "estudantes_profesor": [
+        9,
+        10
+      ],
       "name": "Juan Sánchez",
       "email": "juan.sanchez@fakedomain.net",
       "type": "Profesores",
       "especialidad": "Historia",
       "anos_experiencia": 20,
-      "cursos_impartidos": ["Historia Universal", "Historia de América Latina"],
+      "cursos_impartidos": [
+        "Historia Universal",
+        "Historia de América Latina"
+      ],
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/historian-portrait.jpg"
     },
-  
     {
-      "id": 1,
+      "id": "1",
       "sector": "agrario",
       "name": "Empresa 1",
       "email": "djpark@gmail.com",
       "type": "Empresas",
       "empleados": 50,
       "fundacion": 2005,
-      "productos": ["Fertilizantes orgánicos", "Semillas certificadas"],
+      "productos": [
+        "Fertilizantes orgánicos",
+        "Semillas certificadas"
+      ],
       "facturacion_anual": 5000000,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "sector": "comercio",
       "name": "Empresa 2",
       "email": "rojasmar@skiff.com",
       "type": "Empresas",
       "empleados": 75,
       "fundacion": 1998,
-      "productos": ["Equipos de oficina", "Suministros de papelería"],
+      "productos": [
+        "Equipos de oficina",
+        "Suministros de papelería"
+      ],
       "facturacion_anual": 8000000,
-      "image":"https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/smile.jpg"
-
+      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/smile.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "sector": "manufactura",
       "name": "Industrias López",
       "email": "lopez.ind@email.com",
       "type": "Empresas",
       "empleados": 200,
       "fundacion": 1985,
-      "productos": ["Muebles de madera", "Electrodomésticos"],
+      "productos": [
+        "Muebles de madera",
+        "Electrodomésticos"
+      ],
       "facturacion_anual": 12000000,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/factory.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "sector": "tecnología",
       "name": "Soluciones Tecnológicas S.A.",
       "email": "tecnologias@domain.com",
       "type": "Empresas",
       "empleados": 50,
       "fundacion": 2010,
-      "productos": ["Software de gestión", "Servicios de TI"],
+      "productos": [
+        "Software de gestión",
+        "Servicios de TI"
+      ],
       "facturacion_anual": 5000000,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/computer.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "sector": "turismo",
       "name": "Viajes y Aventuras",
       "email": "viajesyaventuras@hotmail.com",
       "type": "Empresas",
       "empleados": 30,
       "fundacion": 2005,
-      "productos": ["Paquetes turísticos", "Boletos aéreos"],
+      "productos": [
+        "Paquetes turísticos",
+        "Boletos aéreos"
+      ],
       "facturacion_anual": 3500000,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/beach.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "sector": "alimentación",
       "name": "Delicias del Campo",
       "email": "deliciasdelcampo@gmail.com",
       "type": "Empresas",
       "empleados": 45,
       "fundacion": 2002,
-      "productos": ["Alimentos orgánicos", "Productos artesanales"],
+      "productos": [
+        "Alimentos orgánicos",
+        "Productos artesanales"
+      ],
       "facturacion_anual": 4000000,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/food.jpg"
     }
-    
   ],
-  "data":[]
+  "data": []
 }
