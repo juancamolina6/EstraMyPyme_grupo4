@@ -35,29 +35,27 @@ export class UserDetailComponent implements OnChanges {
   fieldsVisibility: { [key: string]: boolean } = {};
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['user']) {
-      this.initializeFieldsVisibility();
+    if (changes['user'] && this.user) {
+      this.updateFieldVisibility();
     }
   }
 
-  initializeFieldsVisibility() {
-    if (this.user) {
-      this.fieldsVisibility = {
-        name: 'name' in this.user,
-        email: 'email' in this.user,
-        empresa_asociada: 'empresa_asociada' in this.user,
-        edad: 'edad' in this.user,
-        carrera: 'carrera' in this.user,
-        semestre: 'semestre' in this.user,
-        especialidad: 'especialidad' in this.user,
-        anos_experiencia: 'anos_experiencia' in this.user,
-        cursos_impartidos: 'cursos_impartidos' in this.user,
-        sector: 'sector' in this.user,
-        empleados: 'empleados' in this.user,
-        fundacion: 'fundacion' in this.user,
-        productos: 'productos' in this.user,
-        facturacion_anual: 'facturacion_anual' in this.user
-      };
-    }
+  private updateFieldVisibility() {
+    this.fieldsVisibility = {
+      name: 'name' in this.user,
+      email: 'email' in this.user,
+      empresa_asociada: 'empresa_asociada' in this.user,
+      edad: 'edad' in this.user,
+      carrera: 'carrera' in this.user,
+      semestre: 'semestre' in this.user,
+      especialidad: 'especialidad' in this.user,
+      anos_experiencia: 'anos_experiencia' in this.user,
+      cursos_impartidos: 'cursos_impartidos' in this.user,
+      sector: 'sector' in this.user,
+      empleados: 'empleados' in this.user,
+      fundacion: 'fundacion' in this.user,
+      productos: 'productos' in this.user,
+      facturacion_anual: 'facturacion_anual' in this.user,
+    };
   }
 }
