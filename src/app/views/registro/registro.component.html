@@ -4,7 +4,8 @@
 
      <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
      <div class="modos">
-     <div >
+     <div class="modos1">
+     <div class="langua">
         <!-- Lista desplegable para seleccionar el idioma -->
         <select class="language" id="language">
            <option value="es" selected>idioma</option>
@@ -21,6 +22,7 @@
         </label>
      </div> 
     </div>
+    </div>
 
 
     <!--logo-->
@@ -30,7 +32,7 @@
           <div class="logo">
             <h1>EstraMyPyme</h1>
             <div class="by-eafit">
-              <h6>By</h6>
+              <h6 class="h6"  >By</h6>
               <img class="imagen-logo" src="https://res.cloudinary.com/dpeqdynym/image/upload/v1721256417/Logo_EAFIT_2015_-_Blanco_wzm6j8.png" width="90" height="40" alt="Logo EAFIT">
             </div>
             <p class="stilo">Evalua y mejora tus estrategias <br> 
@@ -53,14 +55,14 @@
               <button id="btn-empresa" class="pure-material-button-contained" (click)="toggleView('empresa')" [class.active]="isEmpresaActive">Empresa</button>
               <button id="btn-consultor" class="pure-material-button-contained"   (click)="toggleView('consultor')" [class.active]="isConsultorActive">Consultor</button>
           </div>
-          <div *ngIf="isEmpresaActive">
+          <div class="register" *ngIf="isEmpresaActive">
                <form id="register" class="register" autocomplete="off">
   
   
-                 <p class="data">Datos Personales</p>
+                 <p class="data d">Datos Personales</p>
      
                  <div>
-                     <label class="pure-material-textfield-outlined largo" for="name1">
+                     <label class="pure-material-textfield-outlined largo la" for="name1">
                          <input placeholder="" type="text" id="name" name="name" required autocomplete="off">
                          <span>Nombre Completo</span>
                      </label>
@@ -87,7 +89,7 @@
                    </div>
               
   
-                 <p class="data">Datos de la Empresa</p>
+                 <p class="data b">Datos de la Empresa</p>
      
                  <div>
                      <label class="pure-material-textfield-outlined largo" for="namempresa">
@@ -222,7 +224,7 @@
              <form id="register2" class="register" autocomplete="off">
   
               
-              <p class="data">Datos Personales</p>
+              <p class="data a">Datos Personales</p>
   
               <div>
                   <label class="pure-material-textfield-outlined largo" for="name">
@@ -258,7 +260,7 @@
                 </div>
         
   
-                <p class="data">Información Académica/Profesional</p>
+                <p class="data c">Información Académica/Profesional</p>
              
                 <div>
                   <label class="pure-material-textfield-outlined largo" for="">
