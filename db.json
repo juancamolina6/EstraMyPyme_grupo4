@@ -3,16 +3,11 @@
     {
       "id": "1",
       "sector": "agrario",
-      "name": "Mery",
+      "name": "Mery ",
       "email": "djpark@gmail.com",
       "type": "Estudiantes",
       "empleados": 50,
       "fundacion": 2005,
-      "productos": [
-        "Fertilizantes orgánicos",
-        "Semillas certificadas"
-      ],
-      "facturacion_anual": 5000000,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
     },
     {
@@ -56,11 +51,8 @@
       "type": "Estudiantes",
       "empleados": 30,
       "fundacion": 2005,
-      "productos": [
-        "Paquetes turísticos",
-        "Boletos aéreos"
-      ],
-      "facturacion_anual": 3500000,
+      "carrera": "Ingeniería Agrónoma",
+      "semestre": 1,
       "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/beach.jpg"
     },
     {
