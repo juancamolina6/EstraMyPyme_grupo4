@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user-detail/user-detail.component';
 import { UsersService } from '../../services/user.service';
@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  @Input() users: User[] = [];
   @Output() userSelected = new EventEmitter<User>();
-  users: User[] = [];
   selectedUserType: string = 'Estudiantes';
   selectedUser: User | null = null;
   searchTerm: string = '';
@@ -22,6 +22,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
+    this.selectDefaultUser();
   }
 
   get filteredUsers() {
@@ -44,10 +45,19 @@ export class UserListComponent implements OnInit {
     }
   }
 
+  updateUser(updatedUser: User) {
+    const index = this.users.findIndex(user => user.id === updatedUser.id);
+    if (index !== -1) {
+      this.users[index] = updatedUser;
+      this.selectUser(updatedUser);
+    }
+  }
+
   private loadUsers() {
     this.usersService.getUsers().subscribe(users => {
       this.users = users;
       this.selectDefaultUser();
+      
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../services/user.service';
@@ -33,6 +33,8 @@ export interface User {
 })
 export class UserDetailComponent implements OnChanges {
   @Input() user!: User;
+  @Output() userUpdated = new EventEmitter<User>();
+  editUser!: User;
   fieldsVisibility: { [key: string]: boolean } = {};
   isEditing: boolean = false;
   originalUser!: User;
@@ -41,28 +43,28 @@ export class UserDetailComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['user'] && this.user) {
-      this.originalUser = { ...this.user }; 
+      this.originalUser = { ...this.user };
+      this.editUser = { ...this.user };
       this.updateFieldVisibility();
     }
   }
 
-
   private updateFieldVisibility() {
     this.fieldsVisibility = {
-      name: 'name' in this.user,
-      email: 'email' in this.user,
-      empresa_asociada: 'empresa_asociada' in this.user,
-      edad: 'edad' in this.user,
-      carrera: 'carrera' in this.user,
-      semestre: 'semestre' in this.user,
-      especialidad: 'especialidad' in this.user,
-      anos_experiencia: 'anos_experiencia' in this.user,
-      cursos_impartidos: 'cursos_impartidos' in this.user,
-      sector: 'sector' in this.user,
-      empleados: 'empleados' in this.user,
-      fundacion: 'fundacion' in this.user,
-      productos: 'productos' in this.user,
-      facturacion_anual: 'facturacion_anual' in this.user,
+      name: 'name' in this.editUser,
+      email: 'email' in this.editUser,
+      empresa_asociada: 'empresa_asociada' in this.editUser,
+      edad: 'edad' in this.editUser,
+      carrera: 'carrera' in this.editUser,
+      semestre: 'semestre' in this.editUser,
+      especialidad: 'especialidad' in this.editUser,
+      anos_experiencia: 'anos_experiencia' in this.editUser,
+      cursos_impartidos: 'cursos_impartidos' in this.editUser,
+      sector: 'sector' in this.editUser,
+      empleados: 'empleados' in this.editUser,
+      fundacion: 'fundacion' in this.editUser,
+      productos: 'productos' in this.editUser,
+      facturacion_anual: 'facturacion_anual' in this.editUser,
     };
   }
   get visibleFields() {
@@ -71,19 +73,22 @@ export class UserDetailComponent implements OnChanges {
 
   saveChanges() {
     if (this.isEditing) {
-      this.usersService.updateUser(this.user).subscribe(response => {
+      this.usersService.updateUser(this.editUser).subscribe(response => {
         console.log('User updated successfully:', response);
         alert('Los datos se han guardado correctamente.');
         this.isEditing = false;
+        this.user = { ...this.editUser }; // Actualizar el usuario original
+        this.userUpdated.emit(this.user); // Emitir evento de usuario actualizado
       }, error => {
         console.error('Error updating user:', error);
       });
     } else {
       this.isEditing = true;
     }
-  }
+  }  
+
   cancelEdit() {
-    this.user = { ...this.originalUser }; // Restaurar los datos originales
+    this.editUser = { ...this.originalUser }; // Restaurar los datos originales
     this.isEditing = false;
   }
 }

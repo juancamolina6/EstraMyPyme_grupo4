@@ -1,6 +1,7 @@
 /* panel-administracion.component.css */
 .admin-panel {
   display: flex;
+  width: 100ph;
 }
 
 .main-content {
