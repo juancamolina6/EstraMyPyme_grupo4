@@ -67,11 +67,12 @@ body, html{
 
 body {
     background-color: black;
-    /*
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), /* Superpone un color semi-transparente */
-        url('https://res.cloudinary.com/dpeqdynym/image/upload/v1721795013/Captura_de_pantalla_2024-07-23_232321_z9aeph.png');
+    
+    /* background: 
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+        url('https://res.cloudinary.com/dpeqdynym/image/upload/v1721795013/Captura_de_pantalla_2024-07-23_232321_z9aeph.png') 
     */
+
     background-size: cover;       /* Ajusta la imagen para cubrir toda la pantalla */
     background-position: center;  /* Centra la imagen */
      margin: 0;                    /* Elimina el margen por defecto del body */
