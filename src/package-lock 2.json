@@ -12,11 +12,10 @@
         "@angular/common": "^17.2.0",
         "@angular/compiler": "^17.2.0",
         "@angular/core": "^17.2.0",
-        "@angular/forms": "^17.3.12",
+        "@angular/forms": "^17.2.0",
         "@angular/platform-browser": "^17.2.0",
         "@angular/platform-browser-dynamic": "^17.2.0",
         "@angular/router": "^17.2.0",
-        "just-validate": "^4.3.0",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.14.3"
@@ -433,9 +432,9 @@
       }
     },
     "node_modules/@angular/forms": {
-      "version": "17.3.12",
-      "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-17.3.12.tgz",
-      "integrity": "sha512-tV6r12Q3yEUlXwpVko4E+XscunTIpPkLbaiDn/MTL3Vxi2LZnsLgHyd/i38HaHN+e/H3B0a1ToSOhV5wf3ay4Q==",
+      "version": "17.3.11",
+      "resolved": "https://registry.npmjs.org/@angular/forms/-/forms-17.3.11.tgz",
+      "integrity": "sha512-719flo/1L64YOAxL3pzszTK+7bczVVOQDXT1khnjb48GVZdBUBwW2D+cFbqSW1VMuWWr2Amwy1lL4YM5S7qPJQ==",
       "dependencies": {
         "tslib": "^2.3.0"
       },
@@ -443,9 +442,9 @@
         "node": "^18.13.0 || >=20.9.0"
       },
       "peerDependencies": {
-        "@angular/common": "17.3.12",
-        "@angular/core": "17.3.12",
-        "@angular/platform-browser": "17.3.12",
+        "@angular/common": "17.3.11",
+        "@angular/core": "17.3.11",
+        "@angular/platform-browser": "17.3.11",
         "rxjs": "^6.5.3 || ^7.4.0"
       }
     },
@@ -7622,11 +7621,6 @@
       "engines": [
         "node >= 0.2.0"
       ]
-    },
-    "node_modules/just-validate": {
-      "version": "4.3.0",
-      "resolved": "https://registry.npmjs.org/just-validate/-/just-validate-4.3.0.tgz",
-      "integrity": "sha512-9yS7ZnFk95vq+O7CAa7XZEJvZN5i6jTQWNhLwOjtgkSqiLxo7GZJhK8ViylP76fXPfHLs8tYWqi81XgxPF3OGA=="
     },
     "node_modules/karma": {
       "version": "6.4.3",
