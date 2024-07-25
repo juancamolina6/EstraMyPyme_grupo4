@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+*, *::before, *::after{
+    box-sizing: border-box; 
+}
+
+*{
+    margin: 0; 
+    padding: 0; 
+}
+
+ul[role='list'], ol[role='list']{
+    list-style: none; 
+}
+
+html:focus-within{
+    scroll-behavior: smooth; 
+}
+
+a:not([class]){
+    text-decoration-skip-ink: auto; 
+}
+
+img, picture, svg, video, canvas{
+    max-width: 100%;
+    height: auto; 
+    vertical-align: middle; 
+    font-style: italic; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+input, button, textarea, select{
+    font: inherit; 
+}
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce){
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+body, html{
+    height: 100%; 
+    scroll-behavior: smooth; 
+}
+
+
+
+
+*{
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: black;
+    
+    /* background: 
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+        url('https://res.cloudinary.com/dpeqdynym/image/upload/v1721795013/Captura_de_pantalla_2024-07-23_232321_z9aeph.png') 
+    */
+
+    background-size: cover;       /* Ajusta la imagen para cubrir toda la pantalla */
+    background-position: center;  /* Centra la imagen */
+     margin: 0;                    /* Elimina el margen por defecto del body */
+    height: 100vh;                /* Asegura que el body ocupe toda la altura de la pantalla */
+}
+
