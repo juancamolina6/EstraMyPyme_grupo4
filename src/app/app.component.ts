@@ -1,26 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-<<<<<<< HEAD
-=======
-import {RegistroComponent } from './views/registro/registro.component'
->>>>>>> 0b038aee1d2130849c59da5e5afcb3cf7d5538f8
+import { RegistroComponent } from './views/registro/registro.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-<<<<<<< HEAD
-  imports: [RouterOutlet,LandingPageComponent],
-=======
-  imports: [RouterOutlet,LandingPageComponent,RegistroComponent],
->>>>>>> 0b038aee1d2130849c59da5e5afcb3cf7d5538f8
+  imports: [RouterOutlet, LandingPageComponent, RegistroComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-
-
 export class AppComponent {
   title = 'EstraMyPyme';
 }
-
-

@@ -9,10 +9,8 @@ import { Component } from '@angular/core';
    <div class="modos">
       <!-- Lista desplegable para seleccionar el idioma -->
       <select class="language" id="language">
-         <option value="es" selected>idioma</option>
+         <option value="es" selected>SPA</option>
          <option value="en">ENG</option>
-         <option value="fr">FRA</option>
-         <option value="spa">SPA</option>
       </select>
    </div>
    <div class="modo" id="light-mode"> 
@@ -57,16 +55,16 @@ import { Component } from '@angular/core';
 .modo {
    width: 1rem;
    height: 1.6rem;
-   margin-top: -10px;
+   margin-top: .6rem;
 }
 
 .switch {
    position: relative;
    margin-left: 100%;
-   top: 40%;
+   top: -.6rem;
+   left: 1rem;
    transform: translateX(-50%) translateY(25rem);
-   width: 8.6rem;
-   height: 4.375rem;
+   
 }
 
 .switch input { 
@@ -77,7 +75,7 @@ import { Component } from '@angular/core';
 
 .slider {
    width: 3.6rem;
-   height: 1.7rem;
+   height: 1.6rem;
    position: absolute;
    cursor: pointer;
    background-color: white;
@@ -97,7 +95,7 @@ import { Component } from '@angular/core';
    -webkit-transition: .4s;
    transition: .4s;
    margin-left: -20px;
-   top: -8px;
+   top: -7px;
 }
 
 .slider:after {

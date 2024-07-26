@@ -1,0 +1,24 @@
+*{
+    background-color: black;
+    width: 190vh;
+    height: 100vh;
+    top:0;
+    margin:0 auto;
+}
+
+.superponer{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.interponer{
+    font-size: 17px;
+}
+
+.formcaracterizacion{
+   position: relative;
+   color:black;
+   background-color: white;
+   width: 8rem;
+   height: 2rem;
+}
