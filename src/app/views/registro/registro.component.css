@@ -15,6 +15,8 @@
 
 }
 
+
+
 /*modos*/
 .modos {
   width: 100%;
@@ -696,9 +698,7 @@ p {
 }
 
 /*4*/
-.che {
-  display: block;
-}
+
 
 .ches {
   display: block;
@@ -706,7 +706,11 @@ p {
   align-items: center;
   margin-left: 6.25rem; /* 100px */
   margin-bottom: 1.875rem; /* 30px */
+
+
 }
+
+
 
 .controlradio {
   display: flex;
@@ -1034,6 +1038,11 @@ top: 0.625rem;
   border: solid 0.125rem;
 }
 
+
+
+
+
+
 /*diseño input*/
 
 .pure-material-textfield-outlined {
@@ -1109,13 +1118,19 @@ top: 0.625rem;
 }
 /*end*/
 
+.button-eye i {
+  width: 100%;
+  margin: 0;
+  translate:  17rem -.4rem ;
+
+}
 
 
 .center {
   display: flex;
-  align-items: center;
-  translate: -100px 30px;
- 
+  justify-content: start;
+  margin: 0;
+ translate: 1rem 3rem;
 
 }
 
@@ -1123,7 +1138,7 @@ top: 0.625rem;
   top: 5px;
   display: flex;
   align-items: center;
-  translate: -40px 30px;
+  translate: -110px 40px;
   margin: 0;
 }
 
@@ -1135,11 +1150,16 @@ top: 0.625rem;
   font-size: 13px;
 }
 
+#just-validate-error-label {
+
+  color: blue;
 
 }
 
 
 
+
+}
 
 
 /*logo*/

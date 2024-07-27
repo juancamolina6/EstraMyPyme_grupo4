@@ -1,9 +1,25 @@
 
 
-body {
+/* You can add global styles to this file, and also import other style files */
  
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  }
+html {
+    font-size: 16px;
+}
+ 
+body {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+}
+ 
+.weight-bold {
+    font-weight: bold;
+}
+ 
+.text-dark {
+    color: #6b6b6b;
+}
+ 
+.underline-hover:hover {
+    text-decoration: underline;
+}
