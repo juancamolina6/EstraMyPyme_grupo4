@@ -1,0 +1,48 @@
+/* panel-administracion.component.css */
+.admin-panel {
+  display: flex;
+  width: 100ph;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.charts app-chart {
+  flex: 1;
+  margin: 10px;
+}
+
+.user-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Ajustes para que los componentes ocupen el mismo alto y se alineen correctamente */
+app-user-list {
+  flex: 1;
+  margin-right: 10px;
+  background-color: #6d6d6d;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #00ff;
+}
+
+app-user-detail {
+  flex: 2;
+  background-color: #ffff;
+  padding: 20px;
+  border-radius: 10px;
+}
