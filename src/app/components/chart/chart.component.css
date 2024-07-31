@@ -1,8 +1,5 @@
-.chart {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    color: black;
-    margin: 30;
-  }
-  
+.chart-container {
+  position: relative;
+  height: 500px; /* Aumenta la altura para que se vea mejor */
+  width: 100%;
+}
