@@ -16,8 +16,7 @@ import { UsersService } from '../../services/user.service';
     HeaderComponent,
     UserListComponent,
     UserDetailComponent,
-    ChartComponent,
-    SidebarComponent
+    ChartComponent
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css']
