@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstraMyPyme</title>
+    <link rel="stylesheet" href="login.component.css">
+</head>
+<body>
+      
+    <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+    <div class="controls">
+        <!-- Lista desplegable para seleccionar el idioma -->
+        <select id="languageSelect">
+            <option value="es" selected>ESP</option>
+            <option value="en">ENG</option>
+            <option value="fr">FRA</option>
+        </select>
+        <!-- Botón para cambiar el tema -->
+        <button id="themeButton">🌙</button>
+    </div>
+    <div class="container">
+        <!-- Sección izquierda con la imagen -->
+        <div class="left-section">
+            <!-- Imagen que cambiará según el modo -->
+            <app-sidebar></app-sidebar>
+        </div>
+        <!-- Sección derecha con el formulario de inicio de sesión -->
+        <div class="right-section">
+            <div class="login-box">
+                <h2 data-translate="welcome">Bienvenido</h2>
+                <p data-translate="createAccount">Crea tu cuenta</p>
+                <p data-translate="enterEmail">Inicia sesión con tus datos</p>
+               <!-- login.component.html -->
+<form (ngSubmit)="login()">
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required>
+  
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+  
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+  
+                <p class= "TyC" data-translate="agreement">Al hacer clic en continuar, acepta nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

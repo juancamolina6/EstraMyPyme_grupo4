@@ -1,0 +1,104 @@
+body {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.titulo {
+  color: white;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  padding-top: 6rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #FFF;
+  font-style: italic;
+  font-weight: 900;
+  line-height: normal;
+  margin: 0.9rem 0;
+}
+
+h5 {
+  margin: 0.4rem 0;
+  font-weight: 300;
+}
+
+h4 {
+  margin: 0.4rem 0;
+  font-weight: 300;
+  margin-left: -200px;
+}
+
+h4:nth-of-type(2) {
+  padding-left: 6rem;
+}
+
+h4:nth-of-type(3) {
+  padding-left: 10rem;
+}
+
+.byeafitdos {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: -0.5rem;
+  margin-left: 8rem;
+  margin-bottom: 2rem;
+}
+
+.byeafitdos img {
+  padding: 0.5rem 0;
+}
+
+.trayectory {
+  display: inline-block;
+  background-color: #00ff;
+  width: 50vw;
+  max-width: 30rem;
+  text-align: center;
+  padding: 1rem 1.2rem;
+  border-radius: 50px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .trayectory {
+    width: 60vw;
+    max-width: 25rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .byeafitdos img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trayectory {
+    width: 70vw;
+    max-width: 20rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trayectory {
+    width: 80vw;
+    max-width: 15rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}

@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../services/user.service';
@@ -36,7 +29,7 @@ export interface User {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css'],
+  styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnChanges {
   @Input() user!: User;
@@ -75,29 +68,24 @@ export class UserDetailComponent implements OnChanges {
     };
   }
   get visibleFields() {
-    return Object.keys(this.fieldsVisibility)
-      .filter((key) => this.fieldsVisibility[key])
-      .slice(0, 3);
+    return Object.keys(this.fieldsVisibility).filter(key => this.fieldsVisibility[key]).slice(0, 3);
   }
 
   saveChanges() {
     if (this.isEditing) {
-      this.usersService.updateUser(this.editUser).subscribe(
-        (response) => {
-          console.log('User updated successfully:', response);
-          alert('Los datos se han guardado correctamente.');
-          this.isEditing = false;
-          this.user = { ...this.editUser }; // Actualizar el usuario original
-          this.userUpdated.emit(this.user); // Emitir evento de usuario actualizado
-        },
-        (error) => {
-          console.error('Error updating user:', error);
-        }
-      );
+      this.usersService.updateUser(this.editUser).subscribe(response => {
+        console.log('User updated successfully:', response);
+        alert('Los datos se han guardado correctamente.');
+        this.isEditing = false;
+        this.user = { ...this.editUser }; // Actualizar el usuario original
+        this.userUpdated.emit(this.user); // Emitir evento de usuario actualizado
+      }, error => {
+        console.error('Error updating user:', error);
+      });
     } else {
       this.isEditing = true;
     }
-  }
+  }  
 
   cancelEdit() {
     this.editUser = { ...this.originalUser }; // Restaurar los datos originales

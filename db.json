@@ -261,30 +261,61 @@
   ],
   "data": [
     {
-      "center": {
-        "x": 0,
-        "y": 0
+      "type": "Reloj estratégico",
+      "title": "Posición competitiva deseada",
+      "axes": {
+        "x": {
+          "label": "Precio",
+          "min": -1,
+          "max": 1
+        },
+        "y": {
+          "label": "Valor percibido del producto",
+          "min": -1,
+          "max": 1
+        }
       },
-      "arrows": [
-        {"label": "Diferenciación", "x": 0, "y": 1},
-        {"label": "Diferenciación segmentada", "x": 1, "y": 1},
-        {"label": "Estrategias destinadas al fracaso", "x": 1, "y": -1},
-        {"label": "Bajo precio / Valor añadido", "x": -1, "y": -1},
-        {"label": "Bajo precio", "x": -1, "y": 0},
-        {"label": "Híbrida", "x": -1, "y": 1}
+      "strategies": [
+        {
+          "name": "Bajo precio",
+          "position": [-0.7, -0.7]
+        },
+        {
+          "name": "Bajo precio / Valor añadido",
+          "position": [-0.5, -0.5]
+        },
+        {
+          "name": "Híbrida",
+          "position": [-0.3, 0.3]
+        },
+        {
+          "name": "Diferenciación",
+          "position": [0, 0.7]
+        },
+        {
+          "name": "Diferenciación segmentada",
+          "position": [0.5, 0.5]
+        }
       ],
-      "oval": {
-        "center": {"x": 0.5, "y": -0.5},
-        "radiusX": 0.5,
-        "radiusY": 0.25,
-        "rotation": 45
+      "failureZone": {
+        "center": [0.5, -0.5],
+        "radiusX": 0.4,
+        "radiusY": 0.3,
+        "rotation": 45,
+        "label": "Estrategias destinadas al fracaso"
       },
       "desiredPosition": {
-        "coordinates": {"x": 0.8, "y": 0.8}
+        "coordinates": [-0.1, 0.5],
+        "symbol": "star"
       },
-      "annotations": {
-        "text": "Ubicar la empresa en el gráfico (con la estrella) y justificar en un cuadro de texto aclaratorio.",
-        "position": {"x": 0.6, "y": 0.8}
+      "annotation": {
+        "text": "La estrategia co-creada detalla la manera como vamos a aumentar la percepción de valor de los clientes, de manera que se aumente así su disposición a pagar, una y otra vez, por el producto o servicio ofrecido.",
+        "position": [-0.9, 0.5]
+      },
+      "valueIncreaseArrow": {
+        "start": [-0.9, -1],
+        "end": [-0.9, 1],
+        "color": "yellow"
       }
     }
   ]
