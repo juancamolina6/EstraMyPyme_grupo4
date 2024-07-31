@@ -20,6 +20,26 @@ body {
     object-fit: cover; /* Para asegurarse de que la imagen se recorte y mantenga su proporción */
 }
 
+.registratelanding{
+  background-color: #00ff;
+  color: white;
+  width: 30vw;
+  max-width: 17rem;
+  min-width: 10rem;
+  text-align: center;
+  padding: 1.3rem 2rem;
+  border-radius: 50px;
+  font-size: .8rem;
+  margin-top: -22rem;
+  cursor: pointer;
+  border: black;
+}
+
+.registratelanding:hover {
+    box-shadow: 0 0 0 3px black, 0 0 0 5px blue; 
+    transition: box-shadow 0.3s ease-in-out;
+}
+
 /* Media queries para ajustar el tamaño de la imagen en pantallas más pequeñas */
 @media (max-width: 1024px) {
     .round-image {
@@ -88,4 +108,12 @@ body {
       right: 5rem;
     }
   }
+
+
+
+  
+
+
+
+
   
