@@ -1,0 +1,91 @@
+body {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 12rem;
+  }
+
+
+  .round-image {
+    border-radius: 50%;
+    width: 28rem;
+    height: 28rem;
+    object-fit: cover; /* Para asegurarse de que la imagen se recorte y mantenga su proporción */
+}
+
+/* Media queries para ajustar el tamaño de la imagen en pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .round-image {
+        width: 22rem; /* Ajusta el ancho a un tamaño menor */
+        height: 22rem; /* Ajusta la altura en proporción */
+    }
+}
+
+@media (max-width: 768px) {
+    .round-image {
+        width: 18rem; /* Ajusta el ancho a un tamaño menor */
+        height: 18rem; /* Ajusta la altura en proporción */
+    }
+}
+
+@media (max-width: 480px) {
+    .round-image {
+        width: 14rem; /* Ajusta el ancho a un tamaño menor */
+        height: 14rem; /* Ajusta la altura en proporción */
+    }
+}
+
+
+.cuadrorazonsocial {
+  position: relative;
+  bottom: 28rem;
+  right: 10rem;
+  width: 26vw;
+  max-width: 13rem;
+  text-align: center;
+  padding: 1.3rem 2rem;
+  border-radius: 50px;
+  margin-top: -3rem;
+  font-size: .8rem;
+}
+
+@media (max-width: 1024px) {
+    .cuadrorazonsocial {
+      width: 60vw;
+      max-width: 15rem;
+      font-size: .1rem;
+      bottom: 25rem;
+      right: 5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cuadrorazonsocial  {
+      width: 70vw;
+      max-width: 12rem;
+      min-width: 7rem;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.8rem;
+      bottom: 25rem;
+      right: 5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cuadrorazonsocial  {
+      width: 80vw;
+      max-width: 7rem;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.7rem;
+      bottom: 20rem;
+      right: 5rem;
+    }
+  }
+  

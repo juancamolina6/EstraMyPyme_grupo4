@@ -1,0 +1,129 @@
+/* user-list.component.css */
+.user-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.user-list-header {
+  position: sticky;
+  top: 0;
+  background-color: #6d6d6d;
+  z-index: 100;
+  padding-bottom: 10px;
+}
+
+.user-list {
+  background-color: #6d6d6d;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  max-width: 600px;
+}
+
+.user-list .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-list .tabs button {
+  background-color: #6d6d6d;
+  color: white;
+  border: 2px solid #6d6d6d;
+  border-radius: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.user-list .tabs button:hover {
+  background-color: #555;
+}
+
+.user-list .tabs button.selected {
+  background-color: #d9d9d9;
+  color: #0000ff;
+  border-color: #0000ff;
+}
+
+.search-container {
+  display: flex;
+  background-color: #555;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.search-container input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  border-radius: 30px;
+  padding: 5px 5px;
+  outline: none;
+}
+
+.search-container .search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.search-container .search-button svg {
+  fill: #ffff; /* Puedes ajustar el color del icono aquí */
+}
+
+.user-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px; /* Añade un margen superior para evitar la superposición */
+}
+
+.user-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.user-list li:hover {
+  background-color: #555;
+}
+
+.user-list li.selected {
+  background-color: #7a7a7a;
+}
+
+.user-list li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-list li div {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-list-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.user-list-container::-webkit-scrollbar-track {
+  background: #2c2c2c;
+}
+
+.user-list-container::-webkit-scrollbar-thumb {
+  background-color: #4c4c4c;
+  border-radius: 20px;
+  border: 3px solid #2c2c2c;
+}
+
+.user-list-container::-webkit-scrollbar-thumb:hover {
+  background-color: #5a5a5a;
+}

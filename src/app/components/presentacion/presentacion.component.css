@@ -1,72 +1,104 @@
-body{
-    background-color: black;
-    width: 190vh;
-    height: 100vh;
-    top:0;
-    margin:0 auto;
-    color: white;
-    text-align: center;
-
+body {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.titulo{
-    text-align: center;
-    
-    color:white;
-    display: block;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    width: 100vh;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    padding-top: 14rem;
-    margin-left: 18rem;
-    
+.titulo {
+  color: white;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  padding-top: 6rem;
 }
 
-h4{
-    padding: .2rem;
-    font-weight: 300;
+h1 {
+  font-size: 2rem;
+  color: #FFF;
+  font-style: italic;
+  font-weight: 900;
+  line-height: normal;
+  margin: 0.9rem 0;
+}
+
+h5 {
+  margin: 0.4rem 0;
+  font-weight: 300;
+}
+
+h4 {
+  margin: 0.4rem 0;
+  font-weight: 300;
+  margin-left: -200px;
 }
 
 h4:nth-of-type(2) {
-    padding-left: 6rem;
+  padding-left: 6rem;
 }
 
 h4:nth-of-type(3) {
-    padding-left: 10rem;
+  padding-left: 10rem;
 }
 
-h1{
-    font-size: 2rem;
-    color: #FFF;
-    font-style: italic;
-    font-weight: 900;
-    line-height: normal;
-    padding-left: 7rem;
-    padding-top: .9rem;
-
-}
-
-.byeafitdos{
-  display:flex;
+.byeafitdos {
+  display: flex;
   gap: 1rem;
   align-items: flex-start;
-  padding-top: .4rem;
-  padding-left: 28rem;
+  margin-top: -0.5rem;
+  margin-left: 8rem;
+  margin-bottom: 2rem;
 }
 
-.byeafitdos img{
-    padding-top: .5rem;
-    padding-bottom: 5rem;
+.byeafitdos img {
+  padding: 0.5rem 0;
 }
 
-.trayectory{
-    display: inline-block;
-    background-color: #00ff;
-    width: 26rem;
-    text-align: center;
-    padding: 1rem 1.2rem;
-    border-radius: 9rem;  
+.trayectory {
+  display: inline-block;
+  background-color: #00ff;
+  width: 50vw;
+  max-width: 30rem;
+  text-align: center;
+  padding: 1rem 1.2rem;
+  border-radius: 50px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .trayectory {
+    width: 60vw;
+    max-width: 25rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .byeafitdos img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trayectory {
+    width: 70vw;
+    max-width: 20rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trayectory {
+    width: 80vw;
+    max-width: 15rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
 }

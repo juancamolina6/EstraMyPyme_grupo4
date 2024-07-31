@@ -1,0 +1,16 @@
+<!-- panel-administracion.component.html -->
+<div class="admin-panel">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+
+    <div class="charts">
+      <app-chart></app-chart>
+      <app-chart></app-chart>
+      <app-chart></app-chart>
+    </div>
+    <div class="user-section">
+      <app-user-list (userSelected)="selectedUser = $event"></app-user-list>
+      <app-user-detail [user]="selectedUser" (userUpdated)="updateUser($event)"></app-user-detail>
+    </div>
+  </div>
+</div>
