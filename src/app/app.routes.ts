@@ -5,12 +5,15 @@ import {RegistroComponent } from './views/registro/registro.component'
 import { LoginComponent } from './views/login/login.component';
 
 export const routes: Routes = [
-    { path: 'administracion', component: PanelAdministracionComponent },
-    {
-        path: '', component: LandingPageComponent
-    },
-    {
-       path:'landingpage', component: LandingPageComponent},
+  { path: 'administracion', component: PanelAdministracionComponent },
+  {
+    path: '',
+    component: LandingPageComponent,
+  },
+  {
+    path: 'landingpage',
+    component: LandingPageComponent,
+  },
 
     {
         path: 'registro', component: RegistroComponent
@@ -20,5 +23,3 @@ export const routes: Routes = [
     },
     
 ];
-
-
