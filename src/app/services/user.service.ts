@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../components/user-detail/user-detail.component';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { User } from '../components/user-detail/user-detail.component';
 export class UsersService {
 
   private apiUrl = 'http://localhost:3000/users'; // URL de la API de json-server
+  private loginUrl = 'http://localhost:3000/login'; // URL para la autenticación
 
   constructor(private httpClient: HttpClient) { }
 
@@ -39,4 +41,17 @@ export class UsersService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+  // Método para validar al usuario
+  validateUser(email: string, password: string): Observable<{ success: boolean }> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}?email=${email}`).pipe(
+      map(users => {
+        if (users.length > 0 && users[0].password === password) {
+          return { success: true };
+        } else {
+          return { success: false };
+        }
+      })
+    );
+  }
 }
+
