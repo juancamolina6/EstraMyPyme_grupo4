@@ -2,11 +2,20 @@
 <div class="admin-panel">
   <app-sidebar></app-sidebar>
   <div class="main-content">
-
+    <app-header></app-header>
     <div class="charts">
-      <app-chart></app-chart>
-      <app-chart></app-chart>
-      <app-chart></app-chart>
+      <div class="chart-panel">
+        <h2>Posición competitiva deseada</h2>
+        <app-chart></app-chart>
+      </div>
+      <div class="chart-panel">
+        <h2>Gráfico 2</h2>
+        <!-- Otro gráfico o contenido aquí -->
+      </div>
+      <div class="chart-panel">
+        <h2>Gráfico 3</h2>
+        <!-- Otro gráfico o contenido aquí -->
+      </div>
     </div>
     <div class="user-section">
       <app-user-list (userSelected)="selectedUser = $event"></app-user-list>

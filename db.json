@@ -1,358 +1,172 @@
 {
   "users": [
+
     {
-      "id": "1",
-      "sector": "agrario",
-      "name": "johana",
-      "email": "djpark@gmail.com",
-      "type": "Empresas",
-      "empleados": 50,
-      "fundacion": 2005,
-      "productos": [
-        "Fertilizantes orgánicos",
-        "Semillas certificadas"
-      ],
-      "facturacion_anual": 5000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+      "admin": [
+        {
+          "id": 1,
+          "name": "erika",
+          "email": "contacto@empresaabc.com",
+          "password": "hashedpassword",
+          "role": "admin",
+          "assignedTasks": []  
+        },
+
+        {
+          "id": 2,
+          "name": "vanesa",
+          "email": "contacto@eafic.com",
+          "password": "hashedpassword",
+          "role": "admin",
+          "assignedTasks": []  
+        }
+      ]
     },
+
     {
-      "id": "2",
-      "name": "Carlo Emilion",
-      "empresa_asociada": "Empresa 2",
-      "email": "email@fakedomain.net",
-      "type": "Estudiantes",
-      "edad": 20,
-      "carrera": "Administración de Empresas",
-      "semestre": 5,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+      "companies": [
+        {
+          "id": 1,
+          "name": "Empresa ABC",
+          "email": "contacto@empresaabc.com",
+          "password": "hashedpassword",
+          "companyName": "Empresa ABC S.A.",
+          "personType": "Natural",
+          "nit": "123456789",
+          "sector": "Tecnología de la Información (TI)",
+          "type": "juridica",
+          "address": "Calle 123",
+          "phone": "123456789",
+          "website": "www.empresaabc.com",
+          "acceptTerms": true
+
+        },
+        {
+          "id": 1,
+          "name": "Empresa ABC",
+          "email": "contacto@empresaabc.com",
+          "password": "hashedpassword",
+          "companyName": "Empresa ABC S.A.",
+          "personType": "Natural",
+          "nit": "123456789",
+          "sector": "Tecnología de la Información (TI)",
+          "type": "natural",
+          "address": "Calle 123",
+          "phone": "123456789",
+          "website": "www.empresaabc.com",
+          "acceptTerms": true
+
+        }
+      ]
     },
+
     {
-      "id": "3",
-      "name": "Juan camilo",
-      "empresa_asociada": "Empresa 3",
-      "email": "email@fakedomain.net",
-      "type": "Estudiantes",
-      "edad": 23,
-      "carrera": "Agronomía",
-      "semestre": 8,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "4",
-      "name": "Adri",
-      "empresa_asociada": "Empresa 4",
-      "email": "email@fakedomain.net",
-      "type": "Estudiantes",
-      "edad": 23,
-      "carrera": "Ingeniería Agrónoma",
-      "semestre": 1,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "5",
-      "sector": "turismo",
-      "name": "Viajes y Aventuras",
-      "email": "viajesyaventuras@hotmail.com",
-      "type": "Estudiantes",
-      "empleados": 30,
-      "fundacion": 2005,
-      "carrera": "Ingeniería Agrónoma",
-      "semestre": 1,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/beach.jpg"
-    },
-    {
-      "id": "6",
-      "name": "Maria Fernanda",
-      "empresa_asociada": "Empresa 6",
-      "email": "email@fakedomain.net",
-      "type": "Estudiantes",
-      "edad": 23,
-      "carrera": "Ingeniería Agrónoma",
-      "semestre": 2,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "1",
-      "estudantes_profesor": [
-        1,
-        3
-      ],
-      "name": "Oscar Dum",
-      "email": "email@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Agricultura Sostenible",
-      "anos_experiencia": 15,
-      "cursos_impartidos": [
-        "Agroecología",
-        "Sistemas de Riego"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "2",
-      "estudantes_profesor": [
-        2,
-        4
-      ],
-      "name": "Daniel Herrera",
-      "email": "email@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Gestión Empresarial",
-      "anos_experiencia": 10,
-      "cursos_impartidos": [
-        "Marketing Digital",
-        "Finanzas para Emprendedores"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "3",
-      "estudantes_profesor": [
-        1,
-        3
-      ],
-      "name": "Ana López",
-      "email": "ana.lopez@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Matemáticas",
-      "anos_experiencia": 15,
-      "cursos_impartidos": [
-        "Cálculo Diferencial",
-        "Álgebra Lineal"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/woman-portrait.jpg"
-    },
-    {
-      "id": "4",
-      "estudantes_profesor": [
-        5,
-        6
-      ],
-      "name": "Pedro García",
-      "email": "pedro.garcia@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Física",
-      "anos_experiencia": 8,
-      "cursos_impartidos": [
-        "Mecánica Clásica",
-        "Electromagnetismo"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/teacher-portrait.jpg"
-    },
-    {
-      "id": "5",
-      "estudantes_profesor": [
-        7,
-        8
-      ],
-      "name": "María Pérez",
-      "email": "maria.perez@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Química",
-      "anos_experiencia": 12,
-      "cursos_impartidos": [
-        "Química Inorgánica",
-        "Química Orgánica"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/scientist-portrait.jpg"
-    },
-    {
-      "id": "6",
-      "estudantes_profesor": [
-        9,
-        10
-      ],
-      "name": "Juan Sánchez",
-      "email": "juan.sanchez@fakedomain.net",
-      "type": "Profesores",
-      "especialidad": "Historia",
-      "anos_experiencia": 20,
-      "cursos_impartidos": [
-        "Historia Universal",
-        "Historia de América Latina"
-      ],
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/historian-portrait.jpg"
-    },
-    {
-      "id": "1",
-      "sector": "agrario",
-      "name": "Empresa 1",
-      "email": "djpark@gmail.com",
-      "type": "Empresas",
-      "empleados": 50,
-      "fundacion": 2005,
-      "productos": [
-        "Fertilizantes orgánicos",
-        "Semillas certificadas"
-      ],
-      "facturacion_anual": 5000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
-    },
-    {
-      "id": "2",
-      "sector": "comercio",
-      "name": "Empresa 2",
-      "email": "rojasmar@skiff.com",
-      "type": "Empresas",
-      "empleados": 75,
-      "fundacion": 1998,
-      "productos": [
-        "Equipos de oficina",
-        "Suministros de papelería"
-      ],
-      "facturacion_anual": 8000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/smile.jpg"
-    },
-    {
-      "id": "3",
-      "sector": "manufactura",
-      "name": "Industrias López",
-      "email": "lopez.ind@email.com",
-      "type": "Empresas",
-      "empleados": 200,
-      "fundacion": 1985,
-      "productos": [
-        "Muebles de madera",
-        "Electrodomésticos"
-      ],
-      "facturacion_anual": 12000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/factory.jpg"
-    },
-    {
-      "id": "4",
-      "sector": "tecnología",
-      "name": "Soluciones Tecnológicas S.A.",
-      "email": "tecnologias@domain.com",
-      "type": "Empresas",
-      "empleados": 50,
-      "fundacion": 2010,
-      "productos": [
-        "Software de gestión",
-        "Servicios de TI"
-      ],
-      "facturacion_anual": 5000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/computer.jpg"
-    },
-    {
-      "id": "5",
-      "sector": "turismo",
-      "name": "Viajes y Aventuras",
-      "email": "viajesyaventuras@hotmail.com",
-      "type": "Empresas",
-      "empleados": 30,
-      "fundacion": 2005,
-      "productos": [
-        "Paquetes turísticos",
-        "Boletos aéreos"
-      ],
-      "facturacion_anual": 3500000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/beach.jpg"
-    },
-    {
-      "id": "6",
-      "sector": "alimentación",
-      "name": "Delicias del Campo",
-      "email": "deliciasdelcampo@gmail.com",
-      "type": "Empresas",
-      "empleados": 45,
-      "fundacion": 2002,
-      "productos": [
-        "Alimentos orgánicos",
-        "Productos artesanales"
-      ],
-      "facturacion_anual": 4000000,
-      "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616394/samples/food.jpg"
+      "Consultores": [
+
+        {
+          "id": 1,
+          "nombre": "Juan Pérez",
+          "email": "juan.perez@ejemplo.com",
+          "password": "hashedpassword",
+          "telefono": "555-1234",
+          "role": "profesor",
+          "assignedTasks": [1, 2],
+          "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+         
+        },
+        {
+          "id": 3,
+          "nombre": "Luis Fernández",
+          "email": "luis.fernandez@consultoria.com",
+          "telefono": "555-6789",
+          "role": "estudiante",
+          "empresa_id": 1,
+          "Departamento": "Administración",
+          "programa": "Administración",
+          "año": "2024",
+          "periodo": "primer semestre",
+          "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+        },
+        {
+          "id": 4,
+          "nombre": "Luisa Fernández",
+          "email": "luis.fernandez@consultoria.com",
+          "telefono": "555-67896",
+          "tipo": "estudiante",
+          "empresa_id": 2,
+          "Departamento": "Administración",
+          "programa": "Administración",
+          "año": "2024",
+          "periodo": "primer semestre",
+          "image": "https://res.cloudinary.com/dqnbapqoq/image/upload/v1721616395/samples/man-portrait.jpg"
+        }
+      
+      ]
     }
+
   ],
+
+
+
   "data": [
+
+
     {
-      "type": "Reloj estratégico",
-      "title": "Posición competitiva deseada",
-      "axes": {
-        "x": {
-          "label": "Precio",
-          "min": -1,
-          "max": 1
-        },
-        "y": {
-          "label": "Valor percibido del producto",
-          "min": -1,
-          "max": 1
-        }
-      },
-      "strategies": [
-        {
-          "name": "Bajo precio",
-          "position": [
-            -0.7,
-            -0.7
-          ]
-        },
-        {
-          "name": "Bajo precio / Valor añadido",
-          "position": [
-            -0.5,
-            -0.5
-          ]
-        },
-        {
-          "name": "Híbrida",
-          "position": [
-            -0.3,
-            0.3
-          ]
-        },
-        {
-          "name": "Diferenciación",
-          "position": [
-            0,
-            0.7
-          ]
-        },
-        {
-          "name": "Diferenciación segmentada",
-          "position": [
-            0.5,
-            0.5
-          ]
-        }
-      ],
-      "failureZone": {
-        "center": [
-          0.5,
-          -0.5
-        ],
-        "radiusX": 0.4,
-        "radiusY": 0.3,
-        "rotation": 45,
-        "label": "Estrategias destinadas al fracaso"
-      },
-      "desiredPosition": {
-        "coordinates": [
-          -0.1,
-          0.5
-        ],
-        "symbol": "star"
-      },
-      "annotation": {
-        "text": "La estrategia co-creada detalla la manera como vamos a aumentar la percepción de valor de los clientes, de manera que se aumente así su disposición a pagar, una y otra vez, por el producto o servicio ofrecido.",
-        "position": [
-          -0.9,
-          0.5
+      "radar": {
+        "labels": ["Conocimiento del cliente", "Conocimiento del negocio", "Coherencia del modelo de negocio", "Alineación en la comunicación interna", "Salud Financiera"],
+        "datasets": [
+          {
+            "id": 1,
+            "id-empresa": 1,
+            "label": "Dataset 1",
+            "data": [65, 59, 90, 81, 56, 55, 40],
+            "borderColor": "rgba(255, 99, 132, 1)",
+            "backgroundColor": "rgba(255, 99, 132, 0.2)"
+          },
+          {
+            "label": "Dataset 2",
+            "data": [28, 48, 40, 19, 96, 27, 100],
+            "borderColor": "rgba(54, 162, 235, 1)",
+            "backgroundColor": "rgba(54, 162, 235, 0.2)"
+          }
         ]
-      },
-      "valueIncreaseArrow": {
-        "start": [
-          -0.9,
-          -1
-        ],
-        "end": [
-          -0.9,
-          1
-        ],
-        "color": "yellow"
-      },
-      "id": "eafd"
+      }
+    },
+
+    {
+      "reloj": [
+        {
+          "type": "Reloj",
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "arrows": [
+            {"label": "Diferenciación", "x": 0, "y": 1},
+            {"label": "Diferenciación segmentada", "x": 1, "y": 1},
+            {"label": "Estrategias destinadas al fracaso", "x": 1, "y": -1},
+            {"label": "Bajo precio / Valor añadido", "x": -1, "y": -1},
+            {"label": "Bajo precio", "x": -1, "y": 0},
+            {"label": "Híbrida", "x": -1, "y": 1}
+          ],
+          "oval": {
+            "center": {"x": 0.5, "y": -0.5},
+            "radiusX": 0.5,
+            "radiusY": 0.25,
+            "rotation": 45
+          },
+          "desiredPosition": {
+            "coordinates": {"x": 0.8, "y": 0.8}
+          },
+          "annotations": {
+            "text": "Ubicar la empresa en el gráfico (con la estrella) y justificar en un cuadro de texto aclaratorio.",
+            "position": {"x": 0.6, "y": 0.8}
+          }
+        }
+      ]
     }
+ 
   ]
 }
+
+

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import JustValidate from 'just-validate';
+import { AbstractControl, Validators,FormGroup,FormControl } from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +23,52 @@ export class ValidationService  {
     this.consultorValidator = this.initValidation('#register2', this.getConsultorValidations());
   }
 
+/* */
 
 
+removeConsultorValidators(form: FormGroup): void {
+    const validations = this.getConsultorValidations();
+    const controlsToAdd = ['departamento1', 'programa', 'año', 'tipo3'];
+  
+    controlsToAdd.forEach((controlName, index) => {
+      const existingControl = form.get(controlName);
+      if (existingControl) {
+        existingControl.setValidators(validations[index]);
+      } else {
+        form.addControl(controlName, new FormControl('', validations[index]));
+      }
+    });
+  
+    form.updateValueAndValidity();
+  }
+
+applyConsultorValidators(form: FormGroup): void {
+    // Obtén las validaciones para cada control
+    const validations = this.getConsultorValidations();
+    const controlsToAdd = ['departamento1', 'programa', 'año', 'tipo3'];
+  
+    controlsToAdd.forEach((controlName, index) => {
+      // Obtén o crea el control
+      let control = form.get(controlName);
+      if (!control) {
+        // Si el control no existe, créalo con el valor inicial y la validación correspondiente
+        control = new FormControl('', validations[index]);
+        form.addControl(controlName, control);
+      } else {
+        // Si el control ya existe, actualiza su validador
+        control.setValidators(validations[index]);
+        control.updateValueAndValidity(); // Actualiza el valor y la validez del control
+      }
+    });
+  
+    // Actualiza la validez del formulario en su conjunto
+    form.updateValueAndValidity();
+  }
+
+
+
+ 
+/* */
 
     // Función común para inicializar validaciones con JustValidate
     private initValidation(formId: string, validations: any[]): JustValidate {
@@ -50,7 +96,9 @@ export class ValidationService  {
     return validator;
   }
 
+  
 
+/* */
 
  
 

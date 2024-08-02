@@ -75,9 +75,6 @@
                      </label>
                  </div>
             
-
-
-            
                  <div class="eye">
                        <label class="pure-material-textfield-outlined largo" for="password">
                            <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password" name="password" required autocomplete="off">
@@ -194,10 +191,7 @@
                          <span>Sitio wed (opcional)</span>
                      </label>
                  </div>
-
-               
-                 
-     
+ 
                  <div class="terms">
                      <div class="terms">
                      <input
@@ -207,12 +201,9 @@
                        autocomplete="off"/><label for="acceptTerms">Acepto <span class="color">Términos y Condiciones </span> y <span class="color">Politicas de proteccion de Datos</span></label> 
                    </div>
 
-
-
                </div>
   
-              
-     
+ 
                  <div class="boton">
                      <button type="submit" class="pure-material-button-contained">Crear</button>
                  </div>
@@ -220,111 +211,100 @@
           </div>
   
              <!--restro consultores-->
-      <div  *ngIf="isConsultorActive">
-
-             <form id="register2" class="register" autocomplete="off">
-  
+             <div  *ngIf="isConsultorActive">
+                <form  [formGroup]="registroForm" id="register2" class="register" autocomplete="off">
               
-              <p class="data a">Datos Personales</p>
-  
-              <div>
-                  <label class="pure-material-textfield-outlined largo" for="name">
-                      <input placeholder="" type="text" id="name1" name="name" required autocomplete="off">
+                  <p class="data a">Datos Personales</p>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="name">
+                      <input formControlName="name" placeholder="" type="text" id="name1" required autocomplete="off">
                       <span>Nombre Completo</span>
-                  </label>
-              </div>
-  
-              <div>
-                  <label class="pure-material-textfield-outlined largo" for="email1">
-                      <input placeholder="" type="text" id="email1" name="email" required autocomplete="off">
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="email1">
+                      <input formControlName="email" placeholder="" type="text" id="email1" required autocomplete="off">
                       <span>Correo Electronico</span>
-                  </label>
-              </div>
-  
-              <div>
-                  <label class="pure-material-textfield-outlined largo" for="cedula">
-                      <input placeholder="" type="input" id="cedula1" name="cedula" autocomplete="off" required>
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="cedula">
+                      <input formControlName="cedula" placeholder="" type="text" id="cedula1" required autocomplete="off">
                       <span>Cedula</span>
-                  </label>
-              </div>
-  
-  
-            
-              <div class="eye">
+                    </label>
+                  </div>
+              
+                  <div class="eye">
                     <label class="pure-material-textfield-outlined largo" for="password1">
-                        <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password1" name="password" required autocomplete="off">
-                        <span>Contraseña</span>
-                        <button class="button-eye" id="togglePassword1" (click)="togglePasswordVisibility()" type="button">
-                           <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-                       </button>
-                    </label>   
-                </div>
-        
-  
-                <p class="data c">Información Académica/Profesional</p>
-             
-                <div>
-                  <label class="pure-material-textfield-outlined largo" for="">
-                      <select class="tipo" id="tipo1" required>
-                          <option selected disabled value="">--Rol--</option>
-                          <option value="1">Estudiante</option>
-                          <option value="2">Profesor</option>
-                          
+                      <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" formControlName="password" id="password1" required autocomplete="off">
+                      <span>Contraseña</span>
+                      <button class="button-eye" id="togglePassword1" (click)="togglePasswordVisibility()" type="button">
+                        <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                      </button>
+                    </label>
+                  </div>
+
+
+                 
+              
+                  <p class="data c">Información Académica/Profesional</p>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="tipo1">
+                      <select class="tipo" (change)="onTipoChange()" formControlName="tipo1" id="tipo1"  required>
+                        <option value="" disabled>--Rol--</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="profesor">Profesor</option>
                       </select>
-                  </label>
-              </div>
-  
-  
-              <div>
-                  <label class="pure-material-textfield-outlined largo" for="Departamento1">
-                      <input placeholder="" type="input" id="Departamento1" name="Departamento" autocomplete="off" required>
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="Departamento1">
+                      <input formControlName="departamento1" placeholder="" type="text" id="Departamento1" autocomplete="off">
                       <span>Departamento/Facultad</span>
-                  </label>
-              </div>
-  
-              <div>
-                  <label class="pure-material-textfield-outlined largo" for="programa">
-                      <input placeholder="" type="input" id="programa" name="programa" autocomplete="off" required>
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="programa">
+                      <input formControlName="programa" placeholder="" type="text" id="programa" autocomplete="off">
                       <span>Programa/Carrera</span>
-                  </label>
-              </div>
-
-              <div>
-                <label class="pure-material-textfield-outlined largo" for="año">
-                    <input placeholder="" type="input" id="año" name="año" autocomplete="off" required>
-                    <span>Año de ingreso (para estudiantes)</span>
-                </label>
-              </div>
-
-              <div>
-                <label class="pure-material-textfield-outlined largo" for="">
-                    <select class="tipo" id="tipo3" required>
-                        <option selected disabled value="">--Periodo--</option>
-                        <option value="1">Primers semestre</option>
-                        <option value="2">segundo semestre</option>
-                        
-                    </select>
-                </label>
-            </div>
-             
-  
-              <div class="terms">
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="año">
+                      <input formControlName="año" placeholder="" type="text" id="año" autocomplete="off">
+                      <span>Año de ingreso (para estudiantes)</span>
+                    </label>
+                  </div>
+              
+                  <div>
+                    <label class="pure-material-textfield-outlined largo" for="tipo3">
+                      <select class="tipo"  formControlName="tipo3" id="tipo3" required>
+                        <option value="" disabled>--Periodo--</option>
+                        <option value="1">Primer semestre</option>
+                        <option value="2">Segundo semestre</option>
+                      </select>
+                    </label>
+                  </div>
+              
                   <div class="terms">
-                  <input
-                   type="checkbox"
-                   id="acceptTerms1"
-                    name="acceptTerms" 
-                    autocomplete="off"/><label for="acceptTerms">Acepto <span class="color">Términos y Condiciones </span> y <span class="color">Politicas de proteccion de Datos</span></label> 
-                </div>
-             </div>
-  
-           
-  
-              <div class="boton">
-                  <button type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
+                    <input type="checkbox" formControlName="acceptTerms" id="acceptTerms1" autocomplete="off">
+                    <label for="acceptTerms">Acepto <span class="color">Términos y Condiciones</span> y <span class="color">Políticas de protección de Datos</span></label>
+                  </div>
+              
+                  <div class="boton">
+                    <button type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
+                  </div>
+              
+                </form>
               </div>
-          </form>
-      </div>
+              
 
     </div> 
       
