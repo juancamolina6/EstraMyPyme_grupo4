@@ -22,6 +22,7 @@ export interface User {
   facturacion_anual?: number;
   estudantes_profesor?: number[];
   image?: string;
+  password?: string;
 }
 
 @Component({
