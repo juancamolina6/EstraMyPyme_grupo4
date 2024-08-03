@@ -29,7 +29,10 @@
 }
  .modos1{
   display: flex;
-  align-items: start;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0;
+
    
  }
 
@@ -41,19 +44,21 @@
   width: 6.25rem; 
   height: 1.875rem; 
   padding: 0rem 0.625rem;
-  font-size: 1.125rem; 
+  font-size: 1rem; 
   margin-right: -3.125rem; 
   margin-top: 3.125rem;
   z-index: 4;
   position: relative;
+  transform: translateY( -2.4rem);
 }
+
 
 .modo {
   width: 4rem;
   height: 4rem;
-  margin-right: 13rem;
-  margin-top: .5rem; 
+  margin-right: 8rem;
   margin-left: -1.875rem;
+  transform: translateY( -2rem);
 }
 
 /*light mode */
@@ -290,7 +295,7 @@ input:checked + .slider {
   position: relative;
   top: 9.375rem; /* 150px / 16 */
   right: 0;
-  left: 1.25rem; /* 20px / 16 */
+  left: 7rem; /* 20px / 16 */
 }
 
 .stilo {
@@ -381,9 +386,9 @@ p {
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #555 #191919; /* Firefox */
   position: relative;
-  top: 7.5rem; /* 120px / 16 */
+  top: 6rem; /* 120px / 16 */
   right: 0;
-  left: 1.25rem; /* 20px / 16 */
+  left: 6.5rem; /* 20px / 16 */
   z-index: 5;
 
 }
@@ -743,6 +748,11 @@ p {
   margin-left: 1.875rem; /* 30px */
 }
 
+.te{
+  margin-left: 4rem;
+
+}
+
 .color {
   color: #0000ff;
 }
@@ -942,11 +952,13 @@ input[type='number']::-webkit-inner-spin-button {
   position: absolute;
   display: flex;
   align-items: start;
+ 
   
 }
 
 .modo{
   right: 5%;
+  translate: 110px 30px;
 }
 
 .slider{
@@ -968,7 +980,8 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .language{
-  translate: 0.625rem 0;
+  height: 1.8rem; 
+  translate: 125px 28px;
   width: 4rem;
 }
 
@@ -977,7 +990,7 @@ input[type='number']::-webkit-inner-spin-button {
 .registro-ok{
   width: 90%;
   height: 70%;
-  top: 9%;
+  top: 15%;
   bottom: 5%;
   left: 5%;
   right: 5%;
@@ -1036,8 +1049,8 @@ top: 0.625rem;
 
 .tipo{
   border: solid 0.125rem;
+  font-size: 0.9375rem; /*tamaño lectra desplegables*/
 }
-
 
 
 
@@ -1150,6 +1163,11 @@ top: 0.625rem;
   font-size: 13px;
 }
 
+.te {
+
+  translate: 10px 30px;
+}
+
 #just-validate-error-label {
 
   color: blue;
@@ -1168,8 +1186,8 @@ top: 0.625rem;
   .login-now {
     width: 100%;
     height: 3.125rem;
-    top: 0rem;
-    left: 0;
+    top: 2rem;
+    left: 3rem;
     margin: 0;
     position: absolute;
     display: flex;
@@ -1198,7 +1216,7 @@ top: 0.625rem;
   }
 
   .logo h1 {
-    font-size: 1.25rem; 
+    font-size: 1.30rem; 
 
   }
 
@@ -1209,13 +1227,15 @@ top: 0.625rem;
   }
 
   .login-now h6 {
-    transform: translateX(-3rem);
+  
+    transform: translateX(-5rem);
    
   }
+
 .imagen-logo{
   width: 4rem;
   height: 2rem;
-  translate: -3rem 0;
+  translate: -5rem 0;
 }
 
 
@@ -1223,7 +1243,7 @@ top: 0.625rem;
 .light-mode .imagen-logo{
   width: 5rem;
   height: 4rem;
-  translate: -2rem 0.300rem;
+  translate: -4rem 0.300rem;
 }
 
 

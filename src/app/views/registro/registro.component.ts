@@ -32,9 +32,18 @@ export class RegistroComponent implements AfterViewInit {
     private cdr: ChangeDetectorRef) {
    
   }
+  ngAfterViewInit(): void {
+    this.initializeThemeMode(); //modo claro
+    this.initializeValidators();//validaciones segun el tipo consultor/empresa
+  
+    if (this.type === 'estudiante') {
+      this.initializestudianteValidators();
+    }
+  }
+
 
 /*inicializar validaciones segun el rol estuidnate */
-validator: any;
+
 
 
 public onTipoChange(event: Event): void {
@@ -42,10 +51,10 @@ public onTipoChange(event: Event): void {
   this.type = selectElement.value;
 
   if (this.type === 'estudiante') {
-    alert('Has seleccionado Estudiante');
+   
     this.initializestudianteValidators(); // Inicializar validaciones para estudiante
   } else if (this.type === 'profesor') {
-    alert('Has seleccionado Profesor');
+    
   }
 
   // Detectar cambios en el DOM si es necesario
@@ -61,24 +70,10 @@ initializestudianteValidators(): void {
   this.cdr.detectChanges();
 }
 
-
-
-
 /* */
 
 
 /*cambiar formularios y inicializacion de validaciones ok*/
-
-  ngAfterViewInit(): void {
-  this.initializeThemeMode(); //modo claro
-  this.initializeValidators();//validaciones segun el tipo consultor/empresa
-
-  if (this.type === 'estudiante') {
-    this.initializestudianteValidators();
-  }
-}
-
-
   toggleView(view: string): void {
  
     if (view === 'empresa') {
