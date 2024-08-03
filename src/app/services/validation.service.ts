@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import JustValidate from 'just-validate';
-import { AbstractControl, Validators,FormGroup,FormControl } from '@angular/forms';
-
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +7,7 @@ import { AbstractControl, Validators,FormGroup,FormControl } from '@angular/form
 export class ValidationService  {
   private empresaValidator: JustValidate | undefined;
   private consultorValidator: JustValidate | undefined;
-
+  private estudianteValidator: JustValidate | undefined;
   constructor() {}
 
 
@@ -19,57 +17,33 @@ export class ValidationService  {
     this.empresaValidator = this.initValidation('#register', this.getEmpresaValidations());
   }
 
-  initializeConsultorValidator(): void {
+initializeConsultorValidator(): void {
+    
     this.consultorValidator = this.initValidation('#register2', this.getConsultorValidations());
+   
   }
 
-/* */
-
-
-removeConsultorValidators(form: FormGroup): void {
-    const validations = this.getConsultorValidations();
-    const controlsToAdd = ['departamento1', 'programa', 'año', 'tipo3'];
-  
-    controlsToAdd.forEach((controlName, index) => {
-      const existingControl = form.get(controlName);
-      if (existingControl) {
-        existingControl.setValidators(validations[index]);
-      } else {
-        form.addControl(controlName, new FormControl('', validations[index]));
-      }
-    });
-  
-    form.updateValueAndValidity();
-  }
-
-applyConsultorValidators(form: FormGroup): void {
-    // Obtén las validaciones para cada control
-    const validations = this.getConsultorValidations();
-    const controlsToAdd = ['departamento1', 'programa', 'año', 'tipo3'];
-  
-    controlsToAdd.forEach((controlName, index) => {
-      // Obtén o crea el control
-      let control = form.get(controlName);
-      if (!control) {
-        // Si el control no existe, créalo con el valor inicial y la validación correspondiente
-        control = new FormControl('', validations[index]);
-        form.addControl(controlName, control);
-      } else {
-        // Si el control ya existe, actualiza su validador
-        control.setValidators(validations[index]);
-        control.updateValueAndValidity(); // Actualiza el valor y la validez del control
-      }
-    });
-  
-    // Actualiza la validez del formulario en su conjunto
-    form.updateValueAndValidity();
+  initializeEstudinateValidator(): void {
+    
+    this.estudianteValidator = this.initValidation('#register2', this.getEstudianteValidations());
+   
   }
 
 
 
  
+
+
 /* */
 
+
+
+
+
+
+
+
+/* */
     // Función común para inicializar validaciones con JustValidate
     private initValidation(formId: string, validations: any[]): JustValidate {
       const validator = new JustValidate(formId, {
@@ -85,20 +59,18 @@ applyConsultorValidators(form: FormGroup): void {
       
     });
 
-    validations.forEach(validation => {
-      if (validation.field) {
-        validator.addField(validation.field, validation.rules);
-      } else if (validation.requiredGroup) {
-        validator.addRequiredGroup(validation.requiredGroup, validation.errorMessage, validation.options);
-      }
-    });
+  validations.forEach(validation => {
+    if (validation.field) {
+      validator.addField(validation.field, validation.rules);
+    } else if (validation.requiredGroup) {
+      validator.addRequiredGroup(validation.requiredGroup, validation.errorMessage, validation.options);
+    }
+  });
 
-    return validator;
-  }
+  return validator;
+}
 
-  
 
-/* */
 
  
 
@@ -208,8 +180,8 @@ applyConsultorValidators(form: FormGroup): void {
   }
 
   
-  private getConsultorValidations(): any[] {
-    return [
+    public getConsultorValidations(): any[] {
+    return  [
       {
         field: '#name1',
         rules: [
@@ -243,13 +215,27 @@ applyConsultorValidators(form: FormGroup): void {
           { rule: 'minLength', value: 8, errorMessage: "Minimo 6 caracteres" },
         ]
       },
-
       {
-        field: '#tipo1',
+        field: '#rol',
         rules: [
           { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
+   
+    
+
+    ];
+
+
+
+  }
+
+
+  public getEstudianteValidations(): any[] {
+    return  [
+     
+   
+      
       {
         field: '#Departamento1',
         rules: [
@@ -258,6 +244,8 @@ applyConsultorValidators(form: FormGroup): void {
           { rule: 'maxLength', value: 50, errorMessage: "Maximo 50 caracteres" },
         ]
       },
+
+
       {
         field: '#programa',
         rules: [
@@ -266,8 +254,7 @@ applyConsultorValidators(form: FormGroup): void {
           { rule: 'maxLength', value: 50, errorMessage: "Maximo 50 caracteres" },
         ]
       },
-      
-    
+
 
       {
         field: '#año',
@@ -293,12 +280,13 @@ applyConsultorValidators(form: FormGroup): void {
       },
 
       {
-        field: '#tipo3',
+        field: '#periodos',
         rules: [
           { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
 
+     
       {
       field: '#acceptTerms1',
       rules: [
@@ -307,8 +295,17 @@ applyConsultorValidators(form: FormGroup): void {
       }
     
 
-    ]
+    ];
+
+
+
   }
 
 
-}
+
+  }
+
+
+ 
+
+

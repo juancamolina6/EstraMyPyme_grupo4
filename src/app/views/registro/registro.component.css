@@ -392,7 +392,7 @@ p {
   display: flex;
   justify-content: center;
   margin-top: 3rem; /* 48px / 16 */
-  margin-left: 1.875rem; /* 30px / 16 */
+  margin-left: .01rem; /* 30px / 16 */
   margin-bottom: 0.625rem; /* 10px / 16 */
   color: white;
   font-size: 1.125rem; /* 18px / 16 */
@@ -767,7 +767,7 @@ p {
   justify-content: center;
   margin-top: 1.25rem; /* 20px */
   margin-bottom: 1.875rem; /* 30px */
-  margin-left: -10rem; /* -10rem (negative margin-left) */
+  margin-left: 0rem; /* -10rem (negative margin-left) */
   gap: 1rem; /* 16px */
 }
 

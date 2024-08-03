@@ -1,17 +1,16 @@
-import { Component, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ValidationService } from '../../services/validation.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements AfterViewInit, OnInit {
+export class RegistroComponent implements AfterViewInit {
 
   empresaPasswordVisible: boolean = false;
   consultorPasswordVisible: boolean = false;
@@ -26,60 +25,46 @@ export class RegistroComponent implements AfterViewInit, OnInit {
   private empresaValidatorInitialized = false;
   private consultorValidatorInitialized = false;
 
-  registroForm: FormGroup;
+  type: string = '';
 
   constructor(
     private validationService: ValidationService,
-    private cdr: ChangeDetectorRef,
-    private fb: FormBuilder
-  ) {
-    this.registroForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      cedula: ['', Validators.required],
-      password: ['', Validators.required],
-      tipo1: ['', Validators.required],
-      departamento1: [''],
-      programa: [''],
-      año: [''],
-      tipo3: [''],
-      acceptTerms: [false, Validators.requiredTrue]
-    });
-  }
-/*elimanr validaciones segun tipo */
-  ngOnInit(): void {
-    this.onTipoChange(); 
+    private cdr: ChangeDetectorRef) {
    
   }
 
-  onTipoChange(): void {
-    const tipo = this.registroForm.get('tipo1')?.value;
-    if (tipo === 'profesor') {
-      this.validationService.removeConsultorValidators(this.registroForm);
-    } else if (tipo === 'estudiante') {
-      this.validationService.applyConsultorValidators(this.registroForm);
-    }
-    this.updateFormControlsValidity();
+/*inicializar validaciones segun el rol estuidnate */
+validator: any;
+
+
+public onTipoChange(event: Event): void {
+  const selectElement = event.target as HTMLSelectElement;
+  this.type = selectElement.value;
+
+  if (this.type === 'estudiante') {
+    alert('Has seleccionado Estudiante');
+    this.initializestudianteValidators(); // Inicializar validaciones para estudiante
+  } else if (this.type === 'profesor') {
+    alert('Has seleccionado Profesor');
   }
 
+  // Detectar cambios en el DOM si es necesario
+  this.cdr.detectChanges();
+}
+
+initializestudianteValidators(): void {
+  if (this.type === 'estudiante' ) {
+    this.validationService.initializeEstudinateValidator();
+   
+  } 
+
+  this.cdr.detectChanges();
+}
 
 
-  applyConsultorValidators(): void {
-    const tipo = this.registroForm.get('tipo1')?.value;
-    if (tipo === 'profesor') {
-      this.validationService.removeConsultorValidators(this.registroForm);
-    } else if (tipo === 'estudiante') {
-      this.validationService.applyConsultorValidators(this.registroForm);
-    }
-    this.updateFormControlsValidity();
-  }
 
-  updateFormControlsValidity(): void {
-    this.registroForm.get('departamento1')?.updateValueAndValidity();
-    this.registroForm.get('programa')?.updateValueAndValidity();
-    this.registroForm.get('año')?.updateValueAndValidity();
-    this.registroForm.get('tipo3')?.updateValueAndValidity();
-  }
+
+/* */
 
 
 /*cambiar formularios y inicializacion de validaciones ok*/
@@ -87,7 +72,10 @@ export class RegistroComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
   this.initializeThemeMode(); //modo claro
   this.initializeValidators();//validaciones segun el tipo consultor/empresa
-  this.onTipoChange();
+
+  if (this.type === 'estudiante') {
+    this.initializestudianteValidators();
+  }
 }
 
 
@@ -105,11 +93,10 @@ export class RegistroComponent implements AfterViewInit, OnInit {
   
     setTimeout(() => {
       this.initializeValidators(); // Re-inicializar validaciones si es necesario
-     
+    
     }, 0);
 
   }
-
 
   //controlvalidaciones
   initializeValidators(): void {
@@ -120,9 +107,11 @@ export class RegistroComponent implements AfterViewInit, OnInit {
       this.validationService.initializeConsultorValidator();
       this.consultorValidatorInitialized = true; // Marcar como inicializado
     }
+   
+
+    
     this.cdr.detectChanges();
   }
-
 
 /*fin validaciones */
 
