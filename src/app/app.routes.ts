@@ -10,10 +10,6 @@ export const routes: Routes = [
     path: '',
     component: LandingPageComponent,
   },
-  {
-    path: 'landingpage',
-    component: LandingPageComponent,
-  },
 
     {
         path: 'registro',
