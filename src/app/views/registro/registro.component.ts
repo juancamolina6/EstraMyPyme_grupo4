@@ -1,12 +1,14 @@
-import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { ValidationService } from '../../services/validation.service';
 import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ValidationService } from '../../services/validation.service';
+
 
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink, RouterOutlet],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
@@ -39,6 +41,8 @@ export class RegistroComponent implements AfterViewInit {
     if (this.type === 'estudiante') {
       this.initializestudianteValidators();
     }
+
+
   }
 
 
@@ -156,6 +160,23 @@ initializestudianteValidators(): void {
     // Agrega un event listener al checkbox para cambiar el tema
     this.checkbox.addEventListener('change', this.changeTheme.bind(this));
   }
+
+
+  /*responsil button desplegable */ 
+  toggleButtons(): void {
+    const additionalButtons = document.getElementById('additionalButtons');
+    if (additionalButtons) {
+      additionalButtons.classList.toggle('hidden');
+    }
+  }
+
+ 
+
+
+    
+  
+
+
 }
 
 

@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes } from '@angular/router';
 import { PanelAdministracionComponent } from './views/panel-administracion/panel-administracion.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import {RegistroComponent } from './views/registro/registro.component'
@@ -16,10 +16,12 @@ export const routes: Routes = [
   },
 
     {
-        path: 'registro', component: RegistroComponent
+        path: 'registro',
+         component: RegistroComponent
     },
     {
-        path: 'login', component: LoginComponent
+        path: 'login', 
+        component: LoginComponent
     },
     
 ];

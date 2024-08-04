@@ -15,7 +15,33 @@
 
 }
 
+.home {
+  border: white solid 0.125rem;
+  border-radius: 1.875rem; 
+  color: white;
+  background-color: black;
+  width: 3rem; 
+  height: 1.875rem; 
+  padding: 0rem 0.625rem;
+  font-size: 1rem; 
+  margin-right: -3.125rem; 
+  margin-top: 0.8rem;
+  z-index: 4;
+  position: relative;
+  transform: translateX( -3.5rem);
+   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+}
 
+
+.home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
+
+.main {
+  display: none;
+}
 
 /*modos*/
 .modos {
@@ -57,8 +83,10 @@
   width: 4rem;
   height: 4rem;
   margin-right: 8rem;
-  margin-left: -1.875rem;
-  transform: translateY( -2rem);
+  margin-left: -2.8rem;
+  transform: translateY( -1.8rem);
+
+  
 }
 
 /*light mode */
@@ -79,6 +107,10 @@
 
 }
 
+.light-mode .home {
+  border: black solid 0.125rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729083/fznjrjzijebiaijttr6y.png') no-repeat center center;
+}
 
 
 .light-mode .slider {
@@ -208,6 +240,11 @@
   color: black;
 }
 
+.light-mode .home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
 .switch {
   position: relative;
   margin-left: 6.25rem; /* 100px / 16 */
@@ -222,6 +259,8 @@
   width: 0;
   height: 0;
 }
+
+
 
 .slider {
   width: 4.25rem; /* 68px / 16 */
@@ -931,9 +970,33 @@ input[type='number']::-webkit-inner-spin-button {
     margin: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden; 
    
   }
- 
+
+
+  .light-mode {
+    width: 100%; 
+    overflow: hidden; 
+
+  }
+ .todo {
+
+  translate: 0px -10px;
+ }
+
+.modos1{
+  width: 20%;
+  left: 58%;
+  right: 10%;
+  bottom: 2%;
+  position: absolute;
+  display: flex;
+  align-items: start;
+  
+  
+}
+
 .modos{
   width: 100%;
   height: 3.125rem;
@@ -944,21 +1007,24 @@ input[type='number']::-webkit-inner-spin-button {
   padding: 0;
   
 }
-.modos1{
-  width: 20%;
-  left: 58%;
-  right: 10%;
-  bottom: 2%;
-  position: absolute;
-  display: flex;
-  align-items: start;
- 
-  
+
+.home{
+  translate: -170px -55px;
+}
+
+#additionalButtons {
+  padding-left: 100px;
+}
+
+.language{
+  height: 1.8rem; 
+  translate: 5px -25px;
+  width: 4rem;
 }
 
 .modo{
   right: 5%;
-  translate: 110px 30px;
+  translate: 0px -25px;
 }
 
 .slider{
@@ -973,28 +1039,24 @@ input[type='number']::-webkit-inner-spin-button {
   translate: -15px 0px;
 }
 
-
 .langua{
   margin-right: 0.25rem;
  
 }
 
-.language{
-  height: 1.8rem; 
-  translate: 125px 28px;
-  width: 4rem;
-}
+
 
 
 
 .registro-ok{
   width: 90%;
   height: 70%;
-  top: 15%;
+  top: 25%;
   bottom: 5%;
   left: 5%;
   right: 5%;
   display: flex;
+ position: absolute;
 
 }
 
@@ -1168,11 +1230,36 @@ top: 0.625rem;
   translate: 10px 30px;
 }
 
-#just-validate-error-label {
-
-  color: blue;
-
+.desplegable{
+  margin-top: 100px;
+  top: 50px;
 }
+
+.main{
+  margin-top: 20px;
+  display: flex;;
+  border: none;
+  width: 3rem;
+  height: 2.5rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722744432/icons8-personalizar-vista-24_tvmit7.png') no-repeat center center;
+
+ }
+ 
+ .light-mode .main{
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722744432/icons8-personalizar-vista-24_1_ywlron.png') no-repeat center center;
+   
+ }
+
+ .hidden {
+  display: none;
+}
+
+   
+ #additionalButtons button {
+   display: block;
+   margin: 10px auto;
+ 
+ }
 
 
 
@@ -1195,6 +1282,7 @@ top: 0.625rem;
   }
 
   .left-info{
+    margin-left: 0;
     width: 100%;
     height: 5rem;
     left: 0rem;
@@ -1216,7 +1304,7 @@ top: 0.625rem;
   }
 
   .logo h1 {
-    font-size: 1.30rem; 
+    font-size: 1.50rem; 
 
   }
 

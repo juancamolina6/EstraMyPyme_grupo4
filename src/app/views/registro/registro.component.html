@@ -1,11 +1,21 @@
 
 <div class="register-container">
+
+
+
+   <div class="todo">
+    <button   routerLink="/" class="main" id="mainButton" (click)="toggleButtons()"></button>
     
+    </div>
+     
+     <div  id="additionalButtons" class="hidden">
 
      <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
      <div class="modos">
 
-
+      <div>
+        <button class="home"></button>
+    </div>
 
      <div class="modos1">
      <div class="langua">
@@ -26,6 +36,7 @@
      </div> 
     </div>
     </div>
+  </div>
 
 
     <!--logo-->
@@ -303,7 +314,7 @@
                   </div>
               
                   <div class="boton">
-                    <button type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
+                    <button   type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
                   </div>
               
                 </form>
