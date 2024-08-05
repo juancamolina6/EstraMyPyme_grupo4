@@ -963,6 +963,8 @@ input[type='number']::-webkit-inner-spin-button {
 
 /* Media query */
 @media screen and (max-width: 43.75rem) { /* 700px */
+
+
   .register-container {
     display: block;
     align-items: center;
@@ -970,15 +972,18 @@ input[type='number']::-webkit-inner-spin-button {
     margin: 0;
     width: 100vw;
     height: 100vh;
+    box-sizing: border-box;
+    position: relative; 
     overflow: hidden; 
-   
   }
+
+
 
 
   .light-mode {
     width: 100%; 
     overflow: hidden; 
-
+    position: relative; 
   }
  .todo {
 
@@ -1044,10 +1049,6 @@ input[type='number']::-webkit-inner-spin-button {
  
 }
 
-
-
-
-
 .registro-ok{
   width: 90%;
   height: 70%;
@@ -1057,6 +1058,7 @@ input[type='number']::-webkit-inner-spin-button {
   right: 5%;
   display: flex;
  position: absolute;
+ overflow-x: hidden; 
 
 }
 
@@ -1283,7 +1285,7 @@ top: 0.625rem;
 
   .left-info{
     margin-left: 0;
-    width: 100%;
+    width: 0px;
     height: 5rem;
     left: 0rem;
    

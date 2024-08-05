@@ -9,9 +9,10 @@ html {
  
 body {
     
-    background-color: #000;
+    background-color: #040404;
     color: #fff;
     font-size: 16px;
+   
 }
  
 .weight-bold {
@@ -25,3 +26,4 @@ body {
 .underline-hover:hover {
     text-decoration: underline;
 }
+
