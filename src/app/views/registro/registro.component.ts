@@ -28,6 +28,7 @@ export class RegistroComponent implements AfterViewInit {
   private consultorValidatorInitialized = false;
 
   type: string = '';
+  areValidationsActive: boolean = false;
 
   constructor(
     private validationService: ValidationService,
@@ -46,7 +47,7 @@ export class RegistroComponent implements AfterViewInit {
   }
 
 
-/*inicializar validaciones segun el rol estuidnate */
+/*inicializar validaciones segun el rol estuidiate */
 
 
 
@@ -58,7 +59,8 @@ public onTipoChange(event: Event): void {
    
     this.initializestudianteValidators(); // Inicializar validaciones para estudiante
   } else if (this.type === 'profesor') {
-    
+
+    this.desaestudianteValidators();
   }
 
   // Detectar cambios en el DOM si es necesario
@@ -66,13 +68,29 @@ public onTipoChange(event: Event): void {
 }
 
 initializestudianteValidators(): void {
-  if (this.type === 'estudiante' ) {
-    this.validationService.initializeEstudinateValidator();
-   
+  if (this.type === 'estudiante') {
+    if (!this.areValidationsActive) {
+      this.validationService.initializeEstudinateValidator();
+      this.areValidationsActive = true; // Marcar que las validaciones están activas
+    }
   } 
 
   this.cdr.detectChanges();
 }
+
+desaestudianteValidators(): void {
+  
+  if (this.type === 'profesor') {
+    if (this.areValidationsActive) {
+      this.validationService.deactivateEstudinateValidator();
+      this.areValidationsActive = false; // Marcar que las validaciones no están activas
+    }
+  }
+
+  this.cdr.detectChanges();
+
+}
+
 
 /* */
 

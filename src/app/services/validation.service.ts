@@ -7,7 +7,7 @@ import JustValidate from 'just-validate';
 export class ValidationService  {
   private empresaValidator: JustValidate | undefined;
   private consultorValidator: JustValidate | undefined;
-  private estudianteValidator: JustValidate | undefined;
+  private estudianteValidator: JustValidate | undefined | null;
   constructor() {}
 
 
@@ -28,7 +28,13 @@ initializeConsultorValidator(): void {
     this.estudianteValidator = this.initValidation('#register2', this.getEstudianteValidations());
    
   }
-
+  deactivateEstudinateValidator(): void {
+    if (this.estudianteValidator) {
+      // Remover validaciones activas
+      this.estudianteValidator.destroy();
+      this.estudianteValidator = null; // Limpiar la referencia
+    }
+  }
 
 
  
