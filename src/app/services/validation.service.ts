@@ -7,7 +7,7 @@ import JustValidate from 'just-validate';
 export class ValidationService  {
   private empresaValidator: JustValidate | undefined;
   private consultorValidator: JustValidate | undefined;
-
+  private estudianteValidator: JustValidate | undefined;
   constructor() {}
 
 
@@ -17,13 +17,33 @@ export class ValidationService  {
     this.empresaValidator = this.initValidation('#register', this.getEmpresaValidations());
   }
 
-  initializeConsultorValidator(): void {
+initializeConsultorValidator(): void {
+    
     this.consultorValidator = this.initValidation('#register2', this.getConsultorValidations());
+   
+  }
+
+  initializeEstudinateValidator(): void {
+    
+    this.estudianteValidator = this.initValidation('#register2', this.getEstudianteValidations());
+   
   }
 
 
 
+ 
 
+
+/* */
+
+
+
+
+
+
+
+
+/* */
     // Función común para inicializar validaciones con JustValidate
     private initValidation(formId: string, validations: any[]): JustValidate {
       const validator = new JustValidate(formId, {
@@ -39,16 +59,16 @@ export class ValidationService  {
       
     });
 
-    validations.forEach(validation => {
-      if (validation.field) {
-        validator.addField(validation.field, validation.rules);
-      } else if (validation.requiredGroup) {
-        validator.addRequiredGroup(validation.requiredGroup, validation.errorMessage, validation.options);
-      }
-    });
+  validations.forEach(validation => {
+    if (validation.field) {
+      validator.addField(validation.field, validation.rules);
+    } else if (validation.requiredGroup) {
+      validator.addRequiredGroup(validation.requiredGroup, validation.errorMessage, validation.options);
+    }
+  });
 
-    return validator;
-  }
+  return validator;
+}
 
 
 
@@ -160,8 +180,8 @@ export class ValidationService  {
   }
 
   
-  private getConsultorValidations(): any[] {
-    return [
+    public getConsultorValidations(): any[] {
+    return  [
       {
         field: '#name1',
         rules: [
@@ -195,13 +215,27 @@ export class ValidationService  {
           { rule: 'minLength', value: 8, errorMessage: "Minimo 6 caracteres" },
         ]
       },
-
       {
-        field: '#tipo1',
+        field: '#rol',
         rules: [
           { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
+   
+    
+
+    ];
+
+
+
+  }
+
+
+  public getEstudianteValidations(): any[] {
+    return  [
+     
+   
+      
       {
         field: '#Departamento1',
         rules: [
@@ -210,6 +244,8 @@ export class ValidationService  {
           { rule: 'maxLength', value: 50, errorMessage: "Maximo 50 caracteres" },
         ]
       },
+
+
       {
         field: '#programa',
         rules: [
@@ -218,8 +254,7 @@ export class ValidationService  {
           { rule: 'maxLength', value: 50, errorMessage: "Maximo 50 caracteres" },
         ]
       },
-      
-    
+
 
       {
         field: '#año',
@@ -245,12 +280,13 @@ export class ValidationService  {
       },
 
       {
-        field: '#tipo3',
+        field: '#periodos',
         rules: [
           { rule: 'required', errorMessage: "*campo obligatorio" },
         ]
       },
 
+     
       {
       field: '#acceptTerms1',
       rules: [
@@ -259,8 +295,17 @@ export class ValidationService  {
       }
     
 
-    ]
+    ];
+
+
+
   }
 
 
-}
+
+  }
+
+
+ 
+
+
