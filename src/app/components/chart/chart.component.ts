@@ -28,6 +28,7 @@ export class ChartComponent implements OnInit {
       },
     });
   }
+  
 
   private renderChart(data: any) {
     if (!data || !data.arrows) {
@@ -36,101 +37,107 @@ export class ChartComponent implements OnInit {
     }
 
     const element = this.chartContainer.nativeElement;
-    const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-    const width = element.offsetWidth - margin.left - margin.right;
-    const height = element.offsetHeight - margin.top - margin.bottom;
+  const margin = { top: 20, right: 20, bottom: 40, left: 50 };
+  const width = 300 - margin.left - margin.right;
+  const height = 300 - margin.top - margin.bottom;
 
-    const svg = d3
-      .select(element)
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
+  const svg = d3.select(element).append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    const x = d3.scaleLinear().domain([-1.2, 1.2]).range([0, width]);
+  const x = d3.scaleLinear().domain([-1, 1]).range([0, width]);
+  const y = d3.scaleLinear().domain([-1, 1]).range([height, 0]);
 
-    const y = d3.scaleLinear().domain([-1.2, 1.2]).range([height, 0]);
+  // Ejes
+  svg.append('g')
+    .attr('transform', `translate(0,${height/2})`)
+    .call(d3.axisBottom(x).ticks(0));
+  svg.append('g')
+    .attr('transform', `translate(${width/2},0)`)
+    .call(d3.axisLeft(y).ticks(0));
 
-    svg
-      .append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x));
+  // Etiquetas de ejes
+  svg.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('x', width)
+    .attr('y', height/2 + 20)
+    .text('Precio');
+  svg.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', -margin.left + 10)
+    .attr('x', -height/2)
+    .text('Valor percibido del producto');
 
-    svg.append('g').call(d3.axisLeft(y));
+   // Flechas
+   data.arrows.forEach((arrow: any) => {
+    svg.append('line')
+      .attr('x1', x(0))
+      .attr('y1', y(0))
+      .attr('x2', x(arrow.x))
+      .attr('y2', y(arrow.y))
+      .attr('stroke', 'black')
+      .attr('marker-end', 'url(#arrow)');
 
-    // Añadir el punto central
-    svg
-      .append('circle')
-      .attr('cx', x(0))
-      .attr('cy', y(0))
-      .attr('r', 10)
-      .style('fill', 'black');
+    const label = svg.append('text')
+      .attr('x', x(arrow.x * 1.1))
+      .attr('y', y(arrow.y * 1.1))
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '10px');
 
-    // Añadir las flechas
-    data.arrows.forEach((arrow: any) => {
-      svg
-        .append('line')
-        .attr('x1', x(0))
-        .attr('y1', y(0))
-        .attr('x2', x(arrow.x))
-        .attr('y2', y(arrow.y))
-        .attr('stroke', 'black')
-        .attr('stroke-width', 2)
-        .attr('marker-end', 'url(#arrow)');
+    const lines = this.wrapText(arrow.label, 15);
+    lines.forEach((line, i) => {
+      label.append('tspan')
+        .attr('x', x(arrow.x * 1.1))
+        .attr('dy', i ? '1.2em' : '0em')
+        .text(line);
+    });
+  });
 
-      // Añadir las etiquetas de las flechas
-      svg
-        .append('text')
-        .attr('x', x(arrow.x))
-        .attr('y', y(arrow.y))
-        .attr('dy', -5)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '12px')
-        .text(arrow.label);
+  // Estrella
+  const star = data.desiredPosition.coordinates;
+  const starPath = 'M256,32L317.5,191.8L480,191.8L347.2,287.2L408.7,447L256,351.8L103.3,447L164.8,287.2L32,191.8L194.5,191.8L256,32z';
+  svg.append('path')
+    .attr('d', starPath)
+    .attr('transform', `translate(${x(star.x)},${y(star.y)}) scale(0.05)`)
+    .attr('fill', 'yellow')
+    .attr('stroke', 'black');
+
+  // Elipse
+  const oval = data.oval;
+  svg.append('ellipse')
+    .attr('cx', x(oval.center.x))
+    .attr('cy', y(oval.center.y))
+    .attr('rx', width * oval.radiusX / 2)
+    .attr('ry', height * oval.radiusY / 2)
+    .attr('transform', `rotate(${oval.rotation},${x(oval.center.x)},${y(oval.center.y)})`)
+    .attr('fill', 'none')
+    .attr('stroke', 'black')
+    .attr('stroke-dasharray', '5,5');
+  }
+  private wrapText(text: string, width: number): string[] {
+    const words = text.split(/\s+/);
+    let lines: string[] = [];
+    let currentLine: string[] = [];
+
+    words.forEach(word => {
+      if ((currentLine.join(' ') + ' ' + word).length <= width) {
+        currentLine.push(word);
+      } else {
+        if (currentLine.length > 0) {
+          lines.push(currentLine.join(' '));
+        }
+        currentLine = [word];
+      }
     });
 
-    // Definir el marcador de flecha
-    svg
-      .append('defs')
-      .append('marker')
-      .attr('id', 'arrow')
-      .attr('viewBox', '0 0 10 10')
-      .attr('refX', 5)
-      .attr('refY', 5)
-      .attr('markerWidth', 6)
-      .attr('markerHeight', 6)
-      .attr('orient', 'auto')
-      .append('path')
-      .attr('d', 'M 0 0 L 10 5 L 0 10 z')
-      .attr('fill', 'black');
-    // Añadir la elipse
-    const oval = data.oval;
-    svg
-      .append('ellipse')
-      .attr('cx', x(oval.center.x))
-      .attr('cy', y(oval.center.y))
-      .attr('rx', x(oval.radiusX) - x(0))
-      .attr('ry', y(0) - y(oval.radiusY))
-      .attr(
-        'transform',
-        `rotate(${oval.rotation}, ${x(oval.center.x)}, ${y(oval.center.y)})`
-      )
-      .style('fill', 'none')
-      .style('stroke', 'black')
-      .style('stroke-dasharray', '5,5');
-    // Añadir la posición deseada (estrella)
-    const star = data.desiredPosition.coordinates;
-    svg
-      .append('path')
-      .attr(
-        'd',
-        'M256,32L317.5,191.8L480,191.8L347.2,287.2L408.7,447L256,351.8L103.3,447L164.8,287.2L32,191.8L194.5,191.8L256,32z'
-      )
-      .attr(
-        'transform',
-        `translate(${x(star.x) - 12}, ${y(star.y) - 12}) scale(0.1)`
-      )
-      .attr('fill', 'yellow');
+    if (currentLine.length > 0) {
+      lines.push(currentLine.join(' '));
+    }
+
+    return lines;
   }
+
 }
