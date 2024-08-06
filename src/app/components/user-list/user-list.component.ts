@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class UserListComponent implements OnInit {
   @Input() users: User[] = [];
   @Output() userSelected = new EventEmitter<User>();
-  selectedUserType: string = 'Estudiantes';
+  selectedUserType: string = 'Profesores';
   selectedUser: User | null = null;
   searchTerm: string = '';
 
@@ -22,27 +22,20 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
-    this.selectDefaultUser();
   }
 
   get filteredUsers() {
-    return this.users.filter(user => 
-      user.type === this.selectedUserType && 
-      (user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
-       user.email.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    return this.users.filter(user =>
+      user.type.toLowerCase() === this.selectedUserType.toLowerCase() &&
+      ((user.name?.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+        user.nombre?.toLowerCase().includes(this.searchTerm.toLowerCase())) ||
+        user.email.toLowerCase().includes(this.searchTerm.toLowerCase()))
     );
   }
 
   selectUser(user: User) {
     this.userSelected.emit(user);
     this.selectedUser = user;
-  }
-
-  selectDefaultUser() {
-    const usersOfSelectedType = this.filteredUsers;
-    if (usersOfSelectedType.length > 0) {
-      this.selectUser(usersOfSelectedType[0]);
-    }
   }
 
   updateUser(updatedUser: User) {
@@ -56,8 +49,10 @@ export class UserListComponent implements OnInit {
   private loadUsers() {
     this.usersService.getUsers().subscribe(users => {
       this.users = users;
-      this.selectDefaultUser();
-      
+      console.log('Users loaded:', users);
+      if (this.filteredUsers.length > 0) {
+        this.selectUser(this.filteredUsers[0]);
+      }
     });
   }
 }

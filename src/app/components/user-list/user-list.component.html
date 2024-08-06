@@ -1,15 +1,13 @@
-<!-- user-list.component.html -->
 <div class="user-list-container">
   <div class="user-list">
     <div class="user-list-header">
       <div class="tabs">
         <button *ngFor="let type of ['Profesores', 'Estudiantes', 'Empresas']"
                 [class.selected]="type === selectedUserType"
-                (click)="selectedUserType = type; selectDefaultUser()">
+                (click)="selectedUserType = type">
           {{ type }}
         </button>
       </div>
-      <!-- Buscador -->
       <div class="search-container">
         <input type="text" placeholder="Buscar..." [(ngModel)]="searchTerm">
         <button class="search-button">
@@ -23,9 +21,9 @@
       <li *ngFor="let user of filteredUsers"
           [class.selected]="user === selectedUser"
           (click)="selectUser(user)">
-        <img [src]="user.image || 'default-avatar.png'" alt="{{user.name}}">
+        <img [src]="user.image || 'default-avatar.png'" alt="{{user.name || user.nombre}}">
         <div>
-          <strong>{{ user.name }}</strong>
+          <strong>{{ user.name || user.nombre }}</strong>
           <span>{{ user.email }}</span>
         </div>
       </li>

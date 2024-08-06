@@ -5,24 +5,29 @@ import { UsersService } from '../../services/user.service';
 
 export interface User {
   id: number;
-  name: string;
+  name?: string;
+  nombre?: string;
   email: string;
-  type: string;
-  empresa_asociada?: string;
-  edad?: number;
-  carrera?: string;
-  semestre?: number;
-  especialidad?: string;
-  anos_experiencia?: number;
-  cursos_impartidos?: string[];
-  sector?: string;
-  empleados?: number;
-  fundacion?: number;
-  productos?: string[];
-  facturacion_anual?: number;
-  estudantes_profesor?: number[];
-  image?: string;
   password?: string;
+  role?: string;
+  type: string;
+  telefono?: string;
+  companyName?: string;
+  personType?: string;
+  nit?: string;
+  sector?: string;
+  address?: string;
+  phone?: string;
+  website?: string;
+  acceptTerms?: boolean;
+  empresa_id?: number;
+  Departamento?: string;
+  programa?: string;
+  año?: string;
+  periodo?: string;
+  'id-empresa'?: number | number[];
+  'id-estudante'?: number[];
+  image?: string;
 }
 
 @Component({
@@ -41,6 +46,7 @@ export class UserDetailComponent implements OnChanges {
   originalUser!: User;
 
   constructor(private usersService: UsersService) {}
+  
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['user'] && this.user) {
@@ -52,24 +58,29 @@ export class UserDetailComponent implements OnChanges {
 
   private updateFieldVisibility() {
     this.fieldsVisibility = {
-      name: 'name' in this.editUser,
+      name: 'name' in this.editUser || 'nombre' in this.editUser,
       email: 'email' in this.editUser,
-      empresa_asociada: 'empresa_asociada' in this.editUser,
-      edad: 'edad' in this.editUser,
-      carrera: 'carrera' in this.editUser,
-      semestre: 'semestre' in this.editUser,
-      especialidad: 'especialidad' in this.editUser,
-      anos_experiencia: 'anos_experiencia' in this.editUser,
-      cursos_impartidos: 'cursos_impartidos' in this.editUser,
+      programa: 'programa' in this.editUser,
+      periodo: 'periodo' in this.editUser,
       sector: 'sector' in this.editUser,
-      empleados: 'empleados' in this.editUser,
-      fundacion: 'fundacion' in this.editUser,
-      productos: 'productos' in this.editUser,
-      facturacion_anual: 'facturacion_anual' in this.editUser,
+      companyName: 'companyName' in this.editUser,
+      nit: 'nit' in this.editUser,
     };
   }
+
   get visibleFields() {
     return Object.keys(this.fieldsVisibility).filter(key => this.fieldsVisibility[key]).slice(0, 3);
+  }
+  get userName(): string {
+    return this.editUser.name || this.editUser.nombre || '';
+  }
+  
+  set userName(value: string) {
+    if ('name' in this.editUser) {
+      this.editUser.name = value;
+    } else if ('nombre' in this.editUser) {
+      this.editUser.nombre = value;
+    }
   }
 
   saveChanges() {
@@ -86,7 +97,7 @@ export class UserDetailComponent implements OnChanges {
     } else {
       this.isEditing = true;
     }
-  }  
+  }
 
   cancelEdit() {
     this.editUser = { ...this.originalUser }; // Restaurar los datos originales
