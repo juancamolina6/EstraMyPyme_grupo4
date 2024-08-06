@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink, RouterOutlet],
   template: `
     <div class="menu_icon" (click)="toggleMenu()">
       <span>{{ isMenuOpen ? '&#10006;' : '&#9776;' }}</span>
@@ -17,7 +19,7 @@ import { CommonModule } from '@angular/common';
       <button>Contactanos</button>
     </div>
     <div class="ingresalogin">
-      <button>ingresa <img src="https://res.cloudinary.com/dpeqdynym/image/upload/v1722015231/Male_User_1_vwwndu.png" width="40px"></button>
+      <button   routerLink="login">ingresa <img src="https://res.cloudinary.com/dpeqdynym/image/upload/v1722015231/Male_User_1_vwwndu.png" width="40px"></button>
     </div>
   `,
   styles: [
