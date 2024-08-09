@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user-detail/user-detail.component';
 import { UsersService } from '../../services/user.service';
+import { SharedService } from '../../services/shared.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -18,10 +19,15 @@ export class UserListComponent implements OnInit {
   selectedUser: User | null = null;
   searchTerm: string = '';
 
-  constructor(private usersService: UsersService) {}
+  constructor(private sharedService: SharedService) {}
 
   ngOnInit() {
-    this.loadUsers();
+    this.sharedService.users$.subscribe(users => {
+      this.users = users;
+      if (this.filteredUsers.length > 0) {
+        this.selectUser(this.filteredUsers[0]);
+      }
+    });
   }
 
   get filteredUsers() {
@@ -44,15 +50,5 @@ export class UserListComponent implements OnInit {
       this.users[index] = updatedUser;
       this.selectUser(updatedUser);
     }
-  }
-
-  private loadUsers() {
-    this.usersService.getUsers().subscribe(users => {
-      this.users = users;
-      console.log('Users loaded:', users);
-      if (this.filteredUsers.length > 0) {
-        this.selectUser(this.filteredUsers[0]);
-      }
-    });
   }
 }
