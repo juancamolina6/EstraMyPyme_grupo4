@@ -28,6 +28,7 @@ export class RegistroComponent implements AfterViewInit {
   private consultorValidatorInitialized = false;
 
   type: string = '';
+  areValidationsActive: boolean = false;
 
   constructor(
     private validationService: ValidationService,
@@ -46,7 +47,7 @@ export class RegistroComponent implements AfterViewInit {
   }
 
 
-/*inicializar validaciones segun el rol estuidnate */
+/*inicializar validaciones segun el rol estuidiate */
 
 
 
@@ -58,7 +59,8 @@ public onTipoChange(event: Event): void {
    
     this.initializestudianteValidators(); // Inicializar validaciones para estudiante
   } else if (this.type === 'profesor') {
-    
+
+    this.desaestudianteValidators();
   }
 
   // Detectar cambios en el DOM si es necesario
@@ -66,13 +68,29 @@ public onTipoChange(event: Event): void {
 }
 
 initializestudianteValidators(): void {
-  if (this.type === 'estudiante' ) {
-    this.validationService.initializeEstudinateValidator();
-   
+  if (this.type === 'estudiante') {
+    if (!this.areValidationsActive) {
+      this.validationService.initializeEstudinateValidator();
+      this.areValidationsActive = true; // Marcar que las validaciones están activas
+    }
   } 
 
   this.cdr.detectChanges();
 }
+
+desaestudianteValidators(): void {
+  
+  if (this.type === 'profesor') {
+    if (this.areValidationsActive) {
+      this.validationService.deactivateEstudinateValidator();
+      this.areValidationsActive = false; // Marcar que las validaciones no están activas
+    }
+  }
+
+  this.cdr.detectChanges();
+
+}
+
 
 /* */
 
@@ -131,35 +149,38 @@ initializestudianteValidators(): void {
 
   // Modos oscuro
 
-  checkbox!: HTMLInputElement; // Utilizamos "!" para indicar que será inicializado más tarde
-  contenedor!: HTMLElement; // Utilizamos "!" para indicar que será inicializado más tarde
+checkbox!: HTMLInputElement;
+contenedor!: HTMLElement;
 
-  changeTheme() {
-    if (this.checkbox.checked) {
-      // Si el checkbox está marcado, aplica la clase de modo claro
-      this.contenedor.classList.add('dark-mode');
-      this.contenedor.classList.remove('light-mode');
-    } else {
-      // Si el checkbox NO está marcado, aplica la clase de modo oscuro
-      this.contenedor.classList.add('light-mode');
-      this.contenedor.classList.remove('dark-mode');
-    }
+changeTheme() {
+  if (this.checkbox.checked) {
+    // Si el checkbox está marcado, aplica la clase de modo claro
+    this.contenedor.classList.add('light-mode');
+    this.contenedor.classList.remove('dark-mode');
+  } else {
+    // Si el checkbox NO está marcado, aplica la clase de modo oscuro
+    this.contenedor.classList.add('dark-mode');
+    this.contenedor.classList.remove('light-mode');
   }
+}
 
-  onCheckboxChange() {
-    this.changeTheme();
-  }
+onCheckboxChange() {
+  this.changeTheme();
+}
 
-  // Método para inicializar el modo de tema
-  initializeThemeMode() {
-    this.checkbox = document.getElementById('input') as HTMLInputElement;
-    this.contenedor = document.querySelector('.register-container') as HTMLElement;
+initializeThemeMode() {
+  this.checkbox = document.getElementById('input') as HTMLInputElement;
+  this.contenedor = document.querySelector('.register-container') as HTMLElement;
 
-    this.changeTheme();
+  // Configura el checkbox como desmarcado por defecto
+  this.checkbox.checked = false;
 
-    // Agrega un event listener al checkbox para cambiar el tema
-    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
-  }
+  this.changeTheme();
+
+  // Agrega un event listener al checkbox para cambiar el tema
+  this.checkbox.addEventListener('change', this.changeTheme.bind(this));
+}
+
 
 
   /*responsil button desplegable */ 
@@ -169,12 +190,6 @@ initializestudianteValidators(): void {
       additionalButtons.classList.toggle('hidden');
     }
   }
-
- 
-
-
-    
-  
 
 
 }
