@@ -15,6 +15,34 @@
 
 }
 
+.home {
+  border: white solid 0.125rem;
+  border-radius: 1.875rem; 
+  color: white;
+  background-color: black;
+  width: 3rem; 
+  height: 1.875rem; 
+  padding: 0rem 0.625rem;
+  font-size: 1rem; 
+  margin-right: -3.125rem; 
+  margin-top: 0.8rem;
+  z-index: 4;
+  position: relative;
+  transform: translateX( -3.5rem);
+   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+}
+
+
+.home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
+
+.main {
+  display: none;
+}
+
 /*modos*/
 .modos {
   width: 100%;
@@ -27,7 +55,10 @@
 }
  .modos1{
   display: flex;
-  align-items: start;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0;
+
    
  }
 
@@ -39,19 +70,23 @@
   width: 6.25rem; 
   height: 1.875rem; 
   padding: 0rem 0.625rem;
-  font-size: 1.125rem; 
+  font-size: 1rem; 
   margin-right: -3.125rem; 
   margin-top: 3.125rem;
   z-index: 4;
   position: relative;
+  transform: translateY( -2.4rem);
 }
+
 
 .modo {
   width: 4rem;
   height: 4rem;
-  margin-right: 13rem;
-  margin-top: .5rem; 
-  margin-left: -1.875rem;
+  margin-right: 8rem;
+  margin-left: -2.8rem;
+  transform: translateY( -1.8rem);
+
+  
 }
 
 /*light mode */
@@ -72,6 +107,10 @@
 
 }
 
+.light-mode .home {
+  border: black solid 0.125rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729083/fznjrjzijebiaijttr6y.png') no-repeat center center;
+}
 
 
 .light-mode .slider {
@@ -201,6 +240,11 @@
   color: black;
 }
 
+.light-mode .home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
 .switch {
   position: relative;
   margin-left: 6.25rem; /* 100px / 16 */
@@ -215,6 +259,8 @@
   width: 0;
   height: 0;
 }
+
+
 
 .slider {
   width: 4.25rem; /* 68px / 16 */
@@ -288,7 +334,7 @@ input:checked + .slider {
   position: relative;
   top: 9.375rem; /* 150px / 16 */
   right: 0;
-  left: 1.25rem; /* 20px / 16 */
+  left: 7rem; /* 20px / 16 */
 }
 
 .stilo {
@@ -379,9 +425,9 @@ p {
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: #555 #191919; /* Firefox */
   position: relative;
-  top: 7.5rem; /* 120px / 16 */
+  top: 6rem; /* 120px / 16 */
   right: 0;
-  left: 1.25rem; /* 20px / 16 */
+  left: 6.5rem; /* 20px / 16 */
   z-index: 5;
 
 }
@@ -390,7 +436,7 @@ p {
   display: flex;
   justify-content: center;
   margin-top: 3rem; /* 48px / 16 */
-  margin-left: 1.875rem; /* 30px / 16 */
+  margin-left: .01rem; /* 30px / 16 */
   margin-bottom: 0.625rem; /* 10px / 16 */
   color: white;
   font-size: 1.125rem; /* 18px / 16 */
@@ -696,9 +742,7 @@ p {
 }
 
 /*4*/
-.che {
-  display: block;
-}
+
 
 .ches {
   display: block;
@@ -706,7 +750,11 @@ p {
   align-items: center;
   margin-left: 6.25rem; /* 100px */
   margin-bottom: 1.875rem; /* 30px */
+
+
 }
+
+
 
 .controlradio {
   display: flex;
@@ -739,6 +787,11 @@ p {
   margin-left: 1.875rem; /* 30px */
 }
 
+.te{
+  margin-left: 4rem;
+
+}
+
 .color {
   color: #0000ff;
 }
@@ -763,7 +816,7 @@ p {
   justify-content: center;
   margin-top: 1.25rem; /* 20px */
   margin-bottom: 1.875rem; /* 30px */
-  margin-left: -10rem; /* -10rem (negative margin-left) */
+  margin-left: 0rem; /* -10rem (negative margin-left) */
   gap: 1rem; /* 16px */
 }
 
@@ -910,6 +963,8 @@ input[type='number']::-webkit-inner-spin-button {
 
 /* Media query */
 @media screen and (max-width: 43.75rem) { /* 700px */
+
+
   .register-container {
     display: block;
     align-items: center;
@@ -917,9 +972,36 @@ input[type='number']::-webkit-inner-spin-button {
     margin: 0;
     width: 100vw;
     height: 100vh;
-   
+    box-sizing: border-box;
+    position: relative; 
+    overflow: hidden; 
   }
- 
+
+
+
+
+  .light-mode {
+    width: 100%; 
+    overflow: hidden; 
+    position: relative; 
+  }
+ .todo {
+
+  translate: 0px -10px;
+ }
+
+.modos1{
+  width: 20%;
+  left: 58%;
+  right: 10%;
+  bottom: 2%;
+  position: absolute;
+  display: flex;
+  align-items: start;
+  
+  
+}
+
 .modos{
   width: 100%;
   height: 3.125rem;
@@ -930,19 +1012,24 @@ input[type='number']::-webkit-inner-spin-button {
   padding: 0;
   
 }
-.modos1{
-  width: 20%;
-  left: 58%;
-  right: 10%;
-  bottom: 2%;
-  position: absolute;
-  display: flex;
-  align-items: start;
-  
+
+.home{
+  translate: -170px -55px;
+}
+
+#additionalButtons {
+  padding-left: 100px;
+}
+
+.language{
+  height: 1.8rem; 
+  translate: 5px -25px;
+  width: 4rem;
 }
 
 .modo{
   right: 5%;
+  translate: 0px -25px;
 }
 
 .slider{
@@ -957,27 +1044,21 @@ input[type='number']::-webkit-inner-spin-button {
   translate: -15px 0px;
 }
 
-
 .langua{
   margin-right: 0.25rem;
  
 }
 
-.language{
-  translate: 0.625rem 0;
-  width: 4rem;
-}
-
-
-
 .registro-ok{
   width: 90%;
   height: 70%;
-  top: 9%;
+  top: 25%;
   bottom: 5%;
   left: 5%;
   right: 5%;
   display: flex;
+ position: absolute;
+ overflow-x: hidden; 
 
 }
 
@@ -1032,7 +1113,12 @@ top: 0.625rem;
 
 .tipo{
   border: solid 0.125rem;
+  font-size: 0.9375rem; /*tamaño lectra desplegables*/
 }
+
+
+
+
 
 /*diseño input*/
 
@@ -1109,13 +1195,19 @@ top: 0.625rem;
 }
 /*end*/
 
+.button-eye i {
+  width: 100%;
+  margin: 0;
+  translate:  17rem -.4rem ;
+
+}
 
 
 .center {
   display: flex;
-  align-items: center;
-  translate: -100px 30px;
- 
+  justify-content: start;
+  margin: 0;
+ translate: 1rem 3rem;
 
 }
 
@@ -1123,7 +1215,7 @@ top: 0.625rem;
   top: 5px;
   display: flex;
   align-items: center;
-  translate: -40px 30px;
+  translate: -110px 40px;
   margin: 0;
 }
 
@@ -1135,11 +1227,46 @@ top: 0.625rem;
   font-size: 13px;
 }
 
+.te {
 
+  translate: 10px 30px;
 }
 
+.desplegable{
+  margin-top: 100px;
+  top: 50px;
+}
+
+.main{
+  margin-top: 20px;
+  display: flex;;
+  border: none;
+  width: 3rem;
+  height: 2.5rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722744432/icons8-personalizar-vista-24_tvmit7.png') no-repeat center center;
+
+ }
+ 
+ .light-mode .main{
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722744432/icons8-personalizar-vista-24_1_ywlron.png') no-repeat center center;
+   
+ }
+
+ .hidden {
+  display: none;
+}
+
+   
+ #additionalButtons button {
+   display: block;
+   margin: 10px auto;
+ 
+ }
 
 
+
+
+}
 
 
 /*logo*/
@@ -1148,8 +1275,8 @@ top: 0.625rem;
   .login-now {
     width: 100%;
     height: 3.125rem;
-    top: 0rem;
-    left: 0;
+    top: 2rem;
+    left: 3rem;
     margin: 0;
     position: absolute;
     display: flex;
@@ -1157,7 +1284,8 @@ top: 0.625rem;
   }
 
   .left-info{
-    width: 100%;
+    margin-left: 0;
+    width: 0px;
     height: 5rem;
     left: 0rem;
    
@@ -1178,7 +1306,7 @@ top: 0.625rem;
   }
 
   .logo h1 {
-    font-size: 1.25rem; 
+    font-size: 1.50rem; 
 
   }
 
@@ -1189,13 +1317,15 @@ top: 0.625rem;
   }
 
   .login-now h6 {
-    transform: translateX(-3rem);
+  
+    transform: translateX(-5rem);
    
   }
+
 .imagen-logo{
   width: 4rem;
   height: 2rem;
-  translate: -3rem 0;
+  translate: -5rem 0;
 }
 
 
@@ -1203,7 +1333,7 @@ top: 0.625rem;
 .light-mode .imagen-logo{
   width: 5rem;
   height: 4rem;
-  translate: -2rem 0.300rem;
+  translate: -4rem 0.300rem;
 }
 
 

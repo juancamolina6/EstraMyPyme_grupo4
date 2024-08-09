@@ -1,8 +1,9 @@
-.chart {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    color: black;
-    margin: 30;
-  }
-  
+text {
+  font-size: 10px;
+}
+
+.chart-container {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
