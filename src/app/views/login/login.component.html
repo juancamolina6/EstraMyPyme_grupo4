@@ -5,32 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EstraMyPyme</title>
     <link rel="stylesheet" href="login.component.css">
+    <link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 <body>
+      <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+    <div>
+        
+    </div><div class="register-container">
+    
+    
+    <div class="modos">
       
-    <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
-    <div class="controls">
-        <!-- Lista desplegable para seleccionar el idioma -->
-        <select id="languageSelect">
-            <option value="es" selected>ESP</option>
-            <option value="en">ENG</option>
-            <option value="fr">FRA</option>
-        </select>
-        <!-- Botón para cambiar el tema -->
-        <button id="themeButton">🌙</button>
+       <div>
+            <button class="language home"></button>
+        </div>
+      
+      
+       <!-- Lista desplegable para seleccionar el idioma -->
+       <select class="language" id="language">
+          <option value="es" selected>idioma</option>
+          <option value="en">ENG</option>
+          <option value="fr">FRA</option>
+          <option value="spa">SPA</option>
+       </select>
     </div>
+    <div class="modo" id="light-mode"> 
+       <label class="switch">
+          <input type="checkbox" checked onChange="changeTheme();" id="input">
+          <span class="slider round"></span>
+       </label>
+    </div> 
+    </div>
+    
+
     <div class="container">
         <!-- Sección izquierda con la imagen -->
-        <div class="left-section">
+        <div class="">
             <!-- Imagen que cambiará según el modo -->
-            <app-sidebar></app-sidebar>
+            <app-sidebar class=""></app-sidebar>
         </div>
         <!-- Sección derecha con el formulario de inicio de sesión -->
         <div class="right-section">
             <div class="login-box">
-                <h2 data-translate="welcome">Bienvenido</h2>
-                <p data-translate="createAccount">Crea tu cuenta</p>
-                <p data-translate="enterEmail">Inicia sesión con tus datos</p>
+                <h3 data-translate="welcome" class="_welcome">Bienvenido</h3>
+                <p data-translate="createAccount"class="login-info">Crea tu cuenta</p>
+                <p data-translate="enterEmail"class="login-info">Inicia sesión con tus datos</p>
                <!-- login.component.html -->
 <form (ngSubmit)="login()">
     <label for="email">Correo Electrónico:</label>
@@ -42,11 +62,18 @@
     <button type="submit">Iniciar Sesión</button>
   </form>
   
-                <p class= "TyC" data-translate="agreement">Al hacer clic en continuar, acepta nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a></p>
+                <p class= "TyC" data-translate="agreement">Al hacer clic en continuar, acepta nuestros <a href="#" class="TyC">Términos de servicio</a> y <a href="#" class="TyC">Política de privacidad</a></p>
+                
             </div>
+           
         </div>
+        <p class="fontcolor register-now">¿Aún no tienes una cuenta? <a href="#" routerLink='/registro'>¡Regístrate ahora!</a></p>
+        <router-outlet></router-outlet>
+        
     </div>
     <!-- Enlace al archivo JavaScript -->
     <script src="script.js"></script>
+    
 </body>
+
 </html>

@@ -1,332 +1,329 @@
 
+
 <div class="register-container">
 
 
 
-   <div class="todo">
-    <button   class="main" id="mainButton" (click)="toggleButtons()"></button>
+  <div class="todo">
+   <button   class="main" id="mainButton" (click)="toggleButtons()"></button>
+   
+   </div>
     
+    <div  id="additionalButtons" class="hidden">
+
+    <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+    <div class="modos">
+
+   <div>
+       <button  routerLink="" class="home"></button>
+   </div>
+
+    <div class="modos1">
+    <div class="langua">
+       <!-- Lista desplegable para seleccionar el idioma -->
+       <select class="language" id="language">
+          <option value="es" selected>idioma</option>
+          <option value="en">ENG</option>
+          <option value="fr">FRA</option>
+          <option value="spa">SPA</option>
+       </select>
     </div>
-     
-     <div  id="additionalButtons" class="hidden">
 
-     <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
-     <div class="modos">
-
-    <div>
-        <button  routerLink="" class="home"></button>
-    </div>
-
-     <div class="modos1">
-     <div class="langua">
-        <!-- Lista desplegable para seleccionar el idioma -->
-        <select class="language" id="language">
-           <option value="es" selected>idioma</option>
-           <option value="en">ENG</option>
-           <option value="fr">FRA</option>
-           <option value="spa">SPA</option>
-        </select>
-     </div>
-
-     <div class="modo" id="light-mode"> 
-        <label class="switch">
-           <input type="checkbox" id="input" (change)="onCheckboxChange()">
-           <span class="slider round"></span>
-        </label>
-     </div> 
-    </div>
-    </div>
-  </div>
+    <div class="modo" id="light-mode"> 
+       <label class="switch">
+          <input type="checkbox" id="input" (change)="onCheckboxChange()">
+          <span class="slider round"></span>
+       </label>
+    </div> 
+   </div>
+   </div>
+ </div>
 
 
-    <!--logo-->
-    <section class="login-now">
-        <div class="left-info">
+   <!--logo-->
+   <section class="login-now">
+       <div class="left-info">
+   
+         <div class="logo">
+           <h1>EstraMyPyme</h1>
+           <div class="by-eafit">
+             <h6 class="h6"  >By</h6>
+             <img class="imagen-logo" src="https://res.cloudinary.com/dpeqdynym/image/upload/v1721256417/Logo_EAFIT_2015_-_Blanco_wzm6j8.png" width="90" height="40" alt="Logo EAFIT">
+           </div>
+           <p class="stilo">Evalua y mejora tus estrategias <br> 
+   empresariales.</p>
+         </div>
+       </div>
+     </section>
+ 
+ 
+ <!--register-->
+   <!--link icono ojo-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+        <div class="registro-ok">
+ 
+         <p class="titulo">Registro</p>
+ 
+         <div class="botonn">
+             <button id="btn-empresa" class="pure-material-button-contained" (click)="toggleView('empresa')" [class.active]="isEmpresaActive">Empresa</button>
+             <button id="btn-consultor" class="pure-material-button-contained"   (click)="toggleView('consultor')" [class.active]="isConsultorActive">Consultor</button>
+         </div>
+         <div class="register" *ngIf="isEmpresaActive">
+              <form  id="register" class="register" autocomplete="off">
+ 
+ 
+                <p class="data d">Datos Personales</p>
     
-          <div class="logo">
-            <h1>EstraMyPyme</h1>
-            <div class="by-eafit">
-              <h6 class="h6"  >By</h6>
-              <img class="imagen-logo" src="https://res.cloudinary.com/dpeqdynym/image/upload/v1721256417/Logo_EAFIT_2015_-_Blanco_wzm6j8.png" width="90" height="40" alt="Logo EAFIT">
-            </div>
-            <p class="stilo">Evalua y mejora tus estrategias <br> 
-    empresariales.</p>
-          </div>
-        </div>
-      </section>
-  
-  
-  <!--register-->
-    <!--link icono ojo-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-         <div class="registro-ok">
-  
-          <p class="titulo">Registro</p>
-  
-          <div class="botonn">
-              <button id="btn-empresa" class="pure-material-button-contained" (click)="toggleView('empresa')" [class.active]="isEmpresaActive">Empresa</button>
-              <button id="btn-consultor" class="pure-material-button-contained"   (click)="toggleView('consultor')" [class.active]="isConsultorActive">Consultor</button>
-          </div>
-          <div class="register" *ngIf="isEmpresaActive">
-               <form  id="register" class="register" autocomplete="off">
-  
-  
-                 <p class="data d">Datos Personales</p>
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo la" for="name1">
-                         <input placeholder="" type="text" id="name" name="name" required autocomplete="off">
-                         <span>Nombre Completo</span>
-                     </label>
-                 </div>
-             
-                 <div >
-                     <label class="pure-material-textfield-outlined largo" for="email">
-                         <input placeholder="" type="text" id="email" name="email" required autocomplete="off">
-                         <span>Correo Electronico</span>
-                     </label>
-                 </div>
+                <div>
+                    <label class="pure-material-textfield-outlined largo la" for="name1">
+                        <input placeholder="" type="text" id="name" name="name" required autocomplete="off">
+                        <span>Nombre Completo</span>
+                    </label>
+                </div>
             
-                 <div class="eye">
-                       <label class="pure-material-textfield-outlined largo" for="password">
-                           <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password" name="password" required autocomplete="off">
-                           <span>Contraseña</span>
-                           <button class="button-eye" id="togglePassword" (click)="togglePasswordVisibility()" type="button">
-                              <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-                          </button>
-                       </label>
-                   </div>
-               
-  
-                 <p class="data b">Datos de la Empresa</p>
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="namempresa">
-                         <input placeholder="" type="text" id="namempresa" name="namempresa"  autocomplete="off" required>
-                         <span>Nombre</span>
-                     </label>
-                 </div>
-     
-            
-                 <div>
-                    <p class="center">Tipo de persona</p>
-                    <div class="ches"  id="che">
-                        <div class="controlradio">
-                            <label class="control">Natural
-                                <input id="che1" type="radio" name="radio" autocomplete="off" />
-                                <div class="control__indicator"></div>
-                            </label>
-                            <label class="control">Juridica
-                                <input id="che2" type="radio" name="radio" autocomplete="off" />
-                                <div class="control__indicator"></div>
-                            </label>
-                        </div>
-                    </div>
+                <div >
+                    <label class="pure-material-textfield-outlined largo" for="email">
+                        <input placeholder="" type="text" id="email" name="email" required autocomplete="off">
+                        <span>Correo Electronico</span>
+                    </label>
                 </div>
            
-
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="nit">
-                         <input placeholder="" type="input" id="nit" name="nit" autocomplete="off" required>
-                         <span>NIT/Cedula</span>
-                     </label>
-                 </div>
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="">
-                         <select class="tipo" id="tipo">
-                             <option value="">--Sector--</option>
-                             <option value="1">Agroindustria</option>
-                             <option value="2">Alimentación y Bebidas</option>
-                             <option value="3">Automotriz</option>
-                             <option value="4">Construcción</option>
-                             <option value="5">Consultoría</option>
-                             <option value="6">Educación</option>
-                             <option value="7">Energía</option>
-                             <option value="8">Entretenimiento y Medios</option>
-                             <option value="9">Finanzas y Seguros</option>
-                             <option value="10">Manufactura</option>
-                             <option value="11">Minería</option>
-                             <option value="12">Químicos</option>
-                             <option value="13">Retail (Comercio Minorista)</option>
-                             <option value="14">Salud y Bienestar</option>
-                             <option value="15">Servicios Profesionales</option>
-                             <option value="16">Tecnología de la Información (TI)</option>
-                             <option value="17">Telecomunicaciones</option>
-                             <option value="18">Textil y Moda</option>
-                             <option value="19">Transporte y Logística</option>
-                             <option value="20">Turismo y Hospitalidad</option>
-                             <option value="21">Bienes Raíces</option>
-                             <option value="22">Ambiental y Sostenibilidad</option>
-                             <option value="23">Farmacéutico y Biotecnología</option>
-                             <option value="24">Arte y Cultura</option>
-                             <option value="25">Deportes y Recreación</option>
-                             <option value="26">Investigación y Desarrollo (I+D)</option>
-                             <option value="27">Servicios Públicos</option>
-                             <option value="28">Defensa y Aeroespacial</option>
-                             <option value="28">otros</option>
-                         </select>
-                     </label>
-                 </div>
-     
-               
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="">
-                         <select class="tipo" id="tipo2" required>
-                             <option selected disabled value="">--Tipo de Empresa--</option>
-                             <option value="1">Pequeña</option>
-                             <option value="2">Mediana</option>
-                             <option value="3">Grande</option>
-                         </select>
-                     </label>
-                 </div>
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="direccion">
-                         <input placeholder="" type="text" id="direccion" name="direccion" autocomplete="off" required>
-                         <span>Direccion de Empresa</span>
-                     </label>
-                 </div>
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo" for="telefono">
-                         <input placeholder="" type="input" id="telefono" name="telefono" autocomplete="off" required>
-                         <span>Telefono</span>
-                     </label>
-                 </div>
-                 
-     
-                 <div>
-                     <label class="pure-material-textfield-outlined largo">
-                         <input placeholder=" " autocomplete="off">
-                         <span>Sitio wed (opcional)</span>
-                     </label>
-                 </div>
+                <div class="eye">
+                      <label class="pure-material-textfield-outlined largo" for="password">
+                          <input placeholder="" [type]="passwordVisible ? 'text' : 'password'" id="password" name="password" required autocomplete="off">
+                          <span>Contraseña</span>
+                          <button class="button-eye" id="togglePassword" (click)="togglePasswordVisibility()" type="button">
+                             <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                         </button>
+                      </label>
+                  </div>
+              
  
-                 <div class="terms">
-                     <div class="terms">
-                     <input
-                      type="checkbox"
-                      id="acceptTerms"
-                       name="acceptTerms" 
-                       autocomplete="off"/><label for="acceptTerms">Acepto <span class="color">Términos y Condiciones </span> y <span class="color">Politicas de proteccion de Datos</span></label> 
+                <p class="data b">Datos de la Empresa</p>
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="namempresa">
+                        <input placeholder="" type="text" id="namempresa" name="namempresa"  autocomplete="off" required>
+                        <span>Nombre</span>
+                    </label>
+                </div>
+    
+           
+                <div>
+                   <p class="center">Tipo de persona</p>
+                   <div class="ches"  id="che">
+                       <div class="controlradio">
+                           <label class="control">Natural
+                               <input id="che1" type="radio" name="radio" autocomplete="off" />
+                               <div class="control__indicator"></div>
+                           </label>
+                           <label class="control">Juridica
+                               <input id="che2" type="radio" name="radio" autocomplete="off" />
+                               <div class="control__indicator"></div>
+                           </label>
+                       </div>
                    </div>
-
                </div>
-                 <div class="boton">
-                     <button  type="submit" class="pure-material-button-contained">Crear</button>
+          
+
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="nit">
+                        <input placeholder="" type="input" id="nit" name="nit" autocomplete="off" required>
+                        <span>NIT/Cedula</span>
+                    </label>
+                </div>
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="">
+                        <select class="tipo" id="tipo">
+                            <option value="">--Sector--</option>
+                            <option value="1">Agroindustria</option>
+                            <option value="2">Alimentación y Bebidas</option>
+                            <option value="3">Automotriz</option>
+                            <option value="4">Construcción</option>
+                            <option value="5">Consultoría</option>
+                            <option value="6">Educación</option>
+                            <option value="7">Energía</option>
+                            <option value="8">Entretenimiento y Medios</option>
+                            <option value="9">Finanzas y Seguros</option>
+                            <option value="10">Manufactura</option>
+                            <option value="11">Minería</option>
+                            <option value="12">Químicos</option>
+                            <option value="13">Retail (Comercio Minorista)</option>
+                            <option value="14">Salud y Bienestar</option>
+                            <option value="15">Servicios Profesionales</option>
+                            <option value="16">Tecnología de la Información (TI)</option>
+                            <option value="17">Telecomunicaciones</option>
+                            <option value="18">Textil y Moda</option>
+                            <option value="19">Transporte y Logística</option>
+                            <option value="20">Turismo y Hospitalidad</option>
+                            <option value="21">Bienes Raíces</option>
+                            <option value="22">Ambiental y Sostenibilidad</option>
+                            <option value="23">Farmacéutico y Biotecnología</option>
+                            <option value="24">Arte y Cultura</option>
+                            <option value="25">Deportes y Recreación</option>
+                            <option value="26">Investigación y Desarrollo (I+D)</option>
+                            <option value="27">Servicios Públicos</option>
+                            <option value="28">Defensa y Aeroespacial</option>
+                            <option value="28">otros</option>
+                        </select>
+                    </label>
+                </div>
+    
+              
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="">
+                        <select class="tipo" id="tipo2" required>
+                            <option selected disabled value="">--Tipo de Empresa--</option>
+                            <option value="1">Pequeña</option>
+                            <option value="2">Mediana</option>
+                            <option value="3">Grande</option>
+                        </select>
+                    </label>
+                </div>
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="direccion">
+                        <input placeholder="" type="text" id="direccion" name="direccion" autocomplete="off" required>
+                        <span>Direccion de Empresa</span>
+                    </label>
+                </div>
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo" for="telefono">
+                        <input placeholder="" type="input" id="telefono" name="telefono" autocomplete="off" required>
+                        <span>Telefono</span>
+                    </label>
+                </div>
+                
+    
+                <div>
+                    <label class="pure-material-textfield-outlined largo">
+                        <input placeholder=" " autocomplete="off">
+                        <span>Sitio wed (opcional)</span>
+                    </label>
+                </div>
+
+                <div class="terms">
+                    <div class="terms">
+                    <input
+                     type="checkbox"
+                     id="acceptTerms"
+                      name="acceptTerms" 
+                      autocomplete="off"/><label for="acceptTerms">Acepto <span class="color">Términos y Condiciones </span> y <span class="color">Politicas de proteccion de Datos</span></label> 
+                  </div>
+
+              </div>
+
+                <div class="boton">
+                    <button  type="submit" class="pure-material-button-contained">Crear</button>
+                </div>
+
+            </form>
+         </div>
+ 
+            <!--restro consultores-->
+            <div  *ngIf="isConsultorActive">
+               <form  id="register2" class="register" autocomplete="off">
+             
+                 <p class="data a">Datos Personales</p>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="name">
+                     <input  placeholder="" type="text" id="name1" required autocomplete="off">
+                     <span>Nombre Completo</span>
+                   </label>
+                 </div>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="email1">
+                     <input  placeholder="" type="text" id="email1" required autocomplete="off">
+                     <span>Correo Electronico</span>
+                   </label>
+                 </div>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="cedula">
+                     <input  placeholder="" type="text" id="cedula1" required autocomplete="off">
+                     <span>Cedula</span>
+                   </label>
+                 </div>
+             
+                 <div class="eye">
+                   <label class="pure-material-textfield-outlined largo" for="password1">
+                     <input placeholder="" [type]="passwordVisible ? 'text' : 'password'"  id="password1" required autocomplete="off">
+                     <span>Contraseña</span>
+                     <button class="button-eye" id="togglePassword1" (click)="togglePasswordVisibility()" type="button">
+                       <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                     </button>
+                   </label>
                  </div>
 
-             </form>
-          </div>
-  
-             <!--restro consultores-->
-             <div  *ngIf="isConsultorActive">
-                <form  id="register2" class="register" autocomplete="off">
-              
-                  <p class="data a">Datos Personales</p>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="name">
-                      <input  placeholder="" type="text" id="name1" required autocomplete="off">
-                      <span>Nombre Completo</span>
-                    </label>
-                  </div>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="email1">
-                      <input  placeholder="" type="text" id="email1" required autocomplete="off">
-                      <span>Correo Electronico</span>
-                    </label>
-                  </div>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="cedula">
-                      <input  placeholder="" type="text" id="cedula1" required autocomplete="off">
-                      <span>Cedula</span>
-                    </label>
-                  </div>
-              
-                  <div class="eye">
-                    <label class="pure-material-textfield-outlined largo" for="password1">
-                      <input placeholder="" [type]="passwordVisible ? 'text' : 'password'"  id="password1" required autocomplete="off">
-                      <span>Contraseña</span>
-                      <button class="button-eye" id="togglePassword1" (click)="togglePasswordVisibility()" type="button">
-                        <i id="iconoOjo" [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
-                      </button>
-                    </label>
-                  </div>
 
+                
+             
+                 <p class="data c">Información Académica/Profesional</p>
+             
+           
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="">
+                       <select class="tipo" id="rol" (change)="onTipoChange($event)" required>
+                           <option selected disabled value="">--Rol--</option>
+                           <option value="estudiante">Estudiante</option>
+                           <option value="profesor">Profesor</option>
+                       </select>
+                   </label>
+               </div>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="Departamento1">
+                     <input  placeholder="" type="text" id="Departamento1" autocomplete="off">
+                     <span>Departamento/Facultad</span>
+                   </label>
+                 </div>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="programa">
+                     <input  placeholder="" type="text" id="programa" autocomplete="off">
+                     <span>Programa/Carrera</span>
+                   </label>
+                 </div>
+             
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="año">
+                     <input  placeholder="" type="text" id="año" autocomplete="off">
+                     <span>Año de ingreso (para estudiantes)</span>
+                   </label>
+                 </div>
+           
+                 <div>
+                   <label class="pure-material-textfield-outlined largo" for="">
+                       <select class="tipo" id="periodos" required>
+                           <option selected disabled value="">--Periodo--</option>
+                           <option value="1">Primer semestre</option>
+                           <option value="2">Segundo semestre</option>
+                       </select>
+                   </label>
+               </div>
+             
+                 <div class="terms te">
+                   <input type="checkbox" formControlName="acceptTerms" id="acceptTerms1" autocomplete="off">
+                   <label for="acceptTerms">Acepto <span class="color">Términos y Condiciones</span> y <span class="color">Políticas de protección de Datos</span></label>
+                 </div>
+             
+                 <div class="boton">
+                   <button   type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
+                 </div>
+             
+               </form>
+             </div>
+             
 
-                 
-              
-                  <p class="data c">Información Académica/Profesional</p>
-              
-            
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="">
-                        <select class="tipo" id="rol" (change)="onTipoChange($event)" required>
-                            <option selected disabled value="">--Rol--</option>
-                            <option value="estudiante">Estudiante</option>
-                            <option value="profesor">Profesor</option>
-                        </select>
-                    </label>
-                </div>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="Departamento1">
-                      <input  placeholder="" type="text" id="Departamento1" autocomplete="off">
-                      <span>Departamento/Facultad</span>
-                    </label>
-                  </div>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="programa">
-                      <input  placeholder="" type="text" id="programa" autocomplete="off">
-                      <span>Programa/Carrera</span>
-                    </label>
-                  </div>
-              
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="año">
-                      <input  placeholder="" type="text" id="año" autocomplete="off">
-                      <span>Año de ingreso (para estudiantes)</span>
-                    </label>
-                  </div>
-            
-                  <div>
-                    <label class="pure-material-textfield-outlined largo" for="">
-                        <select class="tipo" id="periodos" required>
-                            <option selected disabled value="">--Periodo--</option>
-                            <option value="1">Primer semestre</option>
-                            <option value="2">Segundo semestre</option>
-                        </select>
-                    </label>
-                </div>
-              
-                  <div class="terms te">
-                    <input type="checkbox" formControlName="acceptTerms" id="acceptTerms1" autocomplete="off">
-                    <label for="acceptTerms">Acepto <span class="color">Términos y Condiciones</span> y <span class="color">Políticas de protección de Datos</span></label>
-                  </div>
-              
-                  <div class="boton">
-                    <button   type="submit" id="boton4" class="pure-material-button-contained">Crear</button>
-                  </div>
-              
-                </form>
-              </div>
-              
-
-    </div> 
-      
-     <!--end register-->
+   </div> 
+     
+    <!--end register-->
 
 </div>
-
-
- 
-   
-

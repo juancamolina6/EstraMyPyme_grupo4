@@ -43,9 +43,6 @@ export class RegistroComponent implements AfterViewInit {
       this.initializestudianteValidators();
     }
 
-  /*inicio validaciones vanderas inicializacion */
-  private empresaValidatorInitialized = false;
-  private consultorValidatorInitialized = false;
 
   }
 
@@ -193,21 +190,6 @@ initializeThemeMode() {
       additionalButtons.classList.toggle('hidden');
     }
   }
-
-
-  /*responsil button desplegable */ 
-  toggleButtons(): void {
-    const additionalButtons = document.getElementById('additionalButtons');
-    if (additionalButtons) {
-      additionalButtons.classList.toggle('hidden');
-    }
-  }
-
- 
-
-
-    
-  
 
 
 }
