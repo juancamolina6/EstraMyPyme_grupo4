@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importa el Router para la redirección
+import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Importa el Router para la redirección
 import { UsersService } from '../../services/user.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [SidebarComponent, FormsModule],
+  imports: [SidebarComponent, FormsModule, RouterLink, RouterOutlet],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
