@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router,RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { UsersService } from '../../services/user.service';
 import { SharedService } from '../../services/shared.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [SidebarComponent, RouterOutlet,FormsModule],
+  imports: [SidebarComponent, RouterOutlet, FormsModule],
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
@@ -26,7 +26,7 @@ export class LoginComponent {
     this.usersService.validateUser(this.email, this.password).subscribe(
       (response) => {
         if (response.success && response.role === 'admin') {
-          // Si el usuario es administrador, carga todos los usuarios
+          localStorage.setItem('userToken', 'some-auth-token'); // Guarda el token o alguna señal de autenticación
           this.usersService.getAllUsers().subscribe((users) => {
             this.sharedService.setUsers(users);
             this.router.navigate(['/administracion']);
@@ -39,5 +39,5 @@ export class LoginComponent {
         console.error('Error de validación de inicio de sesión:', error);
       }
     );
-  }  
+  }
 }

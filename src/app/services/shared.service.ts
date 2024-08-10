@@ -6,10 +6,14 @@ import { User } from '../components/user-detail/user-detail.component';
   providedIn: 'root',
 })
 export class SharedService {
-  private usersSource = new BehaviorSubject<User[]>([]);
-  users$ = this.usersSource.asObservable();
+  private usersSubject = new BehaviorSubject<User[]>([]);
+  users$ = this.usersSubject.asObservable();
 
   setUsers(users: User[]) {
-    this.usersSource.next(users);
+    this.usersSubject.next(users);
+  }
+
+  getUsers() {
+    return this.usersSubject.value;
   }
 }

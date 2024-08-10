@@ -13,8 +13,7 @@ import { UsersService } from '../../services/user.service';
 export interface User {
   success: boolean;
   id: number;
-  name?: string;
-  nombre?: string;
+  name: string;
   email: string;
   password?: string;
   role: string;
@@ -65,7 +64,7 @@ export class UserDetailComponent implements OnChanges {
 
   private updateFieldVisibility() {
     this.fieldsVisibility = {
-      name: 'name' in this.editUser || 'nombre' in this.editUser,
+      name: 'name' in this.editUser,
       email: 'email' in this.editUser,
       programa: 'programa' in this.editUser,
       periodo: 'periodo' in this.editUser,
@@ -81,14 +80,12 @@ export class UserDetailComponent implements OnChanges {
       .slice(0, 3);
   }
   get userName(): string {
-    return this.editUser.name || this.editUser.nombre || '';
+    return this.editUser.name|| '';
   }
 
   set userName(value: string) {
     if ('name' in this.editUser) {
       this.editUser.name = value;
-    } else if ('nombre' in this.editUser) {
-      this.editUser.nombre = value;
     }
   }
 

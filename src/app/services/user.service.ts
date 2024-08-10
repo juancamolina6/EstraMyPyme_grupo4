@@ -9,7 +9,6 @@ import { User } from '../components/user-detail/user-detail.component';
 })
 export class UsersService {
   private apiUrl = 'http://localhost:3000/'; // URL de la API de json-server
-  private loginUrl = 'http://localhost:3000/login'; // URL para la autenticación
 
   constructor(private httpClient: HttpClient) {}
 
@@ -26,6 +25,9 @@ export class UsersService {
         ...students,
       ])
     );
+  }
+  getUsersByType(type: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}${type}`);
   }
 
   getCompanies(): Observable<User[]> {
@@ -58,6 +60,13 @@ export class UsersService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+  isLoggedIn(): boolean {
+    // Aquí puedes verificar si el usuario está autenticado
+    // por ejemplo, verificando un token almacenado en localStorage
+    return !!localStorage.getItem('userToken');
+  }
+  
+  
 
   // Método para validar al usuario
   validateUser(
