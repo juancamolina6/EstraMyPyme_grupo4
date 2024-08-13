@@ -32,8 +32,8 @@ export interface User {
   programa?: string;
   año?: string;
   periodo?: string;
-  'id-empresa'?: number | number[];
-  'id-estudante'?: number[];
+  empresa_asignada: string[];
+  estudante_asignado: string[];
   image?: string;
 }
 
@@ -59,6 +59,7 @@ export class UserDetailComponent implements OnChanges {
       this.originalUser = { ...this.user };
       this.editUser = { ...this.user };
       this.updateFieldVisibility();
+      console.log(this.updateFieldVisibility(), 'datos');
     }
   }
 
@@ -71,6 +72,13 @@ export class UserDetailComponent implements OnChanges {
       sector: 'sector' in this.editUser,
       companyName: 'companyName' in this.editUser,
       nit: 'nit' in this.editUser,
+      role: 'role' in this.editUser,
+      password: 'password' in this.editUser,
+      address: 'address' in this.editUser,
+      phone: 'phone' in this.editUser,
+      website: 'website' in this.editUser,
+      empresa_asignada: 'empresa_asignada' in this.editUser,
+      estudante_asignado: 'estudante_asignado' in this.editUser,
     };
   }
 
@@ -80,7 +88,7 @@ export class UserDetailComponent implements OnChanges {
       .slice(0, 3);
   }
   get userName(): string {
-    return this.editUser.name|| '';
+    return this.editUser.name || '';
   }
 
   set userName(value: string) {
@@ -111,5 +119,24 @@ export class UserDetailComponent implements OnChanges {
   cancelEdit() {
     this.editUser = { ...this.originalUser }; // Restaurar los datos originales
     this.isEditing = false;
+  }
+  addEmpresa(empresa: string) {
+    if (empresa && !this.editUser.empresa_asignada.includes(empresa)) {
+      this.editUser.empresa_asignada.push(empresa);
+    }
+  }
+
+  removeEmpresa(index: number) {
+    this.editUser.empresa_asignada.splice(index, 1);
+  }
+
+  addEstudiante(estudiante: string) {
+    if (estudiante && !this.editUser.estudante_asignado.includes(estudiante)) {
+      this.editUser.estudante_asignado.push(estudiante);
+    }
+  }
+
+  removeEstudiante(index: number) {
+    this.editUser.estudante_asignado.splice(index, 1);
   }
 }

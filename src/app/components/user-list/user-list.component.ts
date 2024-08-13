@@ -69,8 +69,8 @@ export class UserListComponent implements OnInit {
     } else {
       this.filteredUsers = this.allUsers;
     }
-     // Seleccionar automáticamente el primer usuario de la lista filtrada
-     this.selectFirstUser();
+    // Seleccionar automáticamente el primer usuario de la lista filtrada
+    this.selectFirstUser();
   }
 
   getUserType(selectedType: string): string {
