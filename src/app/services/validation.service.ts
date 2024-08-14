@@ -37,7 +37,32 @@ initializeConsultorValidator(): void {
   }
 
 
- 
+// Métodos para verificar si los formularios son válidos
+isEmpresaFormValid(): boolean {
+  // Verifica si el validador está definido y si las validaciones del formulario de empresa han sido exitosas
+  return this.empresaValidator ? this.empresaValidator.isValid : false;
+}
+
+isEstudinateFormValid(): boolean {
+  // Verifica si el validador está definido y si las validaciones del formulario de estudiante han sido exitosas
+  return this.estudianteValidator ? this.estudianteValidator.isValid : false;
+}
+
+isProfesorFormValid(): boolean {
+  // Verifica si el validador está definido y si las validaciones del formulario de profesor han sido exitosas
+  return this.consultorValidator ? this.consultorValidator.isValid : false;
+}
+
+// Método para ejecutar después de que las validaciones se cumplan
+onRegister(): void {
+  // Verifica si alguno de los formularios es válido antes de proceder
+  if (this.isEmpresaFormValid() || this.isEstudinateFormValid() || this.isProfesorFormValid()) {
+    alert('¡Ya te has registrado con éxito!');
+    window.location.reload();
+  } else {
+    alert('Por favor, completa todos los campos requeridos correctamente.');
+  }
+}
 
 
 /* */
