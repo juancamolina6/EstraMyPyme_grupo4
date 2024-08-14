@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet,Router   } from '@angular/router';
 import { ValidationService } from '../../services/validation.service';
 
 
@@ -32,7 +32,8 @@ export class RegistroComponent implements AfterViewInit {
 
   constructor(
     private validationService: ValidationService,
-    private cdr: ChangeDetectorRef) {
+    private cdr: ChangeDetectorRef,
+    private router: Router) {
    
   }
   ngAfterViewInit(): void {
@@ -191,8 +192,49 @@ initializeThemeMode() {
     }
   }
 
+/*button registro */
+
+  // Método que se ejecuta después de que las validaciones se cumplan
+  onRegister(): void {
+    if (this.isFormValid()) {
+      // Muestra un mensaje de alerta indicando que el usuario se ha registrado
+      alert('¡Ya te has registrado con éxito!');
+      
+      // Utiliza setTimeout para redirigir después de que el usuario vea la alerta
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 100); // El tiempo puede ser ajustado según sea necesario
+    } else {
+      // Muestra un mensaje de alerta indicando que hay errores en el formulario
+      alert('Por favor, completa correctamente todos los campos requeridos.');
+    }
+  }
+
+isFormValid(): boolean {
+  let formIsValid = true;
+
+  // Verifica las validaciones específicas según el tipo (empresa, estudiante, profesor)
+  if (this.isEmpresaActive && !this.validationService.isEmpresaFormValid()) {
+    formIsValid = false;
+  }
+
+  if (this.isConsultorActive) {
+    if (this.type === 'estudiante' && !this.validationService.isEstudinateFormValid()) {
+      formIsValid = false;
+    } else if (this.type === 'profesor' && !this.validationService.isProfesorFormValid()) {
+      formIsValid = false;
+    }
+  }
+
+  return formIsValid;
+}
+
+/*button registro fin */
+
+
 
 }
+
 
 
 
