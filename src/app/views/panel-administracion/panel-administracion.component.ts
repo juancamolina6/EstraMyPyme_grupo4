@@ -6,6 +6,8 @@ import { UserListComponent } from '../../components/user-list/user-list.componen
 import { UserDetailComponent, User } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
+import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
+import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
 @Component({
   selector: 'app-panel-administracion',
@@ -16,7 +18,9 @@ import { UsersService } from '../../services/user.service';
     HeaderComponent,
     UserListComponent,
     UserDetailComponent,
-    ChartComponent
+    ChartComponent,
+    FuncionesglobalesComponent,
+    LogomassloganComponent
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css']
