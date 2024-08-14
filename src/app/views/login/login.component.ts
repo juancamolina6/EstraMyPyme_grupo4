@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Importa el Router para la redirección
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { UsersService } from '../../services/user.service';
+import { SharedService } from '../../services/shared.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { LogomassloganComponent } from "../../components/logomasslogan/logomasslogan.component";
@@ -10,32 +11,10 @@ import { FuncionesglobalesComponent } from '../../components/funcionesglobales/f
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [SidebarComponent, FormsModule, RouterLink, RouterOutlet, LogomassloganComponent, FormsloginComponent, FuncionesglobalesComponent],
+  imports: [FormsModule,RouterLink, RouterOutlet, LogomassloganComponent, FormsloginComponent, FuncionesglobalesComponent],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
-
-  constructor(private usersService: UsersService, private router: Router) { }
-
-  login(): void {
-    // Llama al método del servicio para validar al usuario
-    this.usersService.validateUser(this.email, this.password).subscribe(
-      response => {
-        if (response.success) {
-          // Redirige a la página de administración si la validación es exitosa
-          this.router.navigate(['/administracion']);
-        } else {
-          // Muestra un mensaje de error si la validación falla
-          alert('Credenciales incorrectas');
-        }
-      },
-      error => {
-        // Maneja el error aquí
-        console.error('Error de validación de inicio de sesión:', error);
-      }
-    );
-  }
+  
 }

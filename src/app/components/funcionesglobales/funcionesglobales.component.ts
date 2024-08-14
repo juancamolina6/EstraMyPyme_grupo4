@@ -147,6 +147,7 @@ input:checked + .slider {
 }
 
 
+
   `
 })
 export class FuncionesglobalesComponent {

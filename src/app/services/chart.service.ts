@@ -6,19 +6,16 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ChartDataService {
-  private apiUrl = 'http://localhost:3000/data'; // URL del json-server
+  private radarUrl = 'http://localhost:3000/radarData';
+  private relojUrl = 'http://localhost:3000/relojData';
 
   constructor(private http: HttpClient) {}
-
-  getChartData(): Observable<any> {
-    console.log('Fetching data from:', this.apiUrl);
-    return this.http.get<any>(this.apiUrl).pipe(
-      catchError((error) => {
-        console.error('Error al obtener datos del gráfico:', error);
-        return throwError(
-          () => new Error('Error al cargar los datos del gráfico')
-        );
-      })
-    );
+//trae los datos de el reloj
+  getClockData(companyId: number): Observable<any> {
+    return this.http.get(`${this.relojUrl}?id-empresa=${companyId}`);
+  }
+  //Trae los datos de el radar 
+  getRadarData(companyId: number): Observable<any> {
+    return this.http.get(`${this.radarUrl}?id-empresa=${companyId}`);
   }
 }
