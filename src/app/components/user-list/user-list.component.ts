@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user-detail/user-detail.component';
+import { SharedService } from '../../services/shared.service';
 import { UsersService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 
@@ -9,55 +10,94 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  @Input() users: User[] = [];
-  @Output() userSelected = new EventEmitter<User>();
-  selectedUserType: string = 'Estudiantes';
+  filteredUsers: User[] = [];
+  allUsers: User[] = [];
+  selectedUserType: string = 'Todos';
   selectedUser: User | null = null;
   searchTerm: string = '';
 
-  constructor(private usersService: UsersService) {}
+  @Output() userSelected = new EventEmitter<User>();
+
+  constructor(
+    private usersService: UsersService,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit() {
-    this.loadUsers();
-    this.selectDefaultUser();
+    this.onTabClick(this.selectedUserType);
   }
 
-  get filteredUsers() {
-    return this.users.filter(user => 
-      user.type === this.selectedUserType && 
-      (user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
-       user.email.toLowerCase().includes(this.searchTerm.toLowerCase()))
-    );
+  // Cargar los usuarios según el tipo seleccionado
+  onTabClick(type: string) {
+    this.selectedUserType = type;
+
+    if (type === 'Todos') {
+      this.usersService.getAllUsers().subscribe(
+        (users) => {
+          this.allUsers = users;
+          this.filterUsers();
+        },
+        (error) => {
+          console.error('Error loading users:', error);
+        }
+      );
+    } else {
+      const userType = this.getUserType(type);
+      this.usersService.getUsersByType(userType).subscribe(
+        (users) => {
+          this.allUsers = users;
+          this.filterUsers();
+        },
+        (error) => {
+          console.error('Error loading users by type:', error);
+        }
+      );
+    }
+  }
+
+  // Filtrar usuarios según el término de búsqueda
+  filterUsers() {
+    if (this.searchTerm) {
+      this.filteredUsers = this.allUsers.filter(
+        (user) =>
+          user.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          user.email.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredUsers = this.allUsers;
+    }
+    // Seleccionar automáticamente el primer usuario de la lista filtrada
+    this.selectFirstUser();
+  }
+
+  getUserType(selectedType: string): string {
+    switch (selectedType) {
+      case 'Profesores':
+        return 'profesores';
+      case 'Estudiantes':
+        return 'estudiantes';
+      case 'Empresas':
+        return 'companies';
+      default:
+        return ''; // Si no se reconoce, retorna una cadena vacía
+    }
+  }
+
+  onSearch() {
+    this.filterUsers();
+  }
+  // Método para seleccionar automáticamente el primer usuario de la lista filtrada
+  selectFirstUser() {
+    if (this.filteredUsers.length > 0) {
+      this.selectUser(this.filteredUsers[0]);
+    }
   }
 
   selectUser(user: User) {
     this.userSelected.emit(user);
     this.selectedUser = user;
-  }
-
-  selectDefaultUser() {
-    const usersOfSelectedType = this.filteredUsers;
-    if (usersOfSelectedType.length > 0) {
-      this.selectUser(usersOfSelectedType[0]);
-    }
-  }
-
-  updateUser(updatedUser: User) {
-    const index = this.users.findIndex(user => user.id === updatedUser.id);
-    if (index !== -1) {
-      this.users[index] = updatedUser;
-      this.selectUser(updatedUser);
-    }
-  }
-
-  private loadUsers() {
-    this.usersService.getUsers().subscribe(users => {
-      this.users = users;
-      this.selectDefaultUser();
-      
-    });
   }
 }

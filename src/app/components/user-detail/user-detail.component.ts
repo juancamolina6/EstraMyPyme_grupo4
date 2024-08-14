@@ -1,28 +1,40 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../services/user.service';
 
 export interface User {
+  success: boolean;
   id: number;
   name: string;
   email: string;
-  type: string;
-  empresa_asociada?: string;
-  edad?: number;
-  carrera?: string;
-  semestre?: number;
-  especialidad?: string;
-  anos_experiencia?: number;
-  cursos_impartidos?: string[];
-  sector?: string;
-  empleados?: number;
-  fundacion?: number;
-  productos?: string[];
-  facturacion_anual?: number;
-  estudantes_profesor?: number[];
-  image?: string;
   password?: string;
+  role: string;
+  type: string;
+  telefono?: string;
+  companyName?: string;
+  personType?: string;
+  nit?: string;
+  sector?: string;
+  address?: string;
+  phone?: string;
+  website?: string;
+  acceptTerms?: boolean;
+  empresa_id?: number;
+  Departamento?: string;
+  programa?: string;
+  año?: string;
+  periodo?: string;
+  empresa_asignada: string[];
+  estudante_asignado: string[];
+  image?: string;
 }
 
 @Component({
@@ -30,7 +42,7 @@ export interface User {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  styleUrls: ['./user-detail.component.css'],
 })
 export class UserDetailComponent implements OnChanges {
   @Input() user!: User;
@@ -47,6 +59,7 @@ export class UserDetailComponent implements OnChanges {
       this.originalUser = { ...this.user };
       this.editUser = { ...this.user };
       this.updateFieldVisibility();
+      console.log(this.updateFieldVisibility(), 'datos');
     }
   }
 
@@ -54,42 +67,76 @@ export class UserDetailComponent implements OnChanges {
     this.fieldsVisibility = {
       name: 'name' in this.editUser,
       email: 'email' in this.editUser,
-      empresa_asociada: 'empresa_asociada' in this.editUser,
-      edad: 'edad' in this.editUser,
-      carrera: 'carrera' in this.editUser,
-      semestre: 'semestre' in this.editUser,
-      especialidad: 'especialidad' in this.editUser,
-      anos_experiencia: 'anos_experiencia' in this.editUser,
-      cursos_impartidos: 'cursos_impartidos' in this.editUser,
+      programa: 'programa' in this.editUser,
+      periodo: 'periodo' in this.editUser,
       sector: 'sector' in this.editUser,
-      empleados: 'empleados' in this.editUser,
-      fundacion: 'fundacion' in this.editUser,
-      productos: 'productos' in this.editUser,
-      facturacion_anual: 'facturacion_anual' in this.editUser,
+      companyName: 'companyName' in this.editUser,
+      nit: 'nit' in this.editUser,
+      role: 'role' in this.editUser,
+      password: 'password' in this.editUser,
+      address: 'address' in this.editUser,
+      phone: 'phone' in this.editUser,
+      website: 'website' in this.editUser,
+      empresa_asignada: 'empresa_asignada' in this.editUser,
+      estudante_asignado: 'estudante_asignado' in this.editUser,
     };
   }
+
   get visibleFields() {
-    return Object.keys(this.fieldsVisibility).filter(key => this.fieldsVisibility[key]).slice(0, 3);
+    return Object.keys(this.fieldsVisibility)
+      .filter((key) => this.fieldsVisibility[key])
+      .slice(0, 3);
+  }
+  get userName(): string {
+    return this.editUser.name || '';
+  }
+
+  set userName(value: string) {
+    if ('name' in this.editUser) {
+      this.editUser.name = value;
+    }
   }
 
   saveChanges() {
     if (this.isEditing) {
-      this.usersService.updateUser(this.editUser).subscribe(response => {
-        console.log('User updated successfully:', response);
-        alert('Los datos se han guardado correctamente.');
-        this.isEditing = false;
-        this.user = { ...this.editUser }; // Actualizar el usuario original
-        this.userUpdated.emit(this.user); // Emitir evento de usuario actualizado
-      }, error => {
-        console.error('Error updating user:', error);
-      });
+      this.usersService.updateUser(this.editUser).subscribe(
+        (response) => {
+          console.log('User updated successfully:', response);
+          alert('Los datos se han guardado correctamente.');
+          this.isEditing = false;
+          this.user = { ...this.editUser }; // Actualizar el usuario original
+          this.userUpdated.emit(this.user); // Emitir evento de usuario actualizado
+        },
+        (error) => {
+          console.error('Error updating user:', error);
+        }
+      );
     } else {
       this.isEditing = true;
     }
-  }  
+  }
 
   cancelEdit() {
     this.editUser = { ...this.originalUser }; // Restaurar los datos originales
     this.isEditing = false;
+  }
+  addEmpresa(empresa: string) {
+    if (empresa && !this.editUser.empresa_asignada.includes(empresa)) {
+      this.editUser.empresa_asignada.push(empresa);
+    }
+  }
+
+  removeEmpresa(index: number) {
+    this.editUser.empresa_asignada.splice(index, 1);
+  }
+
+  addEstudiante(estudiante: string) {
+    if (estudiante && !this.editUser.estudante_asignado.includes(estudiante)) {
+      this.editUser.estudante_asignado.push(estudiante);
+    }
+  }
+
+  removeEstudiante(index: number) {
+    this.editUser.estudante_asignado.splice(index, 1);
   }
 }

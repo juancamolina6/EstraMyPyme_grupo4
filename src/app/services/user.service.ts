@@ -1,57 +1,88 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../components/user-detail/user-detail.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
+  private apiUrl = 'http://localhost:3000/'; // URL de la API de json-server
 
-  private apiUrl = 'http://localhost:3000/users'; // URL de la API de json-server
-  private loginUrl = 'http://localhost:3000/login'; // URL para la autenticación
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.apiUrl);
+  /// Método para obtener todos los usuarios (Empresas, Profesores, Estudiantes)
+  getAllUsers(): Observable<User[]> {
+    return forkJoin([
+      this.getCompanies(),
+      this.getProfessors(),
+      this.getStudents(),
+    ]).pipe(
+      map(([companies, professors, students]) => [
+        ...companies,
+        ...professors,
+        ...students,
+      ])
+    );
+  }
+  getUsersByType(type: string): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}${type}`);
   }
 
-  getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.apiUrl}/${id}`);
+  getCompanies(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}companies`);
   }
 
-  addUser(user: User): Observable<User> {
-    return this.httpClient.post<User>(this.apiUrl, user, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+  getProfessors(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}profesores`);
   }
 
+  getStudents(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}estudiantes`);
+  }
+
+  // Método para actualizar un usuario
   updateUser(user: User): Observable<User> {
-    return this.httpClient.put<User>(`${this.apiUrl}/${user.id}`, user, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    let url = `${this.apiUrl}`;
+    if (user.type === 'company') {
+      url += `companies/${user.id}`;
+    } else if (user.type === 'profesor') {
+      url += `profesores/${user.id}`;
+    } else if (user.type === 'estudiante') {
+      url += `estudiantes/${user.id}`;
+    }
+    return this.httpClient.put<User>(url, user, {
+      headers: { 'Content-Type': 'application/json' },
     });
   }
-
+  // Método para eliminar un usuario
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+  isLoggedIn(): boolean {
+    // Aquí puedes verificar si el usuario está autenticado
+    // por ejemplo, verificando un token almacenado en localStorage
+    return !!localStorage.getItem('userToken');
+  }
+  
+  
+
   // Método para validar al usuario
-  validateUser(email: string, password: string): Observable<{ success: boolean }> {
-    return this.httpClient.get<User[]>(`${this.apiUrl}?email=${email}`).pipe(
-      map(users => {
-        if (users.length > 0 && users[0].password === password) {
-          return { success: true };
-        } else {
-          return { success: false };
-        }
-      })
-    );
+  validateUser(
+    email: string,
+    password: string
+  ): Observable<{ success: boolean; role: string }> {
+    return this.httpClient
+      .get<User[]>(`${this.apiUrl}admins?email=${email}`)
+      .pipe(
+        map((users) => {
+          if (users.length > 0 && users[0].password === password) {
+            return { success: true, role: users[0].role };
+          } else {
+            return { success: false, role: 'usuario no existe' };
+          }
+        })
+      );
   }
 }
-
