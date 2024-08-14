@@ -1,36 +1,41 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router'; // Importa el Router para la redirección
+import { Router, RouterOutlet } from '@angular/router';
 import { UsersService } from '../../services/user.service';
+import { SharedService } from '../../services/shared.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  imports: [SidebarComponent, RouterOutlet, FormsModule],
   standalone: true,
-  imports: [SidebarComponent, FormsModule, RouterLink, RouterOutlet],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(
+    private usersService: UsersService,
+    private router: Router,
+    private sharedService: SharedService
+  ) {}
 
   login(): void {
-    // Llama al método del servicio para validar al usuario
     this.usersService.validateUser(this.email, this.password).subscribe(
-      response => {
-        if (response.success) {
-          // Redirige a la página de administración si la validación es exitosa
-          this.router.navigate(['/administracion']);
+      (response) => {
+        if (response.success && response.role === 'admin') {
+          localStorage.setItem('userToken', 'some-auth-token'); // Guarda el token o alguna señal de autenticación
+          this.usersService.getAllUsers().subscribe((users) => {
+            this.sharedService.setUsers(users);
+            this.router.navigate(['/administracion']);
+          });
         } else {
-          // Muestra un mensaje de error si la validación falla
-          alert('Credenciales incorrectas');
+          alert('Credenciales incorrectas o no autorizado');
         }
       },
-      error => {
-        // Maneja el error aquí
+      (error) => {
         console.error('Error de validación de inicio de sesión:', error);
       }
     );
