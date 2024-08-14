@@ -29,6 +29,14 @@ export class PanelAdministracionComponent {
   users: User[] = [];
 
   constructor(private usersService: UsersService) {}
+  selectedCompanyId: number | null = null;
+
+  onUserSelected(user: User) {
+    if (user && user.empresa_id) {
+      this.selectedCompanyId = user.empresa_id;
+    }
+  }
+
 
   // Método para actualizar el usuario en la lista
   updateUser(updatedUser: User) {
