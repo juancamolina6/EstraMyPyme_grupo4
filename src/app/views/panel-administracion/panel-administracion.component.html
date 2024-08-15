@@ -1,5 +1,4 @@
 
-
 <body>
   <header>
       <app-funcionesglobales></app-funcionesglobales>
@@ -23,6 +22,7 @@
           </div>
           <div class="chart-panel">
             <h2>Gráfico 3</h2>
+          <app-circulo-dorado></app-circulo-dorado>
             <!-- Otro gráfico o contenido aquí -->
           </div>
         </div>
@@ -36,19 +36,8 @@
         </div>
         </div>
       </div>
-      <div class="chart-panel">
-       
-        <h2>Gráfico 3</h2>
-        <app-circulo-dorado></app-circulo-dorado>
-        <!-- Otro gráfico o contenido aquí -->
-      </div>
-    
-    <div class="user-section">
-      <app-user-list (userSelected)="onUserSelected($event); selectedUser = $event"></app-user-list>
-      <app-user-detail [user]="selectedUser" (userUpdated)="updateUser($event)"></app-user-detail>
-    </div>
-
   </section>
 </body>
+
 
 
