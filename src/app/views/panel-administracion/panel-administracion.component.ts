@@ -11,6 +11,8 @@ import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
 import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-dorado.component';
 
+import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
+import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
 @Component({
   selector: 'app-panel-administracion',
@@ -24,6 +26,8 @@ import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-
     ChartComponent,
     CirculoDoradoComponent, 
     
+    FuncionesglobalesComponent,
+    LogomassloganComponent
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css'],
