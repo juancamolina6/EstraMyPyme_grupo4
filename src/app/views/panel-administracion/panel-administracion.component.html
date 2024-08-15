@@ -1,27 +1,42 @@
-<!-- panel-administracion.component.html -->
-<div class="admin-panel">
-  <app-sidebar></app-sidebar>
-  <div class="main-content">
-    <app-header></app-header>
-    <div class="charts">
-      <div class="chart-panel">
-        <h2>Posición competitiva deseada</h2>
-        <app-chart [companyId]="selectedCompanyId" chartType="clock"></app-chart>
-      </div>
-      <div class="chart-panel">
-        <h2>Gráfico 2</h2>
-        <app-chart [companyId]="selectedCompanyId" chartType="radar"></app-chart>
 
+
+<body>
+  <header>
+      <app-funcionesglobales></app-funcionesglobales>
+  </header>
+  <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+  <section class="admin-panel">
+     <div class="left-info">
+        <!-- Logo y Eslogan -->
+        <app-logomasslogan></app-logomasslogan>
+     </div>
+     <div class="right-info">
+        <!-- Gráficos -->
+        <div class="charts">
+          <div class="chart-panel">
+            <h2>Posición competitiva deseada</h2>
+            <app-chart [companyId]="selectedCompanyId" chartType="clock"></app-chart>
+          </div>
+          <div class="chart-panel">
+            <h2>Gráfico 2</h2>
+            <app-chart [companyId]="selectedCompanyId" chartType="radar"></app-chart>
+          </div>
+          <div class="chart-panel">
+            <h2>Gráfico 3</h2>
+            <!-- Otro gráfico o contenido aquí -->
+          </div>
+        </div>
+        <!-- Sección de usuarios -->
+        <div class="user-section">
+          <div class="chart-panel">
+          <app-user-list (userSelected)="onUserSelected($event); selectedUser = $event"></app-user-list>
+          </div>
+          <div class="chart-panel">
+          <app-user-detail [user]="selectedUser" (userUpdated)="updateUser($event)"></app-user-detail>
+        </div>
+        </div>
       </div>
-      <div class="chart-panel">
-        <h2>Gráfico 3</h2>
-        <!-- Otro gráfico o contenido aquí -->
-      </div>
-    </div>
-    <div class="user-section">
-      <app-user-list (userSelected)="onUserSelected($event); selectedUser = $event"></app-user-list>
-      <app-user-detail [user]="selectedUser" (userUpdated)="updateUser($event)"></app-user-detail>
-    </div>
-  </div>
-</div>
+  </section>
+</body>
+
 

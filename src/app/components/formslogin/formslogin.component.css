@@ -1,0 +1,91 @@
+
+.right-section {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Fondo oscuro */
+    padding: 40px;
+    position: sticky;
+    border-radius: 15px; /* Bordes redondeados */
+    border: 5px solid #053295; /* Borde azul */
+    height: 450px;
+    width: 500px;
+    right: 0;
+    box-sizing: border-box; /* Asegura que padding y borde se incluyan en las dimensiones */
+}
+
+/* Caja del formulario de inicio de sesión */
+.login-box {
+    text-align: center;
+    width: 100%;   
+}
+
+/* Título de la caja de inicio de sesión */
+.login-box h2 {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+/* Párrafos dentro de la caja de inicio de sesión */
+._welcome
+{
+    margin-bottom: 50px;
+    margin-top: 0rem;
+}
+.login-info{
+    margin-bottom: 15px;
+    margin-top: -1rem;
+}
+.register-now
+{ 
+    position: fixed;
+    margin-top: 36rem;
+    padding: 10px;  
+    
+}
+
+/* Distancia entre el párrafo de TyC y el login*/
+.TyC
+{
+  
+    margin-top: 20px;
+    color: #7d7d7d;
+    font-size: small;
+    
+}
+
+/* Estilos para el formulario */
+.login-box form {
+    display: relative;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+
+/* Campos de entrada en el formulario */
+.login-box input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Botón de inicio de sesión */
+.login-box button {
+    padding: 10px 20px;
+    background-color: #0052ff; /* Color de fondo azul */
+    border: none;
+    border-radius: 15px; /* Bordes redondeados */
+    color: #fff; /* Texto blanco */
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Enlaces dentro de la caja de inicio de sesión */
+.login-box a {
+    color: #0052ff;
+    text-decoration: none;
+}

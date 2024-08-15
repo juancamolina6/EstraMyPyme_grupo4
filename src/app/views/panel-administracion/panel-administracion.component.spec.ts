@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PanelAdministracionComponent } from './panel-administracion.component';
 
 describe('PanelAdministracionComponent', () => {
