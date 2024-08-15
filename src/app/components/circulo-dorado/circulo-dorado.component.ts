@@ -59,6 +59,15 @@ export class CirculoDoradoComponent implements OnInit {
     explanationDiv.style.display = 'block';
     explanationDiv.innerText = text;
   }
+
+  //metodo para agrandar la vista grafica 3 
+
+  showModal = false; // Variable para controlar la visibilidad del modal
+
+  // Método para alternar la visibilidad del modal
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 }
 
 
