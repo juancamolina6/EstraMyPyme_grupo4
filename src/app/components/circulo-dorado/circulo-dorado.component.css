@@ -1,0 +1,114 @@
+.circle-container {
+       position: relative;
+       width: 90%;
+       height: 90%;
+       margin: 5%;
+       background-color: black;
+       border: 5px solid #0000ff;
+       border-radius: 10px;
+     }
+     
+     .title {
+       display: flex;
+       position: relative;
+       margin-top: 5%;
+       align-items: flex-start;
+       justify-content: center;
+       color: white;
+       font-size: 2rem;
+       font-family: Inter, sans-serif;
+     }
+     
+     .circle {
+       margin: 15% 25%;
+       position: absolute;
+       border-radius: 50%;
+       text-align: center;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: black;
+       font-weight: bold;
+       cursor: pointer;
+       padding: 10px;
+       box-sizing: border-box;
+       border: 4px solid white;
+     }
+     
+     #que {
+       position: relative;
+       width: 18.75rem;
+       height: 18.75rem;
+       align-items: flex-end;
+       background-color: #DDAC17;
+       top: 0;
+       left: 0;
+       z-index: 1;
+       font-size: 18px;
+       font-family: Inter, sans-serif;
+     }
+     
+     #que:hover {
+       font-size: 25px;
+     }
+     
+     #que:active {
+       transform: scale(1.1);
+     }
+     
+     #como {
+       position: relative;
+       width: 12.5rem;
+       height: 12.5rem;
+       align-items: flex-end;
+       background-color: #EEC440;
+       top: 50px;
+       left: 50px;
+       z-index: 2;
+       font-size: 15px;
+       font-family: Inter, sans-serif;
+     }
+     
+     #como:hover {
+       font-size: 21px;
+     }
+     
+     #como:active {
+       transform: scale(1.1);
+     }
+     
+     #porque {
+       position: relative;
+       width: 6.25rem;
+       height: 6.25rem;
+       background-color: #FFFA8A;
+       top: 100px;
+       left: 100px;
+       z-index: 3;
+       font-size: 13px;
+       font-family: Inter, sans-serif;
+     }
+     
+     #porque:hover {
+       font-size: 16px;
+     }
+     
+     #porque:active {
+       transform: scale(1.1);
+     }
+     
+     #explanation {
+       position: relative;
+       margin-top: 60%;
+       margin-left: 10%;
+       width: 80%;
+       height: 10px;
+       padding: 10px;
+       color: white;
+       background-color: rgb(198, 30, 232);
+       border: 2px solid #0000ff;
+       border-radius: 5px;
+       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+       display: none;
+     }
+     

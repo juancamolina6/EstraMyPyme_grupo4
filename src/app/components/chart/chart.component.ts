@@ -2,9 +2,12 @@ import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } fro
 import { ChartDataService } from '../../services/chart.service';
 import * as d3 from 'd3';
 
+
+
 @Component({
   selector: 'app-chart',
   standalone: true,
+  imports: [],
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css'],
 })
@@ -12,6 +15,11 @@ export class ChartComponent implements OnChanges {
   @ViewChild('chartContainer') private chartContainer!: ElementRef;
   @Input() companyId?: number| null = null;
   @Input() chartType: string = ''; // Tipo de gráfico: 'bar' o 'radar'
+
+  @ViewChild('what') whatElement!: ElementRef;
+  @ViewChild('how') howElement!: ElementRef;
+  @ViewChild('why') whyElement!: ElementRef;
+  @ViewChild('explanation') explanationElement!: ElementRef;
 
   constructor(private chartDataService: ChartDataService) {}
 
@@ -29,9 +37,48 @@ export class ChartComponent implements OnChanges {
           next: (data: any) => this.renderClockChart(data[0]),
           error: (error) => console.error('Error al cargar los datos del gráfico:', error),
         });
+      } else if(this.chartType === 'circulo'){
+        this.chartDataService.getCirculoData(this.companyId).subscribe({
+          next: (data: any) => this.renderCirculoChart(data[0]),
+          error: (error) => console.error('Error al cargar los datos del gráfico:', error),
+        });
       }
+
     }
   }
+
+  //logica circulo
+
+  private renderCirculoChart(data: any) {
+    if (!data || !data.arrows) {
+      console.error('No se recibieron datos válidos para el gráfico');
+      return;
+    }
+
+    // Asumiendo que data.arrows contiene las propiedades que necesitamos
+    const que = data.arrows.que || '';
+    const como = data.arrows.como || '';
+    const porque = data.arrows.porque || '';
+
+    // Aquí puedes usar los valores de `que`, `como` y `porque` para actualizar el DOM o realizar cualquier otra lógica
+    this.whatElement.nativeElement.innerText = que;
+    this.howElement.nativeElement.innerText = como;
+    this.whyElement.nativeElement.innerText = porque;
+  }
+
+  private setupEventListeners() {
+    this.whatElement.nativeElement.addEventListener('click', () => this.displayExplanation('¿Qué?: ' + this.whatElement.nativeElement.innerText));
+    this.howElement.nativeElement.addEventListener('click', () => this.displayExplanation('¿Cómo?: ' + this.howElement.nativeElement.innerText));
+    this.whyElement.nativeElement.addEventListener('click', () => this.displayExplanation('¿Por qué?: ' + this.whyElement.nativeElement.innerText));
+  }
+
+  private displayExplanation(text: string) {
+    const explanationDiv = this.explanationElement.nativeElement;
+    explanationDiv.style.display = 'block';
+    explanationDiv.innerText = text;
+  }
+
+
   
 // crea la grafica de reloj
   private renderClockChart(data: any) {
