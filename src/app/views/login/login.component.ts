@@ -11,7 +11,7 @@ import { FuncionesglobalesComponent } from '../../components/funcionesglobales/f
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,RouterLink, RouterOutlet, LogomassloganComponent, FormsloginComponent, FuncionesglobalesComponent],
+  imports: [SidebarComponent, FormsModule,RouterLink, RouterOutlet, LogomassloganComponent, FormsloginComponent, FuncionesglobalesComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })

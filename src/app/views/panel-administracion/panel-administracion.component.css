@@ -55,7 +55,7 @@ body {
   }
   
   .left-info {
-  flex: 0 0 5%;
+  flex: 0 0 50%;
 }
 
 .right-info {
