@@ -169,8 +169,7 @@ export class HeaderComponent {
   }
 
   //metodo para enrutar la landin
-
-
+  
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {
