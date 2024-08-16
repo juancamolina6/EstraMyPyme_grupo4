@@ -8,6 +8,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class ChartDataService {
   private radarUrl = 'http://localhost:3000/radarData';
   private relojUrl = 'http://localhost:3000/relojData';
+  private circuloUrl = 'http://localhost:3000/circulo_dorado';
 
   constructor(private http: HttpClient) {}
 //trae los datos de el reloj
@@ -17,5 +18,16 @@ export class ChartDataService {
   //Trae los datos de el radar 
   getRadarData(companyId: number): Observable<any> {
     return this.http.get(`${this.radarUrl}?id-empresa=${companyId}`);
+  }
+
+   // Trae los datos del círculo con manejo de errores
+   getCirculoData(companyId: number): Observable<any> {
+    return this.http.get(`${this.circuloUrl}?id-empresa=${companyId}`).pipe(
+      catchError(error => {
+        console.error('Error al obtener datos del círculo:', error);
+        alert("error")
+        return throwError(() => new Error('Error al obtener datos del círculo'));
+      })
+    );
   }
 }

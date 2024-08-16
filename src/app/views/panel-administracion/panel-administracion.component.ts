@@ -9,6 +9,10 @@ import {
 } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
+import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-dorado.component';
+
+import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
+import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
 @Component({
   selector: 'app-panel-administracion',
@@ -20,6 +24,10 @@ import { UsersService } from '../../services/user.service';
     UserListComponent,
     UserDetailComponent,
     ChartComponent,
+    CirculoDoradoComponent, 
+    
+    FuncionesglobalesComponent,
+    LogomassloganComponent
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css'],
@@ -52,4 +60,9 @@ export class PanelAdministracionComponent {
       this.users = users;
     });
   }
+
+
+  
+
+
 }
