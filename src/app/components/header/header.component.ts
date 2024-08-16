@@ -12,11 +12,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       <span>{{ isMenuOpen ? '&#10006;' : '&#9776;' }}</span>
     </div>
     <div class="menu_landing" [ngClass]="{ 'open': isMenuOpen }">
-      <button>Quienes somos</button>
-      <button>Razon social</button>
+      <button  (click)="scrollToSection('quienessomos')">Quienes somos</button>
+      <button (click)="scrollToSection('razonsocial')">Razon social</button>
       <h4>+MyPyme</h4>
-      <button>Diagnostico</button>
-      <button>Contactanos</button>
+      <button (click)="scrollToSection('diagnostico')">Diagnostico</button>
+      <button (click)="scrollToSection('contactanos')">Contactanos</button>
     </div>
     <div class="ingresalogin">
       <button   routerLink="login">ingresa <img src="https://res.cloudinary.com/dpeqdynym/image/upload/v1722015231/Male_User_1_vwwndu.png" width="40px"></button>
@@ -165,6 +165,16 @@ export class HeaderComponent {
       body.classList.add('mobile-menu-active');
     } else {
       body.classList.remove('mobile-menu-active');
+    }
+  }
+
+  //metodo para enrutar la landin
+
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
