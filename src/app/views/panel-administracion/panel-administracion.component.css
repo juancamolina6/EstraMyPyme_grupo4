@@ -99,6 +99,7 @@ body {
 .chart-panel:nth-child(3) {
   grid-column: span 1; /* Cada uno ocupa una columna */
   grid-row: 1; /* Colocarlos en la primera fila */
+  overflow: hidden;
 }
 
 .user-section .chart-panel:nth-child(1) {
@@ -160,4 +161,18 @@ app-user-detail {
   padding: 20px;
   border-radius: 10px;
 }
+
+
+/*circulo dorado*/
+
+.circulo{
+  padding: 20px;
+  /*overflow: hidden;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 

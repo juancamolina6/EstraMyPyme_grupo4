@@ -9,6 +9,8 @@ import {
 } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
+import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-dorado.component';
+
 import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
 import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
@@ -22,6 +24,8 @@ import { LogomassloganComponent } from '../../components/logomasslogan/logomassl
     UserListComponent,
     UserDetailComponent,
     ChartComponent,
+    CirculoDoradoComponent, 
+    
     FuncionesglobalesComponent,
     LogomassloganComponent
   ],
@@ -56,4 +60,9 @@ export class PanelAdministracionComponent {
       this.users = users;
     });
   }
+
+
+  
+
+
 }
