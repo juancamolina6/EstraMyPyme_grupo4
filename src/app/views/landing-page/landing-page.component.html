@@ -1,6 +1,6 @@
-<body>
+<body [ngClass]="currentTheme">
 <div class="headerlanding">
-    <app-funcionesglobales></app-funcionesglobales>
+    <app-funcionesglobales (themeChange)="changeTheme($event)"></app-funcionesglobales>
     <app-header></app-header>
 </div>
 <div>

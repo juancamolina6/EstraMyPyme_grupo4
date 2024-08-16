@@ -16,5 +16,11 @@ import { FuncionesglobalesComponent } from '../../components/funcionesglobales/f
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  //modo claro metodo
+  currentTheme: string = 'light-mode'; // Valor por defecto
+
+  changeTheme(theme: string) {
+    this.currentTheme = theme;
+  }
   
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
 import { PresentacionComponent } from '../../components/presentacion/presentacion.component';
@@ -16,8 +16,18 @@ import { EncuentranosComponent } from '../../components/encuentranos/encuentrano
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements OnInit{
 
-  
+  currentTheme: string = 'dark-mode'; // Valor por defecto
+
+  ngOnInit() {
+    // Inicializa el tema desde localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+    this.currentTheme = savedTheme;
+  }
+
+  changeTheme(theme: string) {
+    this.currentTheme = theme;
+  }
 
 }

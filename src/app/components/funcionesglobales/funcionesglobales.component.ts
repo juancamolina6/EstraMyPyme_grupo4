@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, AfterViewInit,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-funcionesglobales',
@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
 
     <div class="modo" id="light-mode">
       <label class="switch">
-        <input type="checkbox" id="input" onchange="onCheckboxChange()">
+        <input type="checkbox" id="input" (change)="onCheckboxChange()">
         <span class="slider round"></span>
       </label>
     </div>
@@ -150,41 +150,35 @@ input:checked + .slider {
 
   `
 })
-export class FuncionesglobalesComponent {
+export class FuncionesglobalesComponent implements OnInit,AfterViewInit {
+  @Output() themeChange = new EventEmitter<string>();
 
+  checkbox!: HTMLInputElement;
 
-   checkbox!: HTMLInputElement; // Utilizamos "!" para indicar que será inicializado más tarde
-   contenedor!: HTMLElement; // Utilizamos "!" para indicar que será inicializado más tarde
+  ngOnInit() {
+    // Inicializa el estado del tema al cargar el componente
+    this.initializeThemeMode();
+  }
 
- 
+  ngAfterViewInit() {
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
+  }
 
-  changeTheme() {
-    if (this.checkbox.checked) {
-      // Si el checkbox está marcado, aplica la clase de modo claro
-      this.contenedor.classList.add('dark-mode');
-      this.contenedor.classList.remove('light-mode');
-    } else {
-      // Si el checkbox NO está marcado, aplica la clase de modo oscuro
-      this.contenedor.classList.add('light-mode');
-      this.contenedor.classList.remove('dark-mode');
-    }
+  initializeThemeMode() {
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
+    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+    const isLightMode = savedTheme === 'light-mode';
+    this.checkbox.checked = isLightMode;
+    document.body.classList.toggle('light-mode', isLightMode);
+    document.body.classList.toggle('dark-mode', !isLightMode);
   }
 
   onCheckboxChange() {
-    this.changeTheme();
+    const isLightMode = this.checkbox.checked;
+    this.themeChange.emit(isLightMode ? 'light-mode' : 'dark-mode');
+    document.body.classList.toggle('light-mode', isLightMode);
+    document.body.classList.toggle('dark-mode', !isLightMode);
+    localStorage.setItem('theme', isLightMode ? 'light-mode' : 'dark-mode');
   }
-
-
-  // Método para inicializar el modo de tema
-  initializeThemeMode() {
-    this.checkbox = document.getElementById('input') as HTMLInputElement;
-    this.contenedor = document.querySelector('.register-container') as HTMLElement;
-
-    this.changeTheme();
-
-    // Agrega un event listener al checkbox para cambiar el tema
-    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
-  }
-
       
 }
