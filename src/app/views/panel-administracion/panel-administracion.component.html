@@ -1,5 +1,5 @@
 
-<body [ngClass]="currentTheme">
+<body>
   <header>
       <app-funcionesglobales (themeChange)="changeTheme($event)"></app-funcionesglobales>
   </header>
@@ -22,10 +22,8 @@
           </div>
           
           <div class="chart-panel circulo">
-          
-          <app-circulo-dorado></app-circulo-dorado>
-            <!-- Otro gráfico o contenido aquí -->
-          </div>
+          <app-circulo-dorado [companyId]="selectedCompanyId"></app-circulo-dorado>
+        </div>
 
 
         </div>
