@@ -1,14 +1,14 @@
-<body [ngClass]="currentTheme">
+<div class="conten">
 <div class="headerlanding">
     <app-funcionesglobales (themeChange)="changeTheme($event)"></app-funcionesglobales>
     <app-header></app-header>
 </div>
 <div>
-    <app-presentacion ></app-presentacion>
-    <app-quienessomos id="quienessomos"></app-quienessomos>
-    <app-razonsocial id="razonsocial"></app-razonsocial>
-    <app-diagnostico id="diagnostico"></app-diagnostico>
-    <app-contactanos id="contactanos"></app-contactanos>
-    <app-encuentranos ></app-encuentranos>
+    <app-presentacion></app-presentacion>
+    <app-quienessomos></app-quienessomos>
+    <app-razonsocial></app-razonsocial>
+    <app-diagnostico></app-diagnostico>
+    <app-contactanos></app-contactanos>
+    <app-encuentranos></app-encuentranos>
   </div>
-</body>
+</div>

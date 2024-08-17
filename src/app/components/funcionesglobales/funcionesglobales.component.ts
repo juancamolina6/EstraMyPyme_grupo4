@@ -158,27 +158,75 @@ export class FuncionesglobalesComponent implements OnInit,AfterViewInit {
   ngOnInit() {
     // Inicializa el estado del tema al cargar el componente
     this.initializeThemeMode();
+    this.resetCheckbox();  // Esto reiniciará el checkbox cuando el componente se cargue
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
   }
 
   ngAfterViewInit() {
     this.checkbox = document.getElementById('input') as HTMLInputElement;
+    this.syncCheckboxWithTheme(); // Sincroniza el checkbox con el tema actual
   }
 
-  initializeThemeMode() {
-    this.checkbox = document.getElementById('input') as HTMLInputElement;
-    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+  // Sincroniza el checkbox con el tema actual
+  syncCheckboxWithTheme() {
+    const savedTheme = localStorage.getItem('theme');
     const isLightMode = savedTheme === 'light-mode';
-    this.checkbox.checked = isLightMode;
-    document.body.classList.toggle('light-mode', isLightMode);
-    document.body.classList.toggle('dark-mode', !isLightMode);
+
+    if (this.checkbox) {
+      this.checkbox.checked = isLightMode;
+    }
+  
   }
 
-  onCheckboxChange() {
-    const isLightMode = this.checkbox.checked;
-    this.themeChange.emit(isLightMode ? 'light-mode' : 'dark-mode');
-    document.body.classList.toggle('light-mode', isLightMode);
-    document.body.classList.toggle('dark-mode', !isLightMode);
-    localStorage.setItem('theme', isLightMode ? 'light-mode' : 'dark-mode');
-  }
+    // Resetea el estado del checkbox y el tema guardado
+    resetCheckbox() {
+      // Eliminar el tema guardado en localStorage
+      localStorage.removeItem('theme');
       
+      // Reiniciar el checkbox a desmarcado
+      if (this.checkbox) {
+        this.checkbox.checked = false;
+      }
+  
+      // Asegurarse de que el estilo "light-mode" se elimine si el checkbox está desmarcado
+      document.body.classList.remove('light-mode');
+    }
+
+    initializeThemeMode() {
+      // Obtener el tema guardado en localStorage
+      const savedTheme = localStorage.getItem('theme');
+      
+      // Determinar si el modo claro está activado
+      const isLightMode = savedTheme === 'light-mode';
+      
+      // Aplicar o eliminar la clase light-mode en el body
+      if (isLightMode) {
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+      }
+  
+      // Asegurarse de que el checkbox refleje el estado actual del tema
+      this.checkbox = document.getElementById('input') as HTMLInputElement;
+      this.checkbox.checked = isLightMode;
+    }
+  
+
+    onCheckboxChange() {
+      // Determinar si el checkbox está activado (modo claro seleccionado)
+      const isLightMode = this.checkbox.checked;
+      
+      // Emitir el evento de cambio de tema
+      this.themeChange.emit(isLightMode ? 'light-mode' : 'dark-mode');
+      
+      // Aplicar o eliminar la clase light-mode en el body
+      if (isLightMode) {
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+      }
+      
+      // Guardar el tema seleccionado en localStorage
+      localStorage.setItem('theme', isLightMode ? 'light-mode' : 'dark-mode');
+    }
 }
