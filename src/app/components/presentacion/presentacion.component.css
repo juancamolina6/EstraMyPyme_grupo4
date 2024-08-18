@@ -1,5 +1,4 @@
-body {
-  background-color: black;
+.cont {
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -71,6 +70,27 @@ h4:nth-of-type(3) {
   font-size: 1rem;
   box-sizing: border-box;
 }
+
+/*modo claro */
+
+:host-context(.light-mode) .titulo  {
+  color: black;
+
+  
+  }
+
+  :host-context(.light-mode) h1 {
+    color: black;
+    
+    }
+
+    :host-context(.light-mode) img {
+      content: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721519077/73cfbdea51a1a101764ae95123ae9372_mpxbnb.png');
+      width: 8rem; 
+      height: 5rem;
+      translate: 0 -1rem;
+      }
+
 
 @media (max-width: 1024px) {
   .trayectory {

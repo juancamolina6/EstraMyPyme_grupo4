@@ -17,5 +17,5 @@ import { FuncionesglobalesComponent } from '../../components/funcionesglobales/f
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  
+
 }

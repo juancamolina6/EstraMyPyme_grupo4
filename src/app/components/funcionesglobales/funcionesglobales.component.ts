@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Output, AfterViewInit,OnInit,Input  } from '@angular/core';
+import { RouterLink, RouterOutlet,Router   } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 @Component({
   selector: 'app-funcionesglobales',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterOutlet,CommonModule ],
   template: `
 <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
 <div class="modos">
+<div *ngIf="showElement">
+  <button  routerLink="" class="home"></button>
+  </div>
   <div class="modos1">
     <div class="langua">
       <!-- Lista desplegable para seleccionar el idioma -->
@@ -20,7 +24,7 @@ import { Component } from '@angular/core';
 
     <div class="modo" id="light-mode">
       <label class="switch">
-        <input type="checkbox" id="input" onchange="onCheckboxChange()">
+        <input type="checkbox" id="input" (change)="onCheckboxChange()">
         <span class="slider round"></span>
       </label>
     </div>
@@ -36,6 +40,30 @@ body {
   margin: 0;
   padding: 0;
 }
+.home {
+  border: white solid 0.125rem;
+  border-radius: 1.875rem; 
+  color: white;
+  background-color: black;
+  width: 3rem; 
+  height: 1.875rem; 
+  padding: 0rem 0.625rem;
+  font-size: 1rem; 
+  margin-right: -3.125rem; 
+  margin-top: 0.8rem;
+  z-index: 4;
+  position: relative;
+  translate: -3.5rem -.8rem;
+ 
+   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+}
+
+
+.home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
 
 .modos {
   display: flex;
@@ -146,45 +174,99 @@ input:checked + .slider {
   background-color: black;
 }
 
+.light-mode  {
+ 
+}
+:host-context(.light-mode) .home {
+  border: black solid 0.125rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729083/fznjrjzijebiaijttr6y.png') no-repeat center center;
+  }
+
+
 
 
   `
 })
-export class FuncionesglobalesComponent {
+export class FuncionesglobalesComponent implements OnInit,AfterViewInit {
+  @Output() themeChange = new EventEmitter<string>();
 
+  checkbox!: HTMLInputElement;
 
-   checkbox!: HTMLInputElement; // Utilizamos "!" para indicar que será inicializado más tarde
-   contenedor!: HTMLElement; // Utilizamos "!" para indicar que será inicializado más tarde
-
- 
-
-  changeTheme() {
-    if (this.checkbox.checked) {
-      // Si el checkbox está marcado, aplica la clase de modo claro
-      this.contenedor.classList.add('dark-mode');
-      this.contenedor.classList.remove('light-mode');
-    } else {
-      // Si el checkbox NO está marcado, aplica la clase de modo oscuro
-      this.contenedor.classList.add('light-mode');
-      this.contenedor.classList.remove('dark-mode');
-    }
-  }
-
-  onCheckboxChange() {
-    this.changeTheme();
-  }
-
-
-  // Método para inicializar el modo de tema
-  initializeThemeMode() {
+  ngOnInit() {
+    // Inicializa el estado del tema al cargar el componente
+    this.initializeThemeMode();
+    this.resetCheckbox();  // Esto reiniciará el checkbox cuando el componente se cargue
     this.checkbox = document.getElementById('input') as HTMLInputElement;
-    this.contenedor = document.querySelector('.register-container') as HTMLElement;
-
-    this.changeTheme();
-
-    // Agrega un event listener al checkbox para cambiar el tema
-    this.checkbox.addEventListener('change', this.changeTheme.bind(this));
   }
 
+  ngAfterViewInit() {
+    this.checkbox = document.getElementById('input') as HTMLInputElement;
+    this.syncCheckboxWithTheme(); // Sincroniza el checkbox con el tema actual
+  }
+
+  // Sincroniza el checkbox con el tema actual
+  syncCheckboxWithTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const isLightMode = savedTheme === 'light-mode';
+
+    if (this.checkbox) {
+      this.checkbox.checked = isLightMode;
+    }
+  
+  }
+
+    // Resetea el estado del checkbox y el tema guardado
+    resetCheckbox() {
+      // Eliminar el tema guardado en localStorage
+      localStorage.removeItem('theme');
       
+      // Reiniciar el checkbox a desmarcado
+      if (this.checkbox) {
+        this.checkbox.checked = false;
+      }
+  
+      // Asegurarse de que el estilo "light-mode" se elimine si el checkbox está desmarcado
+      document.body.classList.remove('light-mode');
+    }
+
+    initializeThemeMode() {
+      // Obtener el tema guardado en localStorage
+      const savedTheme = localStorage.getItem('theme');
+      
+      // Determinar si el modo claro está activado
+      const isLightMode = savedTheme === 'light-mode';
+      
+      // Aplicar o eliminar la clase light-mode en el body
+      if (isLightMode) {
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+      }
+  
+      // Asegurarse de que el checkbox refleje el estado actual del tema
+      this.checkbox = document.getElementById('input') as HTMLInputElement;
+      this.checkbox.checked = isLightMode;
+    }
+  
+
+    onCheckboxChange() {
+      // Determinar si el checkbox está activado (modo claro seleccionado)
+      const isLightMode = this.checkbox.checked;
+      
+      // Emitir el evento de cambio de tema
+      this.themeChange.emit(isLightMode ? 'light-mode' : 'dark-mode');
+      
+      // Aplicar o eliminar la clase light-mode en el body
+      if (isLightMode) {
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+      }
+      
+      // Guardar el tema seleccionado en localStorage
+      localStorage.setItem('theme', isLightMode ? 'light-mode' : 'dark-mode');
+    }
+
+    /*ocultar boton landin en la landin */
+    @Input() showElement: boolean = true; // Por defecto se muestra
 }

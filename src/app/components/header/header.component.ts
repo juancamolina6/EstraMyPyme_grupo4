@@ -12,11 +12,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       <span>{{ isMenuOpen ? '&#10006;' : '&#9776;' }}</span>
     </div>
     <div class="menu_landing" [ngClass]="{ 'open': isMenuOpen }">
-      <button>Quienes somos</button>
-      <button>Razon social</button>
+      <button  (click)="scrollToSection('quienessomos')">Quienes somos</button>
+      <button (click)="scrollToSection('razonsocial')">Razon social</button>
       <h4>+MyPyme</h4>
-      <button>Diagnostico</button>
-      <button>Contactanos</button>
+      <button (click)="scrollToSection('diagnostico')">Diagnostico</button>
+      <button (click)="scrollToSection('contactanos')">Contactanos</button>
     </div>
     <div class="ingresalogin">
       <button   routerLink="login">ingresa <img src="https://res.cloudinary.com/dpeqdynym/image/upload/v1722015231/Male_User_1_vwwndu.png" width="40px"></button>
@@ -37,7 +37,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       font-family: 'Inter', sans-serif;
       position: relative;
       background-color: black;
-      transition: background-color 0.3s ease, transform 0.3s ease;
       transform: translateY(0);
     }
 
@@ -120,6 +119,40 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       margin-left: .2rem;
       margin-right: -1rem;
     }
+      /*modo claro*/
+  :host-context(.light-mode)  .menu_landing {
+    color: black;
+    background-color: white;
+  }
+
+  :host-context(.light-mode)  h4 {
+    color: black;
+    background-color: white;
+  }
+
+  :host-context(.light-mode)  button {
+    color: white;
+    background-color: black;
+  }
+
+  :host-context(.light-mode) button:hover {
+    box-shadow: 0 0 0 6px white, 0 0 0 9px blue; 
+  
+    }
+ 
+    :host-context(.light-mode)   .menu_icon span {
+      color: black;
+     
+    }
+  
+    :host-context(.light-mode)   .ingresalogin button {
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+    }
+  
+
+  
 
     @media (max-width: 768px) {
       .menu_landing {
@@ -165,6 +198,15 @@ export class HeaderComponent {
       body.classList.add('mobile-menu-active');
     } else {
       body.classList.remove('mobile-menu-active');
+    }
+  }
+
+  //metodo para enrutar la landin
+  
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 

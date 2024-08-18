@@ -1,5 +1,6 @@
 
   .logo{
+    color: white;
     padding: 2rem;
     display: inline-block;
         
@@ -35,4 +36,20 @@
     font-weight: 300;
   }
   
-  
+
+  /*stylos modo claro */
+
+  :host-context(.light-mode) .logo  {
+    color: black;
+  }
+
+  :host-context(.light-mode) .imagen-logo {
+    content: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721519077/73cfbdea51a1a101764ae95123ae9372_mpxbnb.png');
+    width: 8rem; 
+    height: 5rem; 
+    translate: 0 1.25rem;
+    transform: translateX(-1.800rem);
+    z-index: -1;  
+  }
+
+ 
