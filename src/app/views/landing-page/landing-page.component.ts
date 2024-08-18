@@ -24,10 +24,21 @@ export class LandingPageComponent implements OnInit{
     // Inicializa el tema desde localStorage
     const savedTheme = localStorage.getItem('theme') || 'dark-mode';
     this.currentTheme = savedTheme;
+
+    this.applyExcludeOverflowClass();//logica para no aplicar no scrool a la landin
   }
 
   changeTheme(theme: string) {
     this.currentTheme = theme;
+  }
+
+//logica para no aplicar no scrool a la landin
+  ngAfterViewInit() {
+    this.applyExcludeOverflowClass();
+  }
+
+  private applyExcludeOverflowClass() {
+    document.body.classList.add('exclude-overflow');
   }
 
 }

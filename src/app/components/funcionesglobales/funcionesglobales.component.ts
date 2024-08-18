@@ -1,12 +1,16 @@
-import { Component, EventEmitter, Output, AfterViewInit,OnInit } from '@angular/core';
-
+import { Component, EventEmitter, Output, AfterViewInit,OnInit,Input  } from '@angular/core';
+import { RouterLink, RouterOutlet,Router   } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 @Component({
   selector: 'app-funcionesglobales',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterOutlet,CommonModule ],
   template: `
 <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
 <div class="modos">
+<div *ngIf="showElement">
+  <button  routerLink="" class="home"></button>
+  </div>
   <div class="modos1">
     <div class="langua">
       <!-- Lista desplegable para seleccionar el idioma -->
@@ -36,6 +40,30 @@ body {
   margin: 0;
   padding: 0;
 }
+.home {
+  border: white solid 0.125rem;
+  border-radius: 1.875rem; 
+  color: white;
+  background-color: black;
+  width: 3rem; 
+  height: 1.875rem; 
+  padding: 0rem 0.625rem;
+  font-size: 1rem; 
+  margin-right: -3.125rem; 
+  margin-top: 0.8rem;
+  z-index: 4;
+  position: relative;
+  translate: -3.5rem -.8rem;
+ 
+   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+}
+
+
+.home:active {
+  background-color:  #0000ff; /* Color de fondo al hacer clic */
+
+}
+
 
 .modos {
   display: flex;
@@ -146,6 +174,15 @@ input:checked + .slider {
   background-color: black;
 }
 
+.light-mode  {
+ 
+}
+:host-context(.light-mode) .home {
+  border: black solid 0.125rem;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729083/fznjrjzijebiaijttr6y.png') no-repeat center center;
+  }
+
+
 
 
   `
@@ -229,4 +266,7 @@ export class FuncionesglobalesComponent implements OnInit,AfterViewInit {
       // Guardar el tema seleccionado en localStorage
       localStorage.setItem('theme', isLightMode ? 'light-mode' : 'dark-mode');
     }
+
+    /*ocultar boton landin en la landin */
+    @Input() showElement: boolean = true; // Por defecto se muestra
 }

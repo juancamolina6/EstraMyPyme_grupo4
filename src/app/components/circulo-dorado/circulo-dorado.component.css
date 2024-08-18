@@ -106,7 +106,7 @@
       padding: 10px;
       color: white;
       background-color: black;
-      border: 2px solid #0000ff;
+      border: 2px solid black;
       border-radius: 5px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       font-size: 12px;
@@ -116,6 +116,13 @@
       translate: -80px -40px;
       display: none;
     }
+
+    :host-context(.light-mode) #explanation {
+      background-color: white;
+      color:black;
+
+ 
+}
      
 
     

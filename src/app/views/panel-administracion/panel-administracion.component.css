@@ -7,13 +7,12 @@
 }
 
 
-.bod {
-  
-    
+.bod { 
       color: white;
       margin: 0;
       height: 100vh;
       display: flex;
+      overflow-y: hidden;
       
    }
 
@@ -173,6 +172,12 @@ app-user-detail {
   justify-content: center;
 }
 
+/*modo claro*/
 
-
+:host-context(.light-mode) .chart-panel:nth-child(1),
+.chart-panel:nth-child(2),
+.chart-panel:nth-child(3) {
+border: 0.15rem solid black;
+ 
+}
 

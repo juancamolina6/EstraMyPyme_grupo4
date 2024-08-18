@@ -4,7 +4,7 @@
 body {
     background-color: black;
     color: #fff;
-   
+    overflow-y: hidden;
   }
   
   /* Modo claro */
@@ -12,6 +12,13 @@ body {
     background-color: white;
     color: black;
   }
+
+  /*no aplica la elimanacion del desplazamiento en y en la landin*/
+
+  body.exclude-overflow {
+    overflow-y: auto;
+  }
+
   
   /* Otros estilos */
   .weight-bold {
@@ -26,4 +33,7 @@ body {
     text-decoration: underline;
   }
   
+  .app-landing-page {
+    overflow-y: auto; /* O cualquier valor que permita el desplazamiento */
+  }
 
