@@ -5,11 +5,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Fondo oscuro */
+    background-color: transparent; /* Fondo oscuro */
     padding: 40px;
     position: sticky;
     border-radius: 15px; /* Bordes redondeados */
-    border: 5px solid #053295; /* Borde azul */
+    border: 0.25rem solid  #0000ff; /* Borde azul */
     height: 450px;
     width: 500px;
     right: 0;
@@ -89,3 +89,7 @@
     color: #0052ff;
     text-decoration: none;
 }
+
+:host-context(.light-mode) input {
+    border: 1px solid black;
+  }

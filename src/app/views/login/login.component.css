@@ -8,8 +8,6 @@
 
   
   .derechalogin {
-    
-       
         color: white;
         margin: 0;
         height: 100vh;
@@ -67,5 +65,11 @@
     margin-top: -2rem;
     
   }
+
   }
+
+  :host-context(.light-mode) .derechalogin {
+    color: black;
+  }
+  
   
