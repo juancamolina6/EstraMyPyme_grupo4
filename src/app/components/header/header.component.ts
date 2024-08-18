@@ -37,7 +37,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       font-family: 'Inter', sans-serif;
       position: relative;
       background-color: black;
-      transition: background-color 0.3s ease, transform 0.3s ease;
       transform: translateY(0);
     }
 
@@ -120,6 +119,40 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       margin-left: .2rem;
       margin-right: -1rem;
     }
+      /*modo claro*/
+  :host-context(.light-mode)  .menu_landing {
+    color: black;
+    background-color: white;
+  }
+
+  :host-context(.light-mode)  h4 {
+    color: black;
+    background-color: white;
+  }
+
+  :host-context(.light-mode)  button {
+    color: white;
+    background-color: black;
+  }
+
+  :host-context(.light-mode) button:hover {
+    box-shadow: 0 0 0 6px white, 0 0 0 9px blue; 
+  
+    }
+ 
+    :host-context(.light-mode)   .menu_icon span {
+      color: black;
+     
+    }
+  
+    :host-context(.light-mode)   .ingresalogin button {
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+    }
+  
+
+  
 
     @media (max-width: 768px) {
       .menu_landing {
