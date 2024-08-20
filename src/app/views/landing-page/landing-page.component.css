@@ -1,6 +1,4 @@
-body{
-    background-color: black;
-}
+
 
 .headerlanding {
     position: fixed; /* Fija el elemento en la pantalla */
@@ -13,6 +11,6 @@ body{
 
 
 
-body {
+.conten {
     overflow-x: hidden;
 }

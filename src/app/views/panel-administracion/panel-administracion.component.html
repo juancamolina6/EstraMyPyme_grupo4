@@ -1,7 +1,7 @@
 
-<body>
+<div class="bod">
   <header>
-      <app-funcionesglobales></app-funcionesglobales>
+      <app-funcionesglobales (themeChange)="changeTheme($event)"></app-funcionesglobales>
   </header>
   <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
   <section class="admin-panel">
@@ -38,7 +38,7 @@
         </div>
       </div>
   </section>
-</body>
+</div>
 
 
 

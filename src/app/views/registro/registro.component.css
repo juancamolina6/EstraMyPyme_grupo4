@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   left: 0;
+  overflow-y: hidden;
  
 
 }
@@ -115,6 +116,7 @@
 
 .light-mode .slider {
   border: black solid 0.125rem; 
+  
 }
 
 .light-mode .language {

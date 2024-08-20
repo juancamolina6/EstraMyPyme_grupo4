@@ -1,6 +1,6 @@
-<body>
+<div class="conten">
 <div class="headerlanding">
-    <app-funcionesglobales></app-funcionesglobales>
+    <app-funcionesglobales  [showElement]="false" (themeChange)="changeTheme($event)"></app-funcionesglobales>
     <app-header></app-header>
 </div>
 <div>
@@ -10,5 +10,5 @@
     <app-diagnostico></app-diagnostico>
     <app-contactanos></app-contactanos>
     <app-encuentranos></app-encuentranos>
+  </div>
 </div>
-</body>

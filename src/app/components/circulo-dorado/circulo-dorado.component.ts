@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnChanges, SimpleChanges, Input, AfterViewInit} from '@angular/core';
+import { Component, ElementRef, ViewChild, OnChanges, SimpleChanges, Input} from '@angular/core';
 import { ChartDataService } from '../../services/chart.service';
 
 @Component({

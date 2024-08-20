@@ -30,17 +30,33 @@
   margin-top: -3rem;
   font-size: .8rem;
   box-sizing: border-box;
+  color: white;
 }
 
 .formcaracterizacion:hover {
   box-shadow: 0 0 0 3px black, 0 0 0 5px blue; 
   transition: box-shadow 0.3s ease-in-out;
+  
 }
 
 .superponer {
   font-weight: 800;
   font-size: 1.3rem;
 }
+/*modo claro*/
+
+:host-context(.light-mode) .svg-container path {
+  fill: black; 
+  }
+
+  :host-context(.light-mode) .ingresacontenido tspan {
+    fill: white; 
+    }
+  
+
+ 
+
+
 
 @media (max-width: 1024px) {
   .formcaracterizacion {

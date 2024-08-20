@@ -1,29 +1,39 @@
+/* Estilos globales */
 
-
-/* You can add global styles to this file, and also import other style files */
- 
-html {
-    font-size: 16px;
- 
-}
- 
+/* Configura el tema oscuro por defecto */
 body {
-    
-    background-color: #040404;
+    background-color: black;
     color: #fff;
-    font-size: 16px;
-   
-}
- 
-.weight-bold {
+    overflow-y: hidden;
+  }
+  
+  /* Modo claro */
+  body.light-mode {
+    background-color: white;
+    color: black;
+  }
+
+  /*no aplica la elimanacion del desplazamiento en y en la landin*/
+
+  body.exclude-overflow {
+    overflow-y: auto;
+  }
+
+  
+  /* Otros estilos */
+  .weight-bold {
     font-weight: bold;
-}
- 
-.text-dark {
+  }
+  
+  .text-dark {
     color: #6b6b6b;
-}
- 
-.underline-hover:hover {
+  }
+  
+  .underline-hover:hover {
     text-decoration: underline;
-}
+  }
+  
+  .app-landing-page {
+    overflow-y: auto; /* O cualquier valor que permita el desplazamiento */
+  }
 

@@ -1,5 +1,4 @@
-body {
-    background-color: black;
+.c-ten {
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -79,6 +78,10 @@ form button {
 form button:hover {
     background-color: #000099;
 }
+
+    :host-context(.light-mode) .c-ten  {
+   color: black;
+    }
 
 /* Media queries para hacer el formulario responsive */
 @media (max-width: 1024px) {

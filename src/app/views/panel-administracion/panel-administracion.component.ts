@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -32,7 +32,7 @@ import { LogomassloganComponent } from '../../components/logomasslogan/logomassl
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css'],
 })
-export class PanelAdministracionComponent {
+export class PanelAdministracionComponent implements OnInit{
   selectedUser!: User;
   users: User[] = [];
 
@@ -62,7 +62,18 @@ export class PanelAdministracionComponent {
   }
 
 
-  
+ //modo claro metodo
+ currentTheme: string = 'dark-mode'; // Valor por defecto
+
+ ngOnInit() {
+   // Inicializa el tema desde localStorage
+   const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+   this.currentTheme = savedTheme;
+ }
+
+ changeTheme(theme: string) {
+   this.currentTheme = theme;
+ }
 
 
 }
