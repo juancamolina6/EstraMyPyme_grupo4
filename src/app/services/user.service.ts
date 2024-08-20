@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../components/user-detail/user-detail.component';
 
@@ -9,8 +10,39 @@ import { User } from '../components/user-detail/user-detail.component';
 })
 export class UsersService {
   private apiUrl = 'http://localhost:3000/'; // URL de la API de json-server
+  private readonly TIMEOUT = 20 * 60 * 1000; // 30 minutos
+  private lastActivityTime: number = Date.now();
+  private inactivityInterval: any;
+  private sessionExpired$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  resetTimeout() {
+    this.lastActivityTime = Date.now();
+  }
+  startInactivityCheck() {
+    if (this.inactivityInterval) {
+      clearInterval(this.inactivityInterval);
+    }
+    this.inactivityInterval = setInterval(() => {
+      if (Date.now() - this.lastActivityTime > this.TIMEOUT) {
+        this.logout(); // Logout si el usuario ha estado inactivo por más de TIMEOUT
+      }
+    }, 1000); // Comprobación cada segundo
+  }
+
+  logout() {
+    localStorage.removeItem('userToken'); // Borra el token de usuario
+    clearInterval(this.inactivityInterval); // Detiene el chequeo de inactividad
+    this.sessionExpired$.next(true);
+    this.router.navigate(['/login']); // Redirige al login
+  }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('userToken');
+  }
+  getSessionExpired(): Observable<boolean> {
+    return this.sessionExpired$.asObservable();
+  }
 
   /// Método para obtener todos los usuarios (Empresas, Profesores, Estudiantes)
   getAllUsers(): Observable<User[]> {
@@ -60,12 +92,6 @@ export class UsersService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
-  isLoggedIn(): boolean {
-    // Aquí puedes verificar si el usuario está autenticado
-    // por ejemplo, verificando un token almacenado en localStorage
-    return !!localStorage.getItem('userToken');
-  }
-  
   
 
   // Método para validar al usuario

@@ -10,6 +10,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.usersService.isLoggedIn()) {
+      this.usersService.resetTimeout(); // Resetear el tiempo de inactividad
       return true;
     } else {
       this.router.navigate(['/registro']);
