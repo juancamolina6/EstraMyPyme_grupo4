@@ -1,7 +1,5 @@
+import { Component, ElementRef, ViewChild, OnChanges, SimpleChanges, Input} from '@angular/core';
 import { ChartDataService } from '../../services/chart.service';
-import { Observable } from 'rxjs';
-import { Component, ElementRef, ViewChild, OnInit, OnChanges, SimpleChanges, Input, AfterViewInit} from '@angular/core';
-
 
 @Component({
   selector: 'app-circulo-dorado',
