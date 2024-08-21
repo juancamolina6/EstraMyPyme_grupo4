@@ -32,9 +32,11 @@ export interface User {
   programa?: string;
   año?: string;
   periodo?: string;
-  empresa_asignada: string[];
-  estudante_asignado: string[];
+  empresa_asignada: number[];
+  estudiante_asignado: number[];
   image?: string;
+  nombre_empresa?: string[];
+  nombre_estudiante?: string[];
 }
 
 @Component({
@@ -79,6 +81,8 @@ export class UserDetailComponent implements OnChanges {
       website: 'website' in this.editUser,
       empresa_asignada: 'empresa_asignada' in this.editUser,
       estudante_asignado: 'estudante_asignado' in this.editUser,
+      nombre_empresa: Array.isArray(this.editUser.nombre_empresa) && this.editUser.nombre_empresa.length > 0,
+      nombre_estudiantes: Array.isArray(this.editUser.nombre_estudiante) && this.editUser.nombre_estudiante.length > 0,
     };
   }
 
@@ -121,22 +125,22 @@ export class UserDetailComponent implements OnChanges {
     this.isEditing = false;
   }
   addEmpresa(empresa: string) {
-    if (empresa && !this.editUser.empresa_asignada.includes(empresa)) {
-      this.editUser.empresa_asignada.push(empresa);
+    if (empresa && !this.editUser.nombre_empresa?.includes(empresa)) {
+      this.editUser.nombre_empresa?.push(empresa);
     }
   }
 
   removeEmpresa(index: number) {
-    this.editUser.empresa_asignada.splice(index, 1);
+    this.editUser.nombre_empresa?.splice(index, 1);
   }
 
   addEstudiante(estudiante: string) {
-    if (estudiante && !this.editUser.estudante_asignado.includes(estudiante)) {
-      this.editUser.estudante_asignado.push(estudiante);
+    if (estudiante && !this.editUser.nombre_estudiante?.includes(estudiante)) {
+      this.editUser.nombre_estudiante?.push(estudiante);
     }
   }
 
   removeEstudiante(index: number) {
-    this.editUser.estudante_asignado.splice(index, 1);
+    this.editUser.nombre_estudiante?.splice(index, 1);
   }
 }
