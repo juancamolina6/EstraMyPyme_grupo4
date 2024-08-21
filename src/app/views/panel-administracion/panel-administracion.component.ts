@@ -1,16 +1,12 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { UserListComponent } from '../../components/user-list/user-list.component';
-import {
-  UserDetailComponent,
-  User,
-} from '../../components/user-detail/user-detail.component';
+import { UserDetailComponent, User } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
 import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-dorado.component';
-
 import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
 import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
@@ -24,15 +20,14 @@ import { LogomassloganComponent } from '../../components/logomasslogan/logomassl
     UserListComponent,
     UserDetailComponent,
     ChartComponent,
-    CirculoDoradoComponent, 
-    
+    CirculoDoradoComponent,
     FuncionesglobalesComponent,
     LogomassloganComponent
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css'],
 })
-export class PanelAdministracionComponent implements OnInit{
+export class PanelAdministracionComponent implements OnInit {
   selectedUser!: User;
   users: User[] = [];
 
@@ -44,7 +39,6 @@ export class PanelAdministracionComponent implements OnInit{
       this.selectedCompanyId = user.empresa_id;
     }
   }
-
 
   // Método para actualizar el usuario en la lista
   updateUser(updatedUser: User) {
@@ -61,19 +55,38 @@ export class PanelAdministracionComponent implements OnInit{
     });
   }
 
+  // Modo claro
+  currentTheme: string = 'dark-mode'; // Valor por defecto
 
- //modo claro metodo
- currentTheme: string = 'dark-mode'; // Valor por defecto
+  ngOnInit() {
+    // Inicializa el tema desde localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+    this.currentTheme = savedTheme;
+    
+    // Inicializa el comportamiento del botón y loader
+    this.initializeButtonLoader();
+  }
 
- ngOnInit() {
-   // Inicializa el tema desde localStorage
-   const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-   this.currentTheme = savedTheme;
- }
+  changeTheme(theme: string) {
+    this.currentTheme = theme;
+    localStorage.setItem('theme', theme);
+  }
 
- changeTheme(theme: string) {
-   this.currentTheme = theme;
- }
+  private initializeButtonLoader() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.button') as HTMLButtonElement;
+      const loader = document.querySelector('.loader') as HTMLElement;
+      const check = document.querySelector('.check') as HTMLElement;
 
+      if (btn && loader && check) {
+        btn.addEventListener('click', () => {
+          loader.classList.add('active');
+        });
 
+        loader.addEventListener('animationend', () => {
+          check.classList.add('active');
+        });
+      }
+    });
+  }
 }

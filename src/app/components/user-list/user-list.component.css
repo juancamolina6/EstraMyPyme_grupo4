@@ -1,6 +1,6 @@
 /* user-list.component.css */
 .user-list-container {
-  max-height: 400px;
+  max-height: 330px;
   overflow-y: auto;
   position: relative;
 }

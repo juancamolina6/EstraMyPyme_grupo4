@@ -1,14 +1,14 @@
-<div class="conten">
-<div class="headerlanding">
-    <app-funcionesglobales  [showElement]="false" (themeChange)="changeTheme($event)"></app-funcionesglobales>
+<div class="landing">
+  <div class="headerlanding">
+    <app-funcionesglobales></app-funcionesglobales>
     <app-header></app-header>
-</div>
-<div>
+  </div>
+  <div>
     <app-presentacion></app-presentacion>
-    <app-quienessomos></app-quienessomos>
-    <app-razonsocial></app-razonsocial>
-    <app-diagnostico></app-diagnostico>
-    <app-contactanos></app-contactanos>
+    <app-quienessomos id="quienes-somos"></app-quienessomos>
+    <app-razonsocial id="razon-social"></app-razonsocial>
+    <app-diagnostico id="diagnostico"></app-diagnostico>
+    <app-contactanos id="contactanos"></app-contactanos>
     <app-encuentranos></app-encuentranos>
   </div>
 </div>

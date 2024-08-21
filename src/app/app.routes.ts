@@ -1,9 +1,10 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PanelAdministracionComponent } from './views/panel-administracion/panel-administracion.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import { RegistroComponent } from './views/registro/registro.component';
 import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guard/auth.guard'; // Importa el guard
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
