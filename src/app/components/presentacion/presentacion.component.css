@@ -1,3 +1,320 @@
+
+.componente_pre {
+  width: 100vh;
+  height: 95vh;
+  border-radius: 8px;
+}
+
+.diagestr-tittle {
+  display: flex;
+  justify-content: center;  /* Centra horizontalmente */
+  align-items: center;      /* Centra verticalmente */
+  position: absolute;          /* Fija la posición en la pantalla */
+  top: 50%;                 /* Posiciona al 50% del viewport verticalmente */
+  left: 50%;                /* Posiciona al 50% del viewport horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para centrar exactamente */
+
+  height: auto;             /* Deja que la altura se ajuste al contenido */
+  text-align: center;       /* Centra el texto dentro del contenedor */
+  
+}
+
+
+.diagestr-tittle h1 {
+  color: #FFF;
+  font-family: Inter, sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: normal;
+  font-style: italic;
+  margin-top: -6rem;
+}
+
+
+
+
+
+
+
+
+
+
+/*  Estramypyme logo*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+
+}
+
+.tittle-comprimed {
+  background-color: transparent;
+  height: 0vh;
+  font-family: 'Muli', sans-serif;
+  font-style: italic;
+  margin: 3rem;
+}
+
+.text {
+  position: fixed;
+  top: 85%;
+  left: 15%;
+  transform: translateX(-50%) translateY(-50%);
+  list-style: none;
+  border-bottom: 0;
+  padding: -10rem;
+
+}
+
+
+
+.text.hidden {
+  border-bottom: 0px solid #fff;
+
+}
+
+
+
+.text li {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 2em;
+  color: #fff;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+  max-width: 2em;
+  padding: 0;
+  /* Asegúrate de que no haya padding */
+  margin: 0;
+  /* Asegúrate de que no haya margin extra */
+}
+
+
+.text.hidden li.spaced {
+  padding-left: 0;
+}
+
+.text li.spaced {
+  padding-left: 0.2em;
+}
+
+.text.hidden li.ghost {
+  opacity: 0;
+  max-width: 0;
+}
+
+/* El signo + solo se muestra cuando la lista está contraída */
+.text.hidden .compress-indicator {
+  opacity: 1;
+  visibility: visible;
+}
+
+.text .compress-indicator {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/*       logo*/
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #cf1b1b;
+  font-size: 124px;
+  letter-spacing: 8px;
+  cursor: pointer;
+}
+
+span::before {
+  content: "EstraMyPyme";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+span::after {
+  content: "EstraMyPyme";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+span:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+span:hover:after {
+  top: -10px;
+  left: -10px;
+} 
+
+
+@media (max-width: 768px) {
+  .text {
+    top: 90%;
+    font-size: .6em; /* Reduce el tamaño del texto */
+  }
+
+  .diagestr-tittle h1 {
+    font-size: 28px; /* Reduce el tamaño del logo */
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    display: none;
+  }
+
+  .diagestr-tittle h1 {
+    font-size: 24px; /* Reduce más el tamaño del logo */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*  hola empresa*/
+.content {
+  width:237px;
+  font-size:28px;
+  line-height:39px;
+  font-family:'Muli';
+  color:#ecf0f1;
+  height:39px;
+  position:absolute;
+  top:51%;
+  left:49%;
+  margin-top:70px;
+  margin-left:-88px;
+  
+  &:before {
+    content:'[';
+    position:absolute;
+    left:-30px;
+    line-height:30px;
+  }
+  &:after {
+    content:']';
+    position:absolute;
+    right:0px;
+    line-height:30px;
+  }
+  &:after, &:before {
+    color:#16a085;
+    font-size:42px;
+    animation:2s linear 0s normal none infinite opacity;
+    -webkit-animation:2s ease-out 0s normal none infinite opacity;
+    -moz-animation:2s ease-out 0s normal none infinite opacity;
+    -o-animation:2s ease-out 0s normal none infinite opacity;
+  }
+}
+
+.visible {
+  float:left;
+  font-weight:600;
+  overflow:hidden;
+  height:38px;   
+}
+
+p {
+  display:inline;
+  float:left;
+  margin:0;
+  margin-top: -0.1rem;
+}
+
+.ulli {
+  margin-top:0;
+  padding-left:78px;
+  text-align:left;
+  list-style:none;
+  animation:6s linear 0s normal none infinite change;
+  -webkit-animation:6s linear 0s normal none infinite change;
+  -moz-animation:6s linear 0s normal none infinite change;
+  -o-animation:6s linear 0s normal none infinite change;
+}
+
+ul li {
+  line-height:39px;
+  margin:0;
+}
+
+@-webkit-keyframes opacity {
+  0%   {opacity:0;}
+  50%  {opacity:1;}
+  100% {opacity:0;}
+}
+@keyframes opacity {
+  0%   {opacity:0;}
+  50%  {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes change {
+  0%   {margin-top:0;}
+  15%  {margin-top:0;}
+  25%  {margin-top:-40px;}
+  40%  {margin-top:-40px;}
+  50%  {margin-top:-80px;}
+  65%  {margin-top:-80px;}
+  75%  {margin-top:-40px;}
+  85%  {margin-top:-40px;}
+  100% {margin-top:0;}
+}
+@keyframes change {
+  0%   {margin-top:0;}
+  15%  {margin-top:0;}
+  25%  {margin-top:-40px;}
+  40%  {margin-top:-40px;}
+  50%  {margin-top:-80px;}
+  65%  {margin-top:-80px;}
+  75%  {margin-top:-40px;}
+  85%  {margin-top:-40px;}
+  100% {margin-top:0;}
+}
+
+/* entre otros */
 .cont {
   width: 100vw;
   height: 100vh;
@@ -13,17 +330,10 @@
 .titulo {
   color: white;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
-  padding-top: 6rem;
-}
+  font-family:'Muli';
+  margin-left: -1rem;
+  margin-top: -20rem;
 
-h1 {
-  font-size: 2rem;
-  color: #FFF;
-  font-style: italic;
-  font-weight: 900;
-  line-height: normal;
-  margin: 0.9rem 0;
 }
 
 h5 {
@@ -59,15 +369,17 @@ h4:nth-of-type(3) {
 }
 
 .trayectory {
+  font-family:'Muli';
   display: inline-block;
   background-color: #00ff;
-  width: 50vw;
+  width: 80vw;
   max-width: 30rem;
   text-align: center;
   padding: 1rem 1.2rem;
-  border-radius: 50px;
-  margin-top: 1rem;
-  font-size: 1rem;
+  border-radius: 90px;
+  margin-top: 17rem;
+  margin-left: -1.5rem;
+  font-size: 1.2rem;
   box-sizing: border-box;
 }
 
@@ -91,7 +403,16 @@ h4:nth-of-type(3) {
       translate: 0 -1rem;
       }
 
+      /* Modo claro */
+:host-context(.light-mode) .text.hidden,
+:host-context(.light-mode) .text li{
+    color: black !important;
+}
 
+
+:host-context(.light-mode) .content {
+  color: rgba(48, 48, 48, 0.638) !important;
+}
 @media (max-width: 1024px) {
   .trayectory {
     width: 60vw;
@@ -122,3 +443,7 @@ h4:nth-of-type(3) {
     font-size: 0.7rem;
   }
 }
+
+
+
+

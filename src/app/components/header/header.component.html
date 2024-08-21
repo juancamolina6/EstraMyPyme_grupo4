@@ -1,4 +1,13 @@
-<!-- header.component.html -->
-<header class="header">
-  <h1>EstraMyPyme</h1>
-</header>
+<div class="menu_icon" (click)="toggleMenu()">
+  <span>{{ isMenuOpen ? '&#10006;' : '&#9776;' }}</span>
+</div>
+<div class="menu_landing" [ngClass]="{ 'open': isMenuOpen }">
+  <button [routerLink]="['/']" [fragment]="'quienes-somos'">Quienes somos</button>
+  <button [routerLink]="['/']" [fragment]="'razon-social'">Razon social</button>
+  <h4>+MyPyme</h4>
+  <button [routerLink]="['/']" [fragment]="'diagnostico'">Diagnostico</button>
+  <button [routerLink]="['/']" [fragment]="'contactanos'">Contactanos</button>
+</div>
+<div class="ingresalogin">
+  <button routerLink="/login">ingresa <img src="https://res.cloudinary.com/dpeqdynym/image/upload/v1722015231/Male_User_1_vwwndu.png" width="40px"></button>
+</div>

@@ -1,3 +1,7 @@
+*{
+    font-family: Inter, sans-serif;
+}
+
 .tt-cont {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -101,3 +105,36 @@
         margin-bottom: 1rem;
     }
 }
+
+
+/* Ocultar iconos en modo oscuro */
+:host-context(.dark-mode) .social-icons:last-of-type {
+    display: none;
+  }
+  
+  /* Mostrar iconos en modo oscuro */
+  :host-context(.dark-mode) .social-icons:first-of-type {
+    display: flex;
+  }
+  
+  /* Ocultar iconos en modo claro */
+  :host-context(.light-mode) .social-icons:first-of-type {
+    display: none;
+  }
+  
+  /* Mostrar iconos en modo claro */
+  :host-context(.light-mode) .social-icons:last-of-type {
+    display: flex;
+  }
+  
+  /* Asegurarse de que los iconos están centrados */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los iconos */
+  }
+  
+  .social-icons img {
+    width: 30px; /* Tamaño de los iconos */
+    height: auto;
+  }

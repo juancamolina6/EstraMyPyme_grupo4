@@ -45,8 +45,8 @@ body {
   border-radius: 1.875rem; 
   color: white;
   background-color: black;
-  width: 3rem; 
-  height: 1.875rem; 
+  width: 3.3rem; 
+  height: 1.7rem; 
   padding: 0rem 0.625rem;
   font-size: 1rem; 
   margin-right: -3.125rem; 
@@ -55,7 +55,8 @@ body {
   position: relative;
   translate: -3.5rem -.8rem;
  
-   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+  background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1722729129/o1bxn3mmr3rzbct5t5v3.png') no-repeat center center;
+  background-size: 34% 70%;
 }
 
 
@@ -157,6 +158,7 @@ body {
   top: -10px;
   transform: rotate(180deg);
   background: url('https://res.cloudinary.com/dduyeudcy/image/upload/v1721486195/icons8-sun-20_1_l1bwx3.png') no-repeat center center;
+  
 }
 
 input:checked + .slider:after {

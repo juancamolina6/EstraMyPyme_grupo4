@@ -10,6 +10,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './razonsocial.component.css'
 })
 export class RazonsocialComponent {
+  
 }
 
 

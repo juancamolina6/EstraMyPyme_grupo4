@@ -1,34 +1,171 @@
-*{
+* {
   font-family: "Inter", sans-serif;
-
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.left-info {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.header {
+  grid-column: span 3;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.data, .label {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+:host-context(.light-mode) .grid-container {
+  border: 2px solid #000;
+}
+
+:host-context(.light-mode) .data, 
+:host-context(.light-mode) .label {
+  background-color: #fff;
+  color: #000;
+}
+
+:host-context(.light-mode) .header {
+  color: #000;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.button {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: #1c89ff;
+  border: solid 1px transparent;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+}
+
+.button:hover {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  margin: 30px auto 0 auto;
+  border: solid 2px #424242;
+  border-top: solid 2px #1c89ff;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.check {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(-4px, 50px, 0);
+  opacity: 0;
+}
+
+.check span:nth-child(1) {
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.check span:nth-child(2) {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  transform: rotate(-45deg) translate3d(14px, -4px, 0);
+  transform-origin: 100%;
+}
+
+.loader.active {
+  animation: loading 2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.check.active {
+  opacity: 1;
+  transform: translate3d(-4px, 4px, 0);
+  transition: all .5s cubic-bezier(.49, 1.74, .38, 1.74);
+  transition-delay: .2s;
+}
+
+@keyframes loading {
+  30% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+    transform: rotate(1080deg);
+    border-color: #262626;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(1080deg);
+    border-color: #1c89ff;
+  }
+}
+
+.bod {
+  color: white;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.left-info, .right-info {
+  flex: 1;
   justify-content: center;
   align-items: center;
 }
 
-
-.bod { 
-      color: white;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      overflow-y: hidden;
-      
-   }
-
-.left-info, .right-info {
-      flex: 1;
-      justify-content: center;
-      align-items: center;
-  }
-
 .left-info {
-       display:flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 700px) {
   .login-now {
@@ -37,33 +174,31 @@
 
   .by-eafit {
     margin-top: -3rem;
-    gap: 0.5rem; 
+    gap: 0.5rem;
   }
 
   .imagen-logo {
     width: 4.5rem;
-    height: 2rem; 
+    height: 2rem;
   }
 
   h1 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   p {
     display: none;
   }
-  
+
   .left-info {
-  flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+
+  .right-info {
+    flex: 0 0 95%;
+  }
 }
 
-.right-info {
-  flex: 0 0 95%; 
-}
-}
-
-
-  /* panel-administracion.component.css */
 .admin-panel {
   height: 100%;
   width: 100%;
@@ -80,44 +215,46 @@
 
 .right-info {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-  grid-template-rows: auto auto; /* Dos filas automáticas */
-  gap: 20px; /* Espaciado entre elementos */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
 }
 
 .charts {
-  display: contents; /* Permite que los hijos de .charts se alineen directamente en el grid */
+  display: contents;
 }
 
 .user-section {
-  display: contents; /* Permite que los hijos de .user-section se alineen directamente en el grid */
+  display: contents;
 }
 
 .chart-panel:nth-child(1),
 .chart-panel:nth-child(2),
 .chart-panel:nth-child(3) {
-  grid-column: span 1; /* Cada uno ocupa una columna */
-  grid-row: 1; /* Colocarlos en la primera fila */
+  grid-column: span 1;
+  grid-row: 1;
   overflow: hidden;
 }
 
 .user-section .chart-panel:nth-child(1) {
-  grid-column: span 1; /* Ocupa una columna */
-  grid-row: 2; /* Colocarlo en la segunda fila */
+  grid-column: span 1;
+  grid-row: 2;
   background-color: transparent !important;
+  width: 20rem;
+  height: 29rem;
+  margin-left: -2.5rem;
+  margin-top: -9rem;
+  margin-bottom: -10rem;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .user-section .chart-panel:nth-child(2) {
-  grid-column: span 2; /* Ocupa dos columnas */
-  grid-row: 2; /* Colocarlo en la segunda fila */
+  grid-column: span 2;
+  grid-row: 2;
   width: 34rem;
   height: 18rem;
 }
-
-
-
-
-
 
 .chart-panel {
   flex: 1;
@@ -141,8 +278,6 @@
   color: #333;
 }
 
-
-/* Ajustes para que los componentes ocupen el mismo alto y se alineen correctamente */
 app-user-list {
   flex: 1;
   margin-right: 10px;
@@ -161,23 +296,32 @@ app-user-detail {
   border-radius: 10px;
 }
 
-
-/*circulo dorado*/
-
-.circulo{
+.circulo {
   padding: 20px;
-  /*overflow: hidden;*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/*modo claro*/
-
 :host-context(.light-mode) .chart-panel:nth-child(1),
 .chart-panel:nth-child(2),
 .chart-panel:nth-child(3) {
-border: 0.15rem solid black;
- 
+  border: 0.15rem solid black;
 }
 
+:host-context(.light-mode) .button {
+  background-color: #ffffff;
+  border-color: #1c89ff;
+  color: #000000;
+}
+
+:host-context(.light-mode) .button:hover {
+  background-color: #1c89ff;
+  border-color: #1c89ff;
+  color: #ffffff;
+}
+
+:host-context(.light-mode) .check span:nth-child(1),
+:host-context(.light-mode) .check span:nth-child(2) {
+  background-color: #000000;
+}
