@@ -6,10 +6,14 @@
   margin: 0;
 }
 
+
+
+
+
 .left-info {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  margin-left: 6rem;
 }
 
 .grid-container {
@@ -23,6 +27,7 @@
   border-radius: 10px;
   margin: 20px;
 }
+
 
 .header {
   grid-column: span 3;
@@ -240,10 +245,11 @@
   grid-column: span 1;
   grid-row: 2;
   background-color: transparent !important;
-  width: 20rem;
+  width: 21rem;
   height: 29rem;
-  margin-left: -2.5rem;
-  margin-top: -9rem;
+  margin-left: -3.3rem;
+  margin-right: -10rem;
+  margin-top: -10rem;
   margin-bottom: -10rem;
   border: none !important;
   box-shadow: none !important;
@@ -324,4 +330,132 @@ app-user-detail {
 :host-context(.light-mode) .check span:nth-child(1),
 :host-context(.light-mode) .check span:nth-child(2) {
   background-color: #000000;
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .bod {
+    height: auto; /* Permite que el contenedor principal crezca según el contenido */
+  }
+  
+  .left-info {
+    width: 20%;
+    position: sticky;
+    top: 0;
+    left: 5rem;
+    margin-bottom: 90rem;
+    padding: 10px;
+    border: none;
+  }
+
+  .right-info {
+    position: relative;
+    margin: auto;
+    background-color: transparent;
+    width: 800px;
+  }
+
+  ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-left: -15rem;
+    margin-top: 10rem;
+  }
+
+  ul.slider {
+    position: absolute; /* Posiciona el slider en relación con el contenedor padre */
+    width: 400px; /* Ajusta el ancho si es necesario */
+    height: 300px;
+    top: 200px; /* Ajusta este valor para mover el slider hacia abajo si es necesario */
+    left: 0; /* Ajusta para mover el slider a la izquierda */
+    margin-bottom: 24px; /* Ajusta este valor si es necesario */
+  }
+
+  ul.slider li {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    transition: opacity .5s;
+    background: #fff;
+  }
+
+  ul.slider li img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  ul.slider li:first-child {
+    opacity: 1; /* Muestra el primer <li> */
+  }
+
+  ul.slider li:target {
+    opacity: 1; /* Muestra el <li> del enlace que se pulse */
+  }
+
+  .slider {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    left: 0; /* Ajusta este valor para mover el slider a la izquierda */
+  }
+
+  .menu {
+    position: absolute; /* Posiciona el menú en relación con el contenedor padre */
+   /* Ajusta este valor según el espacio que desees debajo del slider */
+    left: 0; /* Mueve el menú hacia la izquierda */
+    transform: translateX(0); /* Alinea el menú a la izquierda */
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos dentro del menú a la izquierda */
+    list-style: none; /* Elimina los puntos de lista */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 0; /* Elimina el margen predeterminado */
+    margin-left: -8rem;
+    margin-top: -5rem;
+ 
+  }
+
+  .menu li {
+    display: inline-flex; /* Alinea los elementos de la lista horizontalmente */
+    margin: 0 5px; /* Espacio entre los elementos de la lista */
+    left: 20; /* Mueve el menú hacia la izquierda */
+  }
+
+  .menu li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    border-radius: 100%;
+    left: 20;
+  }
+
+  .user-section .chart-panel:nth-child(1) {
+    grid-column: span 1;
+    grid-row: 2;
+    background-color: transparent !important;
+    width: 24rem;
+    height: 29rem;
+    margin-left: -22rem;
+    margin-right: -10rem;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .user-section .chart-panel:nth-child(2) {
+    display: none;
+  }
 }

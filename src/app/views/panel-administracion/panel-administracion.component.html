@@ -10,20 +10,20 @@
         <div class="views">
             <app-logomasslogan></app-logomasslogan>
         </div>
-        <div class="views">
-            <div class="grid-container">
-              <div class="header">Views</div>
-              <div class="data">30</div>
-              <div class="data">40</div>
-              <div class="data">33</div>
-              <div class="label">Diarios</div>
-              <div class="label">Mensuales</div>
-              <div class="label">Anuales</div>
-            </div>
-       </div>
+<div class="views">
+  <div class="grid-container">
+    <div class="header">Views</div>
+    <div class="data">{{ viewsCount }}</div>
+    <div class="data">{{ downloadsCount }}</div>
+    <div class="data">{{ registrationsCount }}</div>
+    <div class="label">Views</div>
+    <div class="label">Descargas</div>
+    <div class="label">Registros</div>
+  </div>
+</div>
        <div class="views">
         <div class="main">
-          <button class="button">Descargar libro</button>
+          <button (click)="downloadPDFFromDrive()" class="button">Descargar libro</button>
           
           
           <div class="loader">
@@ -40,19 +40,31 @@
      <div class="right-info">
         <!-- Gráficos -->
         <div class="charts">
+          
+          <ul class="slider charts" >
+            <li id="slide1">
           <div class="chart-panel">
-           
-            <app-chart [companyId]="selectedCompanyId" chartType="clock"></app-chart>
+            <app-chart id="slide1"[companyId]="selectedCompanyId" chartType="clock"></app-chart>
           </div>
+          </li>
+          <li id="slide2">
           <div class="chart-panel">
 
             <app-chart [companyId]="selectedCompanyId" chartType="radar"></app-chart>
           </div>
-          
+          </li>
+          <li id="slide3">
           <div class="chart-panel circulo">
           <app-circulo-dorado [companyId]="selectedCompanyId"></app-circulo-dorado>
         </div>
-
+        </li>
+         </ul>
+        
+         <ul class="menu">
+          <li><a href="#slide1">1</a></li>
+          <li><a href="#slide2">2</a></li>
+          <li><a href="#slide3">3</a></li>
+        </ul>
 
         </div>
         <!-- Sección de usuarios -->
