@@ -10,7 +10,7 @@ import { User } from '../components/user-detail/user-detail.component';
 })
 export class UsersService {
   private apiUrl = 'http://localhost:3000/'; // URL de la API de json-server
-  private readonly TIMEOUT = 20 * 60 * 1000; // 30 minutos
+  private readonly TIMEOUT = 1 * 60 * 1000; // 30 minutos
   private lastActivityTime: number = Date.now();
   private inactivityInterval: any;
   private sessionExpired$ = new BehaviorSubject<boolean>(false);
