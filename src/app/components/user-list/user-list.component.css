@@ -1,6 +1,7 @@
 /* user-list.component.css */
 .user-list-container {
-  max-height: 330px;
+  max-height: 310px;
+  max-width: 100%;
   overflow-y: auto;
   position: relative;
 }
@@ -11,40 +12,64 @@
   background-color: #6d6d6d;
   z-index: 100;
   padding-bottom: 10px;
-}
-
-.user-list {
-  background-color: #6d6d6d;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-  max-width: 600px;
-}
-
-.user-list .tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.user-list .tabs button {
-  background-color: #6d6d6d;
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #007bff; /* Color azul para el botón principal */
   color: white;
-  border: 2px solid #6d6d6d;
+  border: 2px solid #007bff;
   border-radius: 30px;
-  padding: 5px 10px;
+  padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  font-size: 16px;
+  margin-left: .4rem;
 }
 
-.user-list .tabs button:hover {
-  background-color: #555;
+.dropdown-button:hover {
+  background-color: #0056b3; /* Azul más oscuro para el hover */
 }
 
-.user-list .tabs button.selected {
-  background-color: #d9d9d9;
-  color: #0000ff;
-  border-color: #0000ff;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto; /* Añadido para hacer scroll vertical si es necesario */
+}
+
+.dropdown-content a {
+  color: #007bff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .search-container {
@@ -52,6 +77,7 @@
   background-color: #555;
   border-radius: 30px;
   padding: 5px;
+  margin-right: .2rem;
 }
 
 .search-container input[type="text"] {
@@ -84,7 +110,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 50px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -111,7 +137,8 @@
 }
 
 .user-list-container::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
+  height: 8px;
 }
 
 .user-list-container::-webkit-scrollbar-track {
