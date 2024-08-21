@@ -8,6 +8,7 @@ import { RazonsocialComponent } from "../../components/razonsocial/razonsocial.c
 import { DiagnosticoComponent } from '../../components/diagnostico/diagnostico.component';
 import { ContactanosComponent } from '../../components/contactanos/contactanos.component';
 import { EncuentranosComponent } from '../../components/encuentranos/encuentranos.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -19,26 +20,27 @@ import { EncuentranosComponent } from '../../components/encuentranos/encuentrano
 export class LandingPageComponent implements OnInit{
 
   currentTheme: string = 'dark-mode'; // Valor por defecto
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        const element = document.getElementById(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
     // Inicializa el tema desde localStorage
     const savedTheme = localStorage.getItem('theme') || 'dark-mode';
     this.currentTheme = savedTheme;
 
-    this.applyExcludeOverflowClass();//logica para no aplicar no scrool a la landin
   }
 
   changeTheme(theme: string) {
     this.currentTheme = theme;
   }
 
-//logica para no aplicar no scrool a la landin
-  ngAfterViewInit() {
-    this.applyExcludeOverflowClass();
-  }
-
-  private applyExcludeOverflowClass() {
-    document.body.classList.add('exclude-overflow');
-  }
-
 }
+
+

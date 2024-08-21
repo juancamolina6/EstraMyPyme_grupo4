@@ -7,17 +7,45 @@
   <section class="admin-panel">
      <div class="left-info">
         <!-- Logo y Eslogan -->
-        <app-logomasslogan></app-logomasslogan>
-     </div>
+        <div class="views">
+            <app-logomasslogan></app-logomasslogan>
+        </div>
+        <div class="views">
+            <div class="grid-container">
+              <div class="header">Views</div>
+              <div class="data">30</div>
+              <div class="data">40</div>
+              <div class="data">33</div>
+              <div class="label">Diarios</div>
+              <div class="label">Mensuales</div>
+              <div class="label">Anuales</div>
+            </div>
+       </div>
+       <div class="views">
+        <div class="main">
+          <button class="button">Descargar libro</button>
+          
+          
+          <div class="loader">
+            <div class="check">
+              <span class="check-one"></span>
+              <span class="check-two"></span>
+            </div>
+          </div>
+          
+        </div>
+       </div>
+     
+      </div>
      <div class="right-info">
         <!-- Gráficos -->
         <div class="charts">
           <div class="chart-panel">
-            <h2>Posición competitiva deseada</h2>
+           
             <app-chart [companyId]="selectedCompanyId" chartType="clock"></app-chart>
           </div>
           <div class="chart-panel">
-            <h2>Gráfico 2</h2>
+
             <app-chart [companyId]="selectedCompanyId" chartType="radar"></app-chart>
           </div>
           
