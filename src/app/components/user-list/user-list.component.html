@@ -1,12 +1,15 @@
 <div class="user-list-container">
   <div class="user-list">
     <div class="user-list-header">
-      <div class="tabs">
-        <button *ngFor="let type of ['Todos', 'Profesores', 'Estudiantes', 'Empresas']"
-                [class.selected]="type === selectedUserType"
-                (click)="onTabClick(type)">
-          {{ type }}
-        </button>
+      <div class="dropdown">
+        <button class="dropdown-button">{{ selectedUserType || 'Seleccionar tipo' }}</button>
+        <div class="dropdown-content">
+          <a *ngFor="let type of ['Todos', 'Prof', 'Est', 'Empre']"
+             [class.selected]="type === selectedUserType"
+             (click)="onTabClick(type)">
+            {{ type }}
+          </a>
+        </div>
       </div>
       <div class="search-container">
         <input type="text" placeholder="Buscar..." [(ngModel)]="searchTerm" (input)="onSearch()">
