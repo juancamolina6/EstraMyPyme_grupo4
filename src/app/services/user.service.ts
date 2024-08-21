@@ -33,6 +33,7 @@ export class UsersService {
 
   logout() {
     localStorage.removeItem('userToken'); // Borra el token de usuario
+    localStorage.removeItem('userRole');  // Borra el rol de usuario
     clearInterval(this.inactivityInterval); // Detiene el chequeo de inactividad
     this.sessionExpired$.next(true);
     this.router.navigate(['/login']); // Redirige al login
@@ -44,24 +45,47 @@ export class UsersService {
     return this.sessionExpired$.asObservable();
   }
 
-  /// Método para obtener todos los usuarios (Empresas, Profesores, Estudiantes)
+  // Método para obtener todos los usuarios permitidos según el rol del usuario logueado
   getAllUsers(): Observable<User[]> {
-    return forkJoin([
-      this.getCompanies(),
-      this.getProfessors(),
-      this.getStudents(),
-    ]).pipe(
-      map(([companies, professors, students]) => [
-        ...companies,
-        ...professors,
-        ...students,
-      ])
-    );
+    const role = localStorage.getItem('userRole');
+    const userId = localStorage.getItem('userId');
+
+    if (role === 'admin') {
+      // El admin puede ver todos los usuarios
+      return forkJoin([
+        this.getCompanies(),
+        this.getProfessors(),
+        this.getStudents(),
+      ]).pipe(
+        map(([companies, professors, students]) => [
+          ...companies,
+          ...professors,
+          ...students,
+        ])
+      );
+    } else if (role === 'profesor') {
+      // Los profesores solo pueden ver estudiantes y empresas asignadas
+      return forkJoin([
+        this.getCompaniesByProfessorId(Number(userId)),
+        this.getStudentsByProfessorId(Number(userId)),
+      ]).pipe(
+        map(([companies, students]) => [
+          ...companies,
+          ...students,
+        ])
+      );
+    } else {
+      // Otros roles no pueden ver usuarios (esto puede ajustarse según la necesidad)
+      return new Observable<User[]>((observer) => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
   }
   getUsersByType(type: string): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.apiUrl}${type}`);
   }
-
+  
   getCompanies(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.apiUrl}companies`);
   }
@@ -72,6 +96,16 @@ export class UsersService {
 
   getStudents(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.apiUrl}estudiantes`);
+  }
+
+  // Obtener estudiantes asignados al profesor logueado
+  getStudentsByProfessorId(profesorId: number): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}estudiantes?profesorId=${profesorId}`);
+  }
+
+  // Obtener empresas asignadas al profesor logueado
+  getCompaniesByProfessorId(profesorId: number): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiUrl}companies?profesorId=${profesorId}`);
   }
 
   // Método para actualizar un usuario
@@ -92,21 +126,21 @@ export class UsersService {
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
-  
+
 
   // Método para validar al usuario
   validateUser(
     email: string,
     password: string
-  ): Observable<{ success: boolean; role: string }> {
+  ): Observable<{ success: boolean; role: string, userId: number }> {
     return this.httpClient
       .get<User[]>(`${this.apiUrl}admins?email=${email}`)
       .pipe(
         map((users) => {
           if (users.length > 0 && users[0].password === password) {
-            return { success: true, role: users[0].role };
+            return { success: true, role: users[0].role, userId: users[0].id };
           } else {
-            return { success: false, role: 'usuario no existe' };
+            return { success: false, role: 'usuario no existe', userId: 0 };
           }
         })
       );

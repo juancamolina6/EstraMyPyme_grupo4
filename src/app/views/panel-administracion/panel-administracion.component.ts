@@ -1,16 +1,12 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { UserListComponent } from '../../components/user-list/user-list.component';
-import {
-  UserDetailComponent,
-  User,
-} from '../../components/user-detail/user-detail.component';
+import { UserDetailComponent,User } from '../../components/user-detail/user-detail.component';
 import { ChartComponent } from '../../components/chart/chart.component';
 import { UsersService } from '../../services/user.service';
 import { CirculoDoradoComponent } from '../../components/circulo-dorado/circulo-dorado.component';
-
 import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
 import { LogomassloganComponent } from '../../components/logomasslogan/logomasslogan.component';
 
@@ -24,27 +20,31 @@ import { LogomassloganComponent } from '../../components/logomasslogan/logomassl
     UserListComponent,
     UserDetailComponent,
     ChartComponent,
-    CirculoDoradoComponent, 
-    
+    CirculoDoradoComponent,
     FuncionesglobalesComponent,
-    LogomassloganComponent
+    LogomassloganComponent,
   ],
   templateUrl: './panel-administracion.component.html',
   styleUrls: ['./panel-administracion.component.css'],
 })
-export class PanelAdministracionComponent implements OnInit{
+export class PanelAdministracionComponent implements OnInit {
   selectedUser!: User;
   users: User[] = [];
-
-  constructor(private usersService: UsersService) {}
+  students: User[] = [];
+  companies: User[] = [];
+  //modo claro metodo
+  currentTheme: string = 'dark-mode'; // Valor por defecto
   selectedCompanyId: number | null = null;
+  professorId!: number; // Guardar el ID del profesor logueado
+  
+  constructor(private usersService: UsersService) {}
+
 
   onUserSelected(user: User) {
     if (user && user.empresa_id) {
       this.selectedCompanyId = user.empresa_id;
     }
   }
-
 
   // Método para actualizar el usuario en la lista
   updateUser(updatedUser: User) {
@@ -61,19 +61,29 @@ export class PanelAdministracionComponent implements OnInit{
     });
   }
 
+  ngOnInit() {
+    // Inicializa el tema desde localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+    this.currentTheme = savedTheme;
 
- //modo claro metodo
- currentTheme: string = 'dark-mode'; // Valor por defecto
+    // Obtén el profesorId del localStorage
+    const profesorId = +localStorage.getItem('profesorId')!;
 
- ngOnInit() {
-   // Inicializa el tema desde localStorage
-   const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-   this.currentTheme = savedTheme;
- }
+    // Obtener estudiantes y empresas asignados a este profesor
+    this.usersService.getStudentsByProfessorId(profesorId).subscribe((data) => {
+      this.students = data;
+      this.refreshUserList();
+    });
 
- changeTheme(theme: string) {
-   this.currentTheme = theme;
- }
+    this.usersService
+      .getCompaniesByProfessorId(profesorId)
+      .subscribe((data) => {
+        this.companies = data;
+      });
+  }
 
-
+  changeTheme(theme: string) {
+    this.currentTheme = theme;
+    localStorage.setItem('theme', theme);
+  }
 }

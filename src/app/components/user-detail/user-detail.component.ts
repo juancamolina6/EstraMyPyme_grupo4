@@ -32,8 +32,8 @@ export interface User {
   programa?: string;
   año?: string;
   periodo?: string;
-  empresa_asignada: string[];
-  estudante_asignado: string[];
+  empresa_asignada: number[];
+  estudante_asignado: number[];
   image?: string;
 }
 
@@ -120,22 +120,9 @@ export class UserDetailComponent implements OnChanges {
     this.editUser = { ...this.originalUser }; // Restaurar los datos originales
     this.isEditing = false;
   }
-  addEmpresa(empresa: string) {
-    if (empresa && !this.editUser.empresa_asignada.includes(empresa)) {
-      this.editUser.empresa_asignada.push(empresa);
-    }
-  }
-
   removeEmpresa(index: number) {
     this.editUser.empresa_asignada.splice(index, 1);
   }
-
-  addEstudiante(estudiante: string) {
-    if (estudiante && !this.editUser.estudante_asignado.includes(estudiante)) {
-      this.editUser.estudante_asignado.push(estudiante);
-    }
-  }
-
   removeEstudiante(index: number) {
     this.editUser.estudante_asignado.splice(index, 1);
   }

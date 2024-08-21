@@ -18,7 +18,9 @@ export class UserListComponent implements OnInit {
   selectedUserType: string = 'Todos';
   selectedUser: User | null = null;
   searchTerm: string = '';
-
+  
+  @Input() students: User[] = [];
+  @Input() companies: User[] = [];
   @Output() userSelected = new EventEmitter<User>();
 
   constructor(
@@ -69,7 +71,6 @@ export class UserListComponent implements OnInit {
     } else {
       this.filteredUsers = this.allUsers;
     }
-    // Seleccionar automáticamente el primer usuario de la lista filtrada
     this.selectFirstUser();
   }
 
@@ -88,7 +89,7 @@ export class UserListComponent implements OnInit {
 
   onSearch() {
     this.filterUsers();
-  }
+    }
   // Método para seleccionar automáticamente el primer usuario de la lista filtrada
   selectFirstUser() {
     if (this.filteredUsers.length > 0) {

@@ -25,8 +25,11 @@ export class FormsloginComponent {
   login(): void {
     this.usersService.validateUser(this.email, this.password).subscribe(
       (response) => {
-        if (response.success && response.role === 'admin') {
+        if (response.success) {
           localStorage.setItem('userToken', 'some-auth-token'); // Guarda el token o alguna señal de autenticación
+          localStorage.setItem('userRole', response.role); // Guarda el rol del usuario
+          localStorage.setItem('userId', response.userId.toString()); // Guarda el ID del usuario
+
           this.usersService.getAllUsers().subscribe((users) => {
             this.sharedService.setUsers(users);
             this.router.navigate(['/administracion']);
@@ -39,6 +42,5 @@ export class FormsloginComponent {
         console.error('Error de validación de inicio de sesión:', error);
       }
     );
-  }
-      
+  }     
 }
