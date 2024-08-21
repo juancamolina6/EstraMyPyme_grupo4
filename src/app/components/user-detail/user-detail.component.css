@@ -2,7 +2,11 @@
 .user-detail-container {
   max-height: 340px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
+
+
+
 
 .user-detail {
   background-color: #fff;

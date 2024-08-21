@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { LogomassloganComponent } from "../../components/logomasslogan/logomasslogan.component";
 import { FormsloginComponent } from "../../components/formslogin/formslogin.component";
 import { FuncionesglobalesComponent } from '../../components/funcionesglobales/funcionesglobales.component';
+import { CounterService } from '../../services/counter.service';
 
 @Component({
   selector: 'app-login',
@@ -17,5 +18,10 @@ import { FuncionesglobalesComponent } from '../../components/funcionesglobales/f
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(private counterService: CounterService) {}
 
+  onLoginSubmitted() {
+    // Llamar al servicio para incrementar el contador de vistas
+    this.counterService.incrementViews();
+  }
 }

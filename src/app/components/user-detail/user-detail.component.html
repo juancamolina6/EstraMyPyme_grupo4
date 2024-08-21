@@ -59,7 +59,21 @@
       <label for="website">Website:</label>
       <input type="text" id="website" [(ngModel)]="editUser.website" [disabled]="!isEditing">
     </div>
+    <div class="field-group" *ngIf="fieldsVisibility['nombre_empresa'] && editUser.nombre_empresa?.length">
+      <label>Empresas asignadas:</label>
+      <ul>
+        <li *ngFor="let empresa of editUser.nombre_empresa">{{ empresa }}</li>
+      </ul>
+    </div>
+    
+    <div class="field-group" *ngIf="fieldsVisibility['nombre_estudiantes'] && editUser.nombre_estudiante?.length">
+      <label>Estudiantes asignados:</label>
+      <ul>
+        <li *ngFor="let estudiante of editUser.nombre_estudiante">{{ estudiante }}</li>
+      </ul>
+    </div>
   </div>
+  
   <div class="field-group" *ngIf="fieldsVisibility['empresa_asignada']">
     <label>Empresas asignadas:</label>
     <ul>
@@ -70,9 +84,10 @@
   <div class="field-group" *ngIf="fieldsVisibility['estudante_asignado']">
     <label>Estudiantes asignados:</label>
     <ul>
-      <li *ngFor="let estudiante of editUser.estudante_asignado">{{ estudiante }}</li>
+      <li *ngFor="let estudiante of editUser.estudiante_asignado">{{ estudiante }}</li>
     </ul>
   </div>
+ 
 </div>
 <div class="button-container">
   <button class="edit-button" (click)="saveChanges()">{{ isEditing ? 'Guardar' : 'Editar' }}</button>

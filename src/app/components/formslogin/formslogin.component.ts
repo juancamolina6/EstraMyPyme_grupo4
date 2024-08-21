@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { UsersService } from '../../services/user.service';
@@ -8,13 +8,15 @@ import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-formslogin',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink,FormsModule],
+  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
   templateUrl: './formslogin.component.html',
-  styleUrl: './formslogin.component.css'
+  styleUrls: ['./formslogin.component.css']
 })
 export class FormsloginComponent {
   email: string = '';
   password: string = '';
+
+  @Output() loginSubmitted = new EventEmitter<void>();
 
   constructor(
     private usersService: UsersService,
@@ -31,6 +33,7 @@ export class FormsloginComponent {
             this.sharedService.setUsers(users);
             this.router.navigate(['/administracion']);
           });
+          this.loginSubmitted.emit(); // Emitir el evento cuando el login sea exitoso
         } else {
           alert('Credenciales incorrectas o no autorizado');
         }
@@ -40,5 +43,4 @@ export class FormsloginComponent {
       }
     );
   }
-      
 }

@@ -25,7 +25,6 @@ export class ChartDataService {
     return this.http.get(`${this.circuloUrl}?id-empresa=${companyId}`).pipe(
       catchError(error => {
         console.error('Error al obtener datos del círculo:', error);
-        alert("error")
         return throwError(() => new Error('Error al obtener datos del círculo'));
       })
     );

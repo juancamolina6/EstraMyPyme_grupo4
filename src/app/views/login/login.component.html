@@ -1,23 +1,17 @@
-
 <div class="login-container">
-
-<div class="derechalogin">
-  <header>
-    <app-funcionesglobales></app-funcionesglobales>
-</header>
-  <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
-
-<section class="login-now">
-   <div class="left-info">
-    <app-logomasslogan></app-logomasslogan>
-   </div>
-   <div class="right-info">
-     <app-formslogin></app-formslogin>
-   </div>
-</section>
-
+  <div class="derechalogin">
+    <header>
+      <app-funcionesglobales></app-funcionesglobales>
+    </header>
+    <!-- Contenedor de controles (cambio de tema y selección de idioma) -->
+    <section class="login-now">
+      <div class="left-info">
+        <app-logomasslogan></app-logomasslogan>
+      </div>
+      <div class="right-info">
+        <app-formslogin (loginSubmitted)="onLoginSubmitted()"></app-formslogin>
+      </div>
+    </section>
+  </div>
 </div>
 
-   
-</div>
-    
