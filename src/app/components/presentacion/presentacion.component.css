@@ -139,7 +139,7 @@ span {
 }
 
 span::before {
-  content: "EstraMyPyme";
+  content: "EstraMiPyme";
   position: absolute;
   color: transparent;
   background-image: repeating-linear-gradient(
@@ -157,7 +157,7 @@ span::before {
 }
 
 span::after {
-  content: "EstraMyPyme";
+  content: "EstraMiPyme";
   position: absolute;
   color: transparent;
   background-image: repeating-linear-gradient(
