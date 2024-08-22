@@ -4,7 +4,7 @@
       <div class="dropdown">
         <button class="dropdown-button">{{ selectedUserType || 'Seleccionar tipo' }}</button>
         <div class="dropdown-content">
-          <a *ngFor="let type of ['Todos', 'Prof', 'Est', 'Empre']"
+          <a *ngFor="let type of ['Todos', 'Profesores', 'Estudiantes', 'Empresas']"
              [class.selected]="type === selectedUserType"
              (click)="onTabClick(type)">
             {{ type }}
